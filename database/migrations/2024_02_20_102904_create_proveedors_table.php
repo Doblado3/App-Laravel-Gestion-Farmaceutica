@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('farmaceuticos', function (Blueprint $table) {
+        Schema::create('proveedors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('DNI');
-            $table->date('fecha_contratacion');
-            $table->double('sueldo');
-            $table>dateTime('turnos_guardia');
+            $table->string('email');
+            $table->integer('telefono');
+            $table->string('pais');
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('farmaceuticos');
+        Schema::dropIfExists('proveedors');
     }
 };

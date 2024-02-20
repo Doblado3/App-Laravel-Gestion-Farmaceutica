@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('farmaceuticos', function (Blueprint $table) {
+        Schema::create('farmacias', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('DNI');
-            $table->date('fecha_contratacion');
-            $table->double('sueldo');
-            $table>dateTime('turnos_guardia');
+            $table->text('ubicacion');
+            $table->text('horarios');
+            $table->integer('telefono');
+            $table->date('guardias');
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('farmaceuticos');
+        Schema::dropIfExists('farmacias');
     }
 };
