@@ -36,19 +36,28 @@ Los objetivos de nuestra aplicación web son:
   9) Preservar de forma segura los datos asociados de cada paciente y farmaceútico.
   
 - **Usuarios del sistema:**  
+
 1.	***Administrador:*** Persona encargada del mantenimiento, gestión de incidencias, bajas de usuarios, asignación de permisos... En general, todas las necesidades que puedan surgir en cuanto a la gestión “técnica” de la aplicación. Podría haber más de un administrador.  
 
 2.	***Paciente:*** Persona que accede a la página para realizar pedidos de producto o simplemente para consultar los mismos. Tendrá un área propia asignada, donde podrá gestionar sus pedidos. Su acceso es el más restringido.  
 
 3.	***Farmacéutico:*** Persona con acceso a todas las funcionalidades que ofrece la aplicación para mejorar la gestión del negocio. Tendrá una seria de permisos específicos para modificación de inventario, realizar pedidos, información sobre ventas, pacientes...  
 
-- **Requisitos de información:**  
-•	RI_001 - ***Farmacéuticos:*** El sistema deberá almacenar nombre, apellidos, DNI, fecha en la que fue contratado, sueldo asignado, el correo electrónico que ofrezca y su contraseña personal. Además, tendrá asignado un identificador que lo asocie a la farmacia en la que trabaja.  
-•	RI_002 - ***Pacientes:*** El sistema deberá almacenar nombre, apellidos, DNI, correo electrónico, contraseña y número de la seguridad social. Deberemos poder acceder a la RSNS.  
-•	RI_003 - ***Medicamentos:*** El sistema deberá almacenar el nombre, la cantidad de cada medicamento que hay en el almacén, la familia a la que pertenece el medicamento, el precio de venta público, laboratorio fabricante, una descripción textual, los descuentos que se aplican a cada medicamento, varias imágenes y la fórmula o componente activo. También, muy importante, diferenciaremos a aquellos medicamentos que estén ligados a prescripción.  
-•	RI_004 - ***Proveedores:*** El sistema deberá almacenar un “listado” sobre los medicamentos que ofrecen, el precio, los distintos métodos de envío, correo de las empresas y teléfono.  
-•	RI_005 - ***Ventas/Compras:*** El sistema deberá almacenar información sobre las ventas que se realizan a cada paciente, fechas, precio, número y medicamentos vendidos. Pero, también guardará información, de forma muy similar, sobre las compras de producto que realiza la propia farmacia.  
-•	RI_006 - ***Farmacias:*** El sistema deberá almacenar información sobre la ubicación, nombre, horarios en los que está abierta, fecha de guardias asignadas, sobre las farmacias.  
+- **Requisitos de información:**
+
+•	RI_001 - ***Farmacéuticos:*** Sobre cada farmaceútico, el sistema debe almacemar: 1) nombre, 2) apellidos, 3) DNI(VARCHAR), 4) fecha de contratación(DATE), 5) sueldo, 6) correo electrónico Y 7) contraseña. 
+
+•	RI_002 - ***Pacientes:*** Sobre cada paciente, el sistema debe almacenar: 1) nombre, 2) apellidos, 3) DNI(VARCHAR), 4) correo electrónico, 5) contraseña y 6) número de la seguridad social.  
+
+•	RI_003 - ***Medicamentos:*** Sobre cada medicamento, el sistema debe almacenar:  1) nombre, 2) número de unidades en "almacen", 3) familia (enumerado), 4) precio de venta público, 5) laboratorio fabricante, 6) descripción sobre las características principales, 7) precio con descuentos por la seguridad social, 8) imágenes , 9) fórmula/componente activo (VARCHAR) y 10) si está ligado a prescripción (BOOLEAN).
+
+•	RI_004 - ***Proveedores:*** Sobre cada proveedor, el sistema debe almacenar:  1)medicamentos en venta, 2) precio, 3) correo electrónico y 4) teléfono.  
+
+•	RI_005 - ***Ventas:*** Sobre cada venta, el sistema debe almacenar :  1) nombre del paciente, 2) fecha de reserva, 3)fecha de pago, 4) precio total, 5) medicamentos vendidos , 6) cantidad de medicamento y 7) farmaceútico involucrado. 
+
+•   RI_006 - ***Compras:*** Sobre cada compra, el sistema debe almacenar: 1) proveedor, 2) fecha de compra, 3) fecha de recogida (cuando llegan los medicamentos), 4) precio total, 5) medicamentos y 6) cantidad de medicamentos.
+
+•	RI_007 - ***Farmacias:*** Sobre cada farmacia, el sistema debe almacenar:  1) ubicación, 2) nombre, 3)horarios en los que está abierta y 4) fecha de guardias asignadas
 
 - **Requisitos funcionales:**  
 RF – 001: El sistema deberá poder diferenciar aquellos pacientes que pertenecen al sistema sanitario nacional de los que no. Para los que sí, debe poder acceder a la receta electrónica del mismo en caso de que fuera necesario recetar, por ejemplo, antibióticos o estupefacientes.   
