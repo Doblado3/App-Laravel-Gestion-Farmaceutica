@@ -3,17 +3,27 @@
 
 En este Readme.md deberá describir:
 - **Título:**
-PROYECTO FARMACIA
+GESTIÓN DE LOCALES FARMACEÚTICOS
   
 - **Integrantes:**
 Pablo Doblado Mendoza y Rodrigo Naranjo Pozas
   
 - **Dominio:**
-Nuestro proyecto se va a centrar en el desarrollo de una aplicación web para la gestión farmacéutica, tanto para locales únicos como para negocios integrados por varias sucursales. Por lo tanto, nuestros clientes serán profesionales del mundo farmacéutico. La idea principal es permitir controlar y automatizar la gestión de inventario de medicamentos, a nivel de almacén, de los clientes. Para ello, tenemos que llevar el registro tanto de los productos que salen (ventas) como de los que entran (compras). Necesitaremos acceder a la información del paciente, por ejemplo, a la receta electrónica del sistema nacional de salud para vender productos ligados a prescripción. Esto nos permitirá diferenciar ventas de parafarmacia de aquellas que no lo son. También, deberemos conectar a las farmacias con distintos proveedores para que puedan realizar sus compras comparando precios y marcas. Con la información que vayamos almacenando de ventas nos gustaría ofrecer distintas estadísticas, como productos más vendidos o “productos en tendencia”. Esto permitiría, por ejemplo, establecer un stock mínimo para un determinado producto y lanzar un aviso cuando se esté agotando.
+Nuestro proyecto se va a centrar en el desarrollo de una aplicación web para la gestión farmacéutica, tanto para locales únicos como para negocios integrados por varias sucursales. La idea principal es que la aplicación permita al cliente controlar y automatizar la gestión del inventario de medicamentos, a nivel de almacén. Es decir, necesitamos controlar tanto las ventas de la farmacia, los medicamentos que salen, como las compras que la misma haga a ciertos proveedores, los medicamentos que entran. Al tratarse de farmacias, necesitaremos diferenciar la venta de parafarmacia de la venta ligada a prescripción.
+
+Fuera del objetivo básico, anteriormente descrito, nos gustaría que la aplicación puediera aportar valor extra al cliente (farmaceútico). Entre otras cosas, nos planteamos añadir una especie de "tienda online" dentro de la aplicación que permita al cliente realizar sus pedidos desde casa. También, contemplamos ofrecer una serie de estadísticas, sobre la actividad de su local, al farmaceútico que le permitan optimizar su negocio.
 
 - **Objetivos:**
-Al hablar con farmacias de Sevilla, nos han comentado algunos problemas que sufren con los softwares que usan actualmente. A nivel general, primero, nos han indicado que las interfaces de usuario están muy anticuadas a nivel estético y, segundo, nos han dicho que algunas veces tienen problemas con los proveedores. Según cuentan, hay veces que les sale que un producto no tiene stock cuando realmente lo que ha ocurrido es que lo han retirado de venta. Para solucionarlo, se ven obligados a llamar directamente a los proveedores. 
-Como objetivo propio, nos gustaría que los clientes pudieran acceder a una especie de tienda online de la farmacia. Podrían reservar los artículos que deseen desde casa. Sería como una especie de Amazon. Por lo que hemos visto, de momento las farmacias no lo tienen implementado, al menos en España.
+Los objetivos de nuestra aplicación web son:
+        1) Situar a cada farmaceútico y paciente en su respectivo local para que el sistema diferencie claramente a distintos clientes.
+        2) Conectar al farmaceútico con los medicamentos disponibles en sus proveedores para que pueda comparar y elegir la opción que más le convenga.
+        3) Registrar la entrada y salida de medicamentos de las farmacias para poder actualizar así los niveles de inventario.
+        4) Ofrecer al cliente un área personal donde visualice su histórico de pedidos para que lleve un registro de sus compras.
+        5) Calcular, en función de las ventas realizadas, el nivel mínimo de stock necesario antes de necesitar una nueva compra para así poder lanzar avisos y evitar faltas de existencias.
+        6) Diferenciar claramente aquellos medicamentos cuya venta está ligada a prescripción para que no ocurran ventas inapropiadas.
+        7) Diferenciar aquellos pacientes pertenecientes a la seguridad social para vender medicamentos con sus descuentos asociados de forma correcta.
+        8) Presentar una sección con todos los medicamentos de la farmacia dentro de la aplicación para que el paciente pueda visualizarlos y reservarlos desde su hogar.
+        9) Preservar de forma segura los datos asociados de cada paciente y farmaceútico.
   
 - **Usuarios del sistema:**  
 1.	***Administrador:*** Persona encargada del mantenimiento, gestión de incidencias, bajas de usuarios, asignación de permisos... En general, todas las necesidades que puedan surgir en cuanto a la gestión “técnica” de la aplicación. Podría haber más de un administrador.  
