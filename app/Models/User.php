@@ -40,10 +40,11 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        
         'password' => 'hashed',
     ];
 
-    
-   
+    public function paciente()
+    {
+        return $this->hasOne(Paciente::class);
+    }
 }
