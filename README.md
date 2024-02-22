@@ -3,50 +3,86 @@
 
 En este Readme.md deberá describir:
 - **Título:**
-PROYECTO FARMACIA
+GESTIÓN DE LOCALES FARMACEÚTICOS
   
 - **Integrantes:**
 Pablo Doblado Mendoza y Rodrigo Naranjo Pozas
   
 - **Dominio:**
-Nuestro proyecto se va a centrar en el desarrollo de una aplicación web para la gestión farmacéutica, tanto para locales únicos como para negocios integrados por varias sucursales. Por lo tanto, nuestros clientes serán profesionales del mundo farmacéutico. La idea principal es permitir controlar y automatizar la gestión de inventario de medicamentos, a nivel de almacén, de los clientes. Para ello, tenemos que llevar el registro tanto de los productos que salen (ventas) como de los que entran (compras). Necesitaremos acceder a la información del paciente, por ejemplo, a la receta electrónica del sistema nacional de salud para vender productos ligados a prescripción. Esto nos permitirá diferenciar ventas de parafarmacia de aquellas que no lo son. También, deberemos conectar a las farmacias con distintos proveedores para que puedan realizar sus compras comparando precios y marcas. Con la información que vayamos almacenando de ventas nos gustaría ofrecer distintas estadísticas, como productos más vendidos o “productos en tendencia”. Esto permitiría, por ejemplo, establecer un stock mínimo para un determinado producto y lanzar un aviso cuando se esté agotando.
+
+Nuestro proyecto se va a centrar en el desarrollo de una aplicación web para la gestión farmacéutica, tanto para locales únicos como para negocios integrados por varias sucursales. La idea principal es que la aplicación permita al cliente controlar y automatizar la gestión del inventario de medicamentos, a nivel de almacén. Es decir, necesitamos controlar tanto las ventas de la farmacia, los medicamentos que salen, como las compras que la misma haga a ciertos proveedores, los medicamentos que entran. Al tratarse de farmacias, necesitaremos diferenciar la venta de parafarmacia de la venta ligada a prescripción.
+
+Fuera del objetivo básico, anteriormente descrito, nos gustaría que la aplicación puediera aportar valor extra al cliente (farmaceútico). Entre otras cosas, nos planteamos añadir una especie de "tienda online" dentro de la aplicación que permita al cliente realizar sus pedidos desde casa. También, contemplamos ofrecer una serie de estadísticas, sobre la actividad de su local, al farmaceútico que le permitan optimizar su negocio.
 
 - **Objetivos:**
-Al hablar con farmacias de Sevilla, nos han comentado algunos problemas que sufren con los softwares que usan actualmente. A nivel general, primero, nos han indicado que las interfaces de usuario están muy anticuadas a nivel estético y, segundo, nos han dicho que algunas veces tienen problemas con los proveedores. Según cuentan, hay veces que les sale que un producto no tiene stock cuando realmente lo que ha ocurrido es que lo han retirado de venta. Para solucionarlo, se ven obligados a llamar directamente a los proveedores. 
-Como objetivo propio, nos gustaría que los clientes pudieran acceder a una especie de tienda online de la farmacia. Podrían reservar los artículos que deseen desde casa. Sería como una especie de Amazon. Por lo que hemos visto, de momento las farmacias no lo tienen implementado, al menos en España.
+Los objetivos de nuestra aplicación web son:
+
+  1) Situar a cada farmaceútico y paciente en su respectivo local para que el sistema diferencie claramente a distintos clientes.
+
+  2) Conectar al farmaceútico con los medicamentos disponibles en sus proveedores para que pueda comparar y elegir la opción que más le convenga.
+        
+  3) Registrar la entrada y salida de medicamentos de las farmacias para poder actualizar así los niveles de inventario.
+        
+  4) Ofrecer al cliente un área personal donde visualice su histórico de pedidos para que lleve un registro de sus compras.
+        
+  5) Calcular, en función de las ventas realizadas, el nivel mínimo de stock necesario antes de necesitar una nueva compra para así poder lanzar avisos y evitar faltas de existencias.
+        
+  6) Diferenciar claramente aquellos medicamentos cuya venta está ligada a prescripción para que no ocurran ventas inapropiadas.
+        
+  7) Diferenciar aquellos pacientes pertenecientes a la seguridad social para vender medicamentos con sus descuentos asociados de forma correcta.
+        
+  8) Presentar una sección con todos los medicamentos de la farmacia dentro de la aplicación para que el paciente pueda visualizarlos y reservarlos desde su hogar.
+        
+  9) Preservar de forma segura los datos asociados de cada paciente y farmaceútico.
   
 - **Usuarios del sistema:**  
+
 1.	***Administrador:*** Persona encargada del mantenimiento, gestión de incidencias, bajas de usuarios, asignación de permisos... En general, todas las necesidades que puedan surgir en cuanto a la gestión “técnica” de la aplicación. Podría haber más de un administrador.  
 
 2.	***Paciente:*** Persona que accede a la página para realizar pedidos de producto o simplemente para consultar los mismos. Tendrá un área propia asignada, donde podrá gestionar sus pedidos. Su acceso es el más restringido.  
 
 3.	***Farmacéutico:*** Persona con acceso a todas las funcionalidades que ofrece la aplicación para mejorar la gestión del negocio. Tendrá una seria de permisos específicos para modificación de inventario, realizar pedidos, información sobre ventas, pacientes...  
 
-- **Requisitos de información:**  
-•	RI_001 - ***Farmacéuticos:*** El sistema deberá almacenar nombre, apellidos, DNI, fecha en la que fue contratado, sueldo asignado, el correo electrónico que ofrezca y su contraseña personal. Además, tendrá asignado un identificador que lo asocie a la farmacia en la que trabaja.  
-•	RI_002 - ***Pacientes:*** El sistema deberá almacenar nombre, apellidos, DNI, correo electrónico, contraseña y número de la seguridad social. Deberemos poder acceder a la RSNS.  
-•	RI_003 - ***Medicamentos:*** El sistema deberá almacenar el nombre, la cantidad de cada medicamento que hay en el almacén, la familia a la que pertenece el medicamento, el precio de venta público, laboratorio fabricante, una descripción textual, los descuentos que se aplican a cada medicamento, varias imágenes y la fórmula o componente activo. También, muy importante, diferenciaremos a aquellos medicamentos que estén ligados a prescripción.  
-•	RI_004 - ***Proveedores:*** El sistema deberá almacenar un “listado” sobre los medicamentos que ofrecen, el precio, los distintos métodos de envío, correo de las empresas y teléfono.  
-•	RI_005 - ***Ventas/Compras:*** El sistema deberá almacenar información sobre las ventas que se realizan a cada paciente, fechas, precio, número y medicamentos vendidos. Pero, también guardará información, de forma muy similar, sobre las compras de producto que realiza la propia farmacia.  
-•	RI_006 - ***Farmacias:*** El sistema deberá almacenar información sobre la ubicación, nombre, horarios en los que está abierta, fecha de guardias asignadas, sobre las farmacias.  
+- **Requisitos de información:**
+
+•	RI_001 - ***Farmacéuticos:*** Sobre cada farmaceútico, el sistema debe almacemar: 1) nombre, 2) apellidos, 3) DNI(VARCHAR), 4) fecha de contratación(DATE), 5) sueldo, 6) correo electrónico Y 7) contraseña. 
+
+•	RI_002 - ***Pacientes:*** Sobre cada paciente, el sistema debe almacenar: 1) nombre, 2) apellidos, 3) DNI(VARCHAR), 4) correo electrónico, 5) contraseña y 6) número de la seguridad social.  
+
+•	RI_003 - ***Medicamentos:*** Sobre cada medicamento, el sistema debe almacenar:  1) nombre, 2) número de unidades en "almacen", 3) familia (enumerado), 4) precio de venta público, 5) laboratorio fabricante, 6) descripción sobre las características principales, 7) precio con descuentos por la seguridad social, 8) imágenes , 9) fórmula/componente activo (VARCHAR) y 10) si está ligado a prescripción (BOOLEAN).
+
+•	RI_004 - ***Proveedores:*** Sobre cada proveedor, el sistema debe almacenar:  1)medicamentos en venta, 2) precio, 3) correo electrónico y 4) teléfono.  
+
+•	RI_005 - ***Ventas:*** Sobre cada venta, el sistema debe almacenar :  1) nombre del paciente, 2) fecha de reserva, 3)fecha de pago, 4) precio total, 5) medicamentos vendidos , 6) cantidad de medicamento y 7) farmaceútico involucrado. 
+
+•   RI_006 - ***Compras:*** Sobre cada compra, el sistema debe almacenar: 1) proveedor, 2) fecha de compra, 3) fecha de recogida (cuando llegan los medicamentos), 4) precio total, 5) medicamentos y 6) cantidad de medicamentos.
+
+•	RI_007 - ***Farmacias:*** Sobre cada farmacia, el sistema debe almacenar:  1) ubicación, 2) nombre, 3)horarios en los que está abierta y 4) fecha de guardias asignadas
 
 - **Requisitos funcionales:**  
-RF – 001: El sistema deberá poder diferenciar aquellos pacientes que pertenecen al sistema sanitario nacional de los que no. Para los que sí, debe poder acceder a la receta electrónica del mismo en caso de que fuera necesario recetar, por ejemplo, antibióticos o estupefacientes.   
-RF – 002: El sistema debe ser capaz de diferenciar aquellos productos ligados a prescripción de los que no.  
-RF – 003: El sistema debe controlar el estado de inventario de medicamentos de las farmacias, de forma que pueda establecer niveles de stock mínimo para productos con mucha demanda, lanzando avisos cuando haya poca cantidad.  
-RF – 004: El sistema debe permitir al farmacéutico acceder a la lista de medicamentos de distintos proveedores para comparar sus productos.  
-RF – 005: El sistema deberá permitir al paciente acceder a la oferta de las farmacias, conocer una serie de características sobre cada producto y poder “reservar” pedidos.  
-RF – 006: El sistema debe almacenar información sobre las ventas para poder ofrecer distintas estadísticas, por ejemplo, productos más vendidos o tendencias mensuales y así otorgar mayor conocimiento al farmacéutico. También, deberá llevar un registro de las compras y ventas realizadas y/o reservadas.  
-RF – 007: El sistema deberá actualizar los niveles de cantidad de medicamentos conforme se vayan realizando ventas/compras.  
+RF - 001: Como administrador, quiero poder dar de alta/baja a farmacéuticos y farmacias.  
+RF - 002: Como farmacéutico, quiero poder dar de alta/baja a pacientes.  
+RF – 001: Como farmacéutico, quiero poder diferenciar los medicamentos preescritos de los que no lo son.  
+RF – 003: Como farmacéutico, quiero controlar el estado de inventario de medicamentos de las farmacias.  
+RF - 004: Como farmacéutico, quiero poder establecer niveles de stock mínimo para productos con mucha demanda.  
+RF - 005: Como farmacéutico, quiero que el sistema me lance avisos cuando haya poco stock de un medicamento.  
+RF – 006: Como farmacéutico, quiero acceder a la lista de medicamentos de distintos proveedores para comparar sus productos.  
+RF – 007: Como paciente, quiero poder acceder a la oferta de medicamentos de las farmacias, conocer una serie de características sobre cada producto y poder “reservar” pedidos.  
+RF – 008: Como administrador, quiero que el sistema genere información sobre las ventas para poder ofrecer distintas estadísticas, por ejemplo, productos más vendidos o tendencias mensuales y así otorgar mayor conocimiento al farmacéutico.  
+RF - 009: Como farmacéutico, quiero llevar un registro de las compras y ventas realizadas y/o reservadas.  
+RF – 010: Como farmacéutico, quiero que el sistema actualice los niveles de cantidad de medicamentos conforme se vayan realizando ventas/compras.  
 
-- **Requisitos no funcionales:**
-•	RNF – 001: El sistema deberá ofrecer una interfaz de usuario actualizada y atractiva visualmente.  
-•	RNF – 002: El sistema deberá ofrecer un nivel alto de seguridad con contraseñas seguras, almacenadas encriptadas... Para evitar posibles ataques y/o accesos indebidos.  
-•	RNF – 003: El sistema deberá soportar una carga de usuarios y ventas considerables.  
-•	RNF – 004: El sistema deberá estar disponible en los sistemas operativos más usados.  
+- **Requisitos no funcionales:**  
+•	RNF – 001: Como farmacéutico y como paciente, quiero que el sistema ofrezca una interfaz de usuario actualizada y atractiva visualmente.  
+•	RNF – 002: Como farmacéutico, el sistema debe ofreceme un nivel alto de seguridad, con contraseñas almacenadas y encriptadas.  
+•   RNF - 003: Como paciente, quiero que se garantice la integridad de mis datos personales y de los pedidos realizados.  
+•	RNF – 003: Como farmacéutico, quiero que el sistema soporte una carga de usuarios y ventas considerables.  
+•	RNF – 004: Como paciente, quiero que el sistema sea de uso intuitivo.  
 
 - **Modelado conceptual en UML:**  
-![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/daa0ec87-dea7-49f5-9e06-316fe9de58ac)
+<img width="512" alt="Captura de pantalla 2024-02-22 a las 17 57 50" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/005f9c78-fa30-4ebd-95f0-0ac84058c6bc">
+
+
 
 
 - **Manual de usuario con capturas:**
