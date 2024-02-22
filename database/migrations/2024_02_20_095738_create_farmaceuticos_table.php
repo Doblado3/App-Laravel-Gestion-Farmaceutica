@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('farmaceuticos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('DNI');
+            $table->string('DNI');
             $table->date('fecha_contratacion');
             $table->double('sueldo');
             $table>dateTime('turnos_guardia');
