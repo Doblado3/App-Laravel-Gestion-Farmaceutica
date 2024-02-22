@@ -75,7 +75,8 @@ RF – 007: El sistema deberá actualizar los niveles de cantidad de medicamento
 •	RNF – 004: El sistema deberá estar disponible en los sistemas operativos más usados.  
 
 - **Modelado conceptual en UML:**  
-![Farmacia drawio](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/fbec692e-176d-40d6-81ef-333c664f9ec5)
+<img width="512" alt="Captura de pantalla 2024-02-22 a las 17 57 50" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/005f9c78-fa30-4ebd-95f0-0ac84058c6bc">
+
 
 
 
