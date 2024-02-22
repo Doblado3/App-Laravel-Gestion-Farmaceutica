@@ -59,20 +59,25 @@ Los objetivos de nuestra aplicación web son:
 
 •	RI_007 - ***Farmacias:*** Sobre cada farmacia, el sistema debe almacenar:  1) ubicación, 2) nombre, 3)horarios en los que está abierta y 4) fecha de guardias asignadas
 
-- **Requisitos funcionales:**  
-RF – 001: El sistema deberá poder diferenciar aquellos pacientes que pertenecen al sistema sanitario nacional de los que no. Para los que sí, debe poder acceder a la receta electrónica del mismo en caso de que fuera necesario recetar, por ejemplo, antibióticos o estupefacientes.   
-RF – 002: El sistema debe ser capaz de diferenciar aquellos productos ligados a prescripción de los que no.  
-RF – 003: El sistema debe controlar el estado de inventario de medicamentos de las farmacias, de forma que pueda establecer niveles de stock mínimo para productos con mucha demanda, lanzando avisos cuando haya poca cantidad.  
-RF – 004: El sistema debe permitir al farmacéutico acceder a la lista de medicamentos de distintos proveedores para comparar sus productos.  
-RF – 005: El sistema deberá permitir al paciente acceder a la oferta de las farmacias, conocer una serie de características sobre cada producto y poder “reservar” pedidos.  
-RF – 006: El sistema debe almacenar información sobre las ventas para poder ofrecer distintas estadísticas, por ejemplo, productos más vendidos o tendencias mensuales y así otorgar mayor conocimiento al farmacéutico. También, deberá llevar un registro de las compras y ventas realizadas y/o reservadas.  
-RF – 007: El sistema deberá actualizar los niveles de cantidad de medicamentos conforme se vayan realizando ventas/compras.  
+- **Requisitos funcionales:**
+RF - 001: Como administrador, quiero poder dar de alta/baja a farmacéuticos y farmacias.
+RF - 002: Como farmacéutico, quiero poder dar de alta/baja a pacientes.
+RF – 001: Como farmacéutico, quiero poder diferenciar los medicamentos preescritos de los que no lo son.  
+RF – 003: Como farmacéutico, quiero controlar el estado de inventario de medicamentos de las farmacias.
+RF - 004: Como farmacéutico, quiero poder establecer niveles de stock mínimo para productos con mucha demanda.
+RF - 005: Como farmacéutico, quiero que el sistema me lance avisos cuando haya poco stock de un medicamento.
+RF – 006: Como farmacéutico, quiero acceder a la lista de medicamentos de distintos proveedores para comparar sus productos.  
+RF – 007: Como paciente, quiero poder acceder a la oferta de medicamentos de las farmacias, conocer una serie de características sobre cada producto y poder “reservar” pedidos.  
+RF – 008: Como administrador, quiero que el sistema genere información sobre las ventas para poder ofrecer distintas estadísticas, por ejemplo, productos más vendidos o tendencias mensuales y así otorgar mayor conocimiento al farmacéutico. 
+RF - 009: Como farmacéutico, quiero llevar un registro de las compras y ventas realizadas y/o reservadas.  
+RF – 010: Como farmacéutico, quiero que el sistema actualice los niveles de cantidad de medicamentos conforme se vayan realizando ventas/compras.  
 
 - **Requisitos no funcionales:**
-•	RNF – 001: El sistema deberá ofrecer una interfaz de usuario actualizada y atractiva visualmente.  
-•	RNF – 002: El sistema deberá ofrecer un nivel alto de seguridad con contraseñas seguras, almacenadas encriptadas... Para evitar posibles ataques y/o accesos indebidos.  
-•	RNF – 003: El sistema deberá soportar una carga de usuarios y ventas considerables.  
-•	RNF – 004: El sistema deberá estar disponible en los sistemas operativos más usados.  
+•	RNF – 001: Como farmacéutico y como paciente, quiero que el sistema ofrezca una interfaz de usuario actualizada y atractiva visualmente.
+•	RNF – 002: Como farmacéutico, el sistema debe ofreceme un nivel alto de seguridad, con contraseñas almacenadas y encriptadas.
+•   RNF - 003: Como paciente, quiero que se garantice la integridad de mis datos personales y de los pedidos realizados.
+•	RNF – 003: Como farmacéutico, quiero que el sistema soporte una carga de usuarios y ventas considerables.
+•	RNF – 004: Como paciente, quiero que el sistema sea de uso intuitivo.
 
 - **Modelado conceptual en UML:**  
 <img width="512" alt="Captura de pantalla 2024-02-22 a las 17 57 50" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/005f9c78-fa30-4ebd-95f0-0ac84058c6bc">
