@@ -25,4 +25,9 @@ class MedicamentoFarmacia extends Model
         'formula_componente_activo',
         'refrigerado',
     ];
+
+    protected $casts = [
+        'prescripcion' => 'boolean',
+        'refrigerado'  => 'boolean',
+    ];
 }

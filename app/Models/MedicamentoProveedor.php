@@ -24,4 +24,9 @@ class MedicamentoProveedor extends Model
         'imagen_path',
         'refrigerado',
     ];
+
+    protected $casts = [
+        'prescripcion' => 'boolean',
+        'refrigerado'  => 'boolean',
+    ];
 }

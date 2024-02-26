@@ -19,33 +19,15 @@ class Paciente extends Model
         'nusha',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'dni',
-        'nusha',
-    ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'dni' => 'hashed',
-        'nusha' => 'hashed',
-    ];
+    
+    
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+   
+    
 }
