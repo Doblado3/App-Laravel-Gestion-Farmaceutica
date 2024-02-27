@@ -9,4 +9,14 @@ class Naturaleza extends Model
 {
     use HasFactory;
 
+    public function medicamento_farmacia()
+    {
+        return $this->hasMany(MedicamentoFarmacia::class);
+    }
+
+    public function medicamento_proveedor()
+    {
+        return $this->hasMany(MedicamentoProveedor::class);
+    }
+
 }

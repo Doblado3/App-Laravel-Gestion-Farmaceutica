@@ -34,4 +34,9 @@ class MedicamentoProveedor extends Model
     {
         return $this->belongsTo(Farmacia::class);
     }
+
+    public function naturaleza()
+    {
+        
+    }
 }
