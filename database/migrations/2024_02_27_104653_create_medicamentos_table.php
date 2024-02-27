@@ -11,9 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medicamentos', function (Blueprint $table) {
+        Schema::create('medicamento_proveedors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nombre');
+            $table->double('precio_publico');
+            $table->string('laboratorio_fabricante');
+            $table->text('descripcion');
+            $table->double('precio_publico');
+            $table->double('precio_descontado');
+            $table->tinyInteger('prescripcion');
+            $table->string('formula_componente_activo');
+            $table->string('imagen_path');
+            $table->tinyInteger('refrigerado');
         });
     }
 
