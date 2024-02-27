@@ -24,5 +24,10 @@ class Farmaceutico extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function farmacia()
+    {
+        return $this->belongsTo(Farmacia::class);
+    }
+
 
 }

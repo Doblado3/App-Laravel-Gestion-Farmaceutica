@@ -20,4 +20,9 @@ class Farmacia extends Model
         'telefono',
         'guardias',
     ];
+
+    public function farmacia()
+    {
+        return $this->hasOne(Farmacia::class);
+    }
 }
