@@ -19,5 +19,15 @@ class Farmaceutico extends Model
         'fecha_contratacion',
     ];
 
-    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function farmacia()
+    {
+        return $this->belongsTo(Farmacia::class);
+    }
+
+
 }
