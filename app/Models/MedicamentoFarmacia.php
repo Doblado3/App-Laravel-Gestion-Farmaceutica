@@ -30,4 +30,14 @@ class MedicamentoFarmacia extends Model
         'prescripcion' => 'boolean',
         'refrigerado'  => 'boolean',
     ];
+
+    public function paciente()
+    {
+        return $this->hasMany(Paciente::class);
+    }
+
+    public function farmacia()
+    {
+        return $this->belongsTo(Farmacia::class);
+    }
 }

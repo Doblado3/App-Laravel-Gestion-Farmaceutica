@@ -28,6 +28,11 @@ class Paciente extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function medicamento_farmacia()
+    {
+        return $this->belongsTo(MedicamentoFarmacia::class);
+    }
+
    
     
 }
