@@ -29,4 +29,9 @@ class MedicamentoProveedor extends Model
         'prescripcion' => 'boolean',
         'refrigerado'  => 'boolean',
     ];
+
+    public function farmacia()
+    {
+        return $this->belongsTo(Farmacia::class);
+    }
 }

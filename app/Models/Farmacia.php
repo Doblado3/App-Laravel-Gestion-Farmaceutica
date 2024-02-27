@@ -26,6 +26,4 @@ class Farmacia extends Model
     {
         return $this->hasOne(MedicamentoFarmacia::class);
     }
-
-    
 }
