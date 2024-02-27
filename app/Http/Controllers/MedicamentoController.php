@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMedicamentoFarmaciaRequest;
-use App\Http\Requests\UpdateMedicamentoFarmaciaRequest;
-use App\Models\MedicamentoFarmacia;
+use App\Http\Requests\StoreMedicamentoRequest;
+use App\Http\Requests\UpdateMedicamentoRequest;
+use App\Models\Medicamento;
 
-class MedicamentoFarmaciaController extends Controller
+class MedicamentoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class MedicamentoFarmaciaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMedicamentoFarmaciaRequest $request)
+    public function store(StoreMedicamentoRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class MedicamentoFarmaciaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MedicamentoFarmacia $medicamentoFarmacia)
+    public function show(Medicamento $medicamento)
     {
         //
     }
@@ -43,7 +43,7 @@ class MedicamentoFarmaciaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MedicamentoFarmacia $medicamentoFarmacia)
+    public function edit(Medicamento $medicamento)
     {
         //
     }
@@ -51,7 +51,7 @@ class MedicamentoFarmaciaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMedicamentoFarmaciaRequest $request, MedicamentoFarmacia $medicamentoFarmacia)
+    public function update(UpdateMedicamentoRequest $request, Medicamento $medicamento)
     {
         //
     }
@@ -59,7 +59,7 @@ class MedicamentoFarmaciaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MedicamentoFarmacia $medicamentoFarmacia)
+    public function destroy(Medicamento $medicamento)
     {
         //
     }
