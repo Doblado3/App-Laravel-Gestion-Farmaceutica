@@ -20,4 +20,9 @@ class Proveedor extends Model
         'pais_origen',
         'pais_procedencia',
     ];
+
+    public function medicamentoProveedor()
+    {
+        return $this->hasOne(MedicamentoProveedor::class);
+    }
 }

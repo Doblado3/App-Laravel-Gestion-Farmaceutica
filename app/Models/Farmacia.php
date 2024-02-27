@@ -28,6 +28,6 @@ class Farmacia extends Model
 
     public function medicamentoProveedor()
     {
-        return $this->hasOne(MedicamentoProveedor::class);
+        return $this->hasMany(MedicamentoProveedor::class);
     }
 }
