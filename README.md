@@ -80,7 +80,7 @@ RF – 010: Como farmacéutico, quiero que el sistema actualice los niveles de c
 •	RNF – 004: Como paciente, quiero que el sistema sea de uso intuitivo.  
 
 - **Modelado conceptual en UML:**  
-![Farmacia_actualizado_v3 2](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/68f812a7-731a-4fc8-ab6e-057c223bebae)
+<img width="512" alt="Captura de pantalla 2024-03-02 a las 18 46 59" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/0b68f984-06f0-48ca-be61-b21287fdeb60">
 
 
 
