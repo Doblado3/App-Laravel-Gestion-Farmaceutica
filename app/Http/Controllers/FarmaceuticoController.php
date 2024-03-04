@@ -13,7 +13,7 @@ class FarmaceuticoController extends Controller
      */
     public function index()
     {
-        return view('/farmaceuticos/index');
+        return view('/farmaceuticos/index', ['farmaceuticos' => DB::table('farmaceuticos')->paginate(10)]);
     }
 
     /**
