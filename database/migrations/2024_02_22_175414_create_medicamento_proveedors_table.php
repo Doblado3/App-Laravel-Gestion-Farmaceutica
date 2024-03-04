@@ -14,16 +14,10 @@ return new class extends Migration
         Schema::create('medicamento_proveedors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nombre');
-            $table->double('precio_publico');
+            $table->string('nombre_medicamento');
+            $table->string('nombre_proveedor');
+            $table->double('pvp');
             $table->string('laboratorio_fabricante');
-            $table->text('descripcion');
-            $table->double('precio_publico');
-            $table->double('precio_descontado');
-            $table->tinyInteger('prescripcion');
-            $table->string('formula_componente_activo');
-            $table->string('imagen_path');
-            $table->tinyInteger('refrigerado');
         });
     }
 

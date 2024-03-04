@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('DNI');
             $table->date('fecha_contratacion');
             $table->double('sueldo');
-            $table>dateTime('turnos_guardia');
         });
     }
 

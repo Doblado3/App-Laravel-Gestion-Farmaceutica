@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->text('ubicacion');
-            $table->text('horarios');
+            $table->string('nombre');
             $table->integer('telefono');
-            $table->date('guardias');
+            $table->integer('email');
         });
     }
 
