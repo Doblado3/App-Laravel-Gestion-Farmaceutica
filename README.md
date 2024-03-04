@@ -59,25 +59,79 @@ Los objetivos de nuestra aplicación web son:
 
 •	RI_007 - ***Farmacias:*** Sobre cada farmacia, el sistema debe almacenar:  1) ubicación, 2) nombre, 3)horarios en los que está abierta y 4) fecha de guardias asignadas.
 
-- **Requisitos funcionales:**  
-RF - 001: Como administrador, quiero poder dar de alta/baja a farmacéuticos y farmacias.  
-RF - 002: Como farmacéutico, quiero poder dar de alta/baja a pacientes.  
-RF – 001: Como farmacéutico, quiero poder diferenciar los medicamentos preescritos de los que no lo son.  
-RF – 003: Como farmacéutico, quiero controlar el estado de inventario de medicamentos de las farmacias.  
-RF - 004: Como farmacéutico, quiero poder establecer niveles de stock mínimo para productos con mucha demanda.  
-RF - 005: Como farmacéutico, quiero que el sistema me lance avisos cuando haya poco stock de un medicamento.  
-RF – 006: Como farmacéutico, quiero acceder a la lista de medicamentos de distintos proveedores para comparar sus productos.  
-RF – 007: Como paciente, quiero poder acceder a la oferta de medicamentos de las farmacias, conocer una serie de características sobre cada producto y poder “reservar” pedidos.  
-RF – 008: Como administrador, quiero que el sistema genere información sobre las ventas para poder ofrecer distintas estadísticas, por ejemplo, productos más vendidos o tendencias mensuales y así otorgar mayor conocimiento al farmacéutico.  
-RF - 009: Como farmacéutico, quiero llevar un registro de las compras y ventas realizadas y/o reservadas.  
-RF – 010: Como farmacéutico, quiero que el sistema actualice los niveles de cantidad de medicamentos conforme se vayan realizando ventas/compras.  
+- **Requisitos funcionales:**
+RF - 1: Como administrador,
+    Quiero ver un listado de los farmaceúticos del sistema paginados de 10 en 10.
+
+    RF -  1.1: Como administrador,
+        Quiero ver el detalle de un farmaceútico.
+
+    RF - 1.2: Como administrador,
+        Quiero crear un farmaceútico. Para ello, se debe indicar el nombre y apellidos, email, contraseña, fecha de contratación y el sueldo. El sistema debe impedir la creación de un farmaceútico si:
+            - El email ya existe.
+            - El email no tiene el formato correcto.
+            - La contraseña no tiene al menos 8 caracteres y coinciden la contraseña y su confirmación.
+            - El sueldo no puede ser negativo
+        El sistema además deberá mostrar un mensaje de error en cada uno de los casos anteriores y, en caso de éxito, navegar al listado actualizado de farmaceúticos con un mensaje de éxito.
+
+    RF - 1.3: Como administrador,
+        Quiero editar un farmaceútico eligiéndolo a partir del listado de farmaceúticos y llevándome a una nueva pantalla donde pueda trabajar con los datos. Para ello, se debe poder modificar el nombre y apellidos, email, fecha de contratación y el sueldo. El sistema          debe impedir la edición de un farmaceútico si:
+            - El email no tiene el formato correcto.
+            - La contraseña no tiene al menos 8 caracteres y coinciden la contraseña y su confirmación.
+            - El sueldo no puede ser negativo
+        El sistema además deberá mostrar un mensaje de error en cada uno de los casos anteriores y, en caso de éxito, navegar al listado actualizado de los farmaceúticos con un mensaje de éxito.
+
+    RF - 1.4: Como administrador,
+        Quiero borrar un farmaceútico. El sistema deberá alertarme de la irrevocabilidad de esta acción y pedir confirmación. En caso de confirmación, el sistema deberá borrar el farmaceútico y navegar al listado actualizado de farmaceúticos con un mensaje de éxito.
+  
+RF - 2: Como administrador, quiero poder dar de alta/baja a farmacias.
+
+
+RF - 3: Como farmacéutico, quiero poder dar de alta/baja a pacientes.
+
+
+RF – 4: Como farmacéutico, quiero poder diferenciar los medicamentos preescritos de los que no lo son.  
+
+
+RF – 5: Como farmacéutico, quiero controlar el estado de inventario de medicamentos de las farmacias.  
+
+
+RF - 6: Como farmacéutico, quiero poder establecer niveles de stock mínimo para productos con mucha demanda.  
+
+
+RF - 7: Como farmacéutico, quiero que el sistema me lance avisos cuando haya poco stock de un medicamento.  
+
+
+RF – 8: Como farmacéutico, quiero acceder a la lista de medicamentos de distintos proveedores para comparar sus productos. 
+
+
+RF – 9: Como paciente, quiero poder acceder a la oferta de medicamentos de las farmacias, conocer una serie de características sobre cada producto y poder “reservar” pedidos.  
+
+
+RF – 10: Como administrador, quiero que el sistema genere información sobre las ventas para poder ofrecer distintas estadísticas, por ejemplo, productos más vendidos o tendencias mensuales y así otorgar mayor conocimiento al farmacéutico.  
+
+
+RF - 11: Como farmacéutico, quiero llevar un registro de las compras y ventas realizadas y/o reservadas.  
+
+
+RF – 12: Como farmacéutico, quiero que el sistema actualice los niveles de cantidad de medicamentos conforme se vayan realizando ventas/compras.  
+
 
 - **Requisitos no funcionales:**  
-•	RNF – 001: Como farmacéutico y como paciente, quiero que el sistema ofrezca una interfaz de usuario actualizada y atractiva visualmente.  
-•	RNF – 002: Como farmacéutico, el sistema debe ofreceme un nivel alto de seguridad, con contraseñas almacenadas y encriptadas.  
-•   RNF - 003: Como paciente, quiero que se garantice la integridad de mis datos personales y de los pedidos realizados.  
-•	RNF – 003: Como farmacéutico, quiero que el sistema soporte una carga de usuarios y ventas considerables.  
-•	RNF – 004: Como paciente, quiero que el sistema sea de uso intuitivo.  
+•	RNF – 1: Como farmacéutico y como paciente, quiero que el sistema ofrezca una interfaz de usuario actualizada y atractiva visualmente.
+
+
+•	RNF – 2: Como farmacéutico, el sistema debe ofreceme un nivel alto de seguridad, con contraseñas almacenadas y encriptadas.  
+
+
+•   RNF - 3: Como paciente, quiero que se garantice la integridad de mis datos personales y de los pedidos realizados.  
+
+
+•	RNF – 4: Como farmacéutico, quiero que el sistema soporte una carga de usuarios y ventas considerables.
+
+
+•	RNF – 5: Como paciente, quiero que el sistema sea de uso intuitivo.  
+
 
 - **Modelado conceptual en UML:**  
 <img width="512" alt="Captura de pantalla 2024-03-02 a las 18 46 59" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/0b68f984-06f0-48ca-be61-b21287fdeb60">
