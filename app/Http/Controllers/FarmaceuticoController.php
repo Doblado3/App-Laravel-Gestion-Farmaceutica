@@ -21,7 +21,7 @@ class FarmaceuticoController extends Controller
      */
     public function create()
     {
-        //
+        return view('/farmaceuticos/create');
     }
 
     /**

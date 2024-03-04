@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FarmaceuticoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/farmaceuticos', [FarmaceuticoController::class,'index']);
+Route::get('/farmaceuticos/create', [FarmaceuticoController::class, 'create']);
