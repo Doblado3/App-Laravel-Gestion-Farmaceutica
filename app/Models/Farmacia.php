@@ -16,14 +16,14 @@ class Farmacia extends Model
      */
     protected $fillable = [
         'ubicacion',
-        'horarios',
+        'nombre',
+        'email,',
         'telefono',
-        'guardias',
     ];
 
 
     public function medicamento_farmacia()
     {
-        return $this->hasOne(MedicamentoProveedor::class);
+        return $this->hasMany(MedicamentoProveedor::class);
     }
 }
