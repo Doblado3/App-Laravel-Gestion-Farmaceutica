@@ -29,8 +29,10 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
 Route::resources([
     'farmaceuticos' => FarmaceuticoController::class,
+    'farmacias' => FarmaciaController::class,
 ]);
 //Route::get('/farmaceuticos', [FarmaceuticoController::class, 'index'])->name('farmaceuticos.index');
 

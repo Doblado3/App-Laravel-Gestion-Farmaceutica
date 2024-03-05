@@ -14,9 +14,9 @@ class FarmaceuticoController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAny', Medico::class);
-        $medicos = Medico::paginate(25);
-        return view('/medicos/index', ['medicos' => $medicos]);    }
+        $this->authorize('viewAny', Farmaceutico::class);
+        $mfarmaceuticos = Farmaceutico::paginate(10);
+        return view('/farmaceuticos/index', ['farmaceuticos' => $farmaceuticos]);    }
 
     /**
      * Show the form for creating a new resource.
