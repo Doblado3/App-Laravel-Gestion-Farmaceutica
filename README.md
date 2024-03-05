@@ -17,7 +17,7 @@ Fuera del objetivo básico, anteriormente descrito, nos gustaría que la aplicac
 - **Objetivos:**
 Los objetivos de nuestra aplicación web son:
 
-  1) Situar a cada farmaceútico y paciente en su respectivo local para que el sistema diferencie claramente a distintos clientes.
+  1) Visualizar un listado de los medicamentos presentes en la farmacia, pudiendo editarlos, conocer información sobre ellos y establecer su estado, entre otras opciones.
 
   2) Conectar al farmaceútico con los medicamentos disponibles en sus proveedores para que pueda comparar y elegir la opción que más le convenga.
         
@@ -27,13 +27,7 @@ Los objetivos de nuestra aplicación web son:
         
   5) Calcular, en función de las ventas realizadas, el nivel mínimo de stock necesario antes de necesitar una nueva compra para así poder lanzar avisos y evitar faltas de existencias.
         
-  6) Diferenciar claramente aquellos medicamentos cuya venta está ligada a prescripción para que no ocurran ventas inapropiadas.
-        
-  7) Diferenciar aquellos pacientes pertenecientes a la seguridad social para vender medicamentos con sus descuentos asociados de forma correcta.
-        
   8) Presentar una sección con todos los medicamentos de la farmacia dentro de la aplicación para que el paciente pueda visualizarlos y reservarlos desde su hogar.
-        
-  9) Preservar de forma segura los datos asociados de cada paciente y farmaceútico.
   
 - **Usuarios del sistema:**  
 
