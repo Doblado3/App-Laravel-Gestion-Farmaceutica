@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('ubicacion');
             $table->string('nombre');
             $table->integer('telefono');
-            $table->integer('email');
+            $table->string('email');
         });
     }
 
