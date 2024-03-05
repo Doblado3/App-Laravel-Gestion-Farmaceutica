@@ -19,7 +19,10 @@ class Farmaceutico extends Model
         'fecha_contratacion',
     ];
 
-    
+    protected $casts = [
+        'fecha_contratacion' => 'datetime:Y-m-d'
+    ];
+
 
     public function user()
     {
@@ -30,6 +33,8 @@ class Farmaceutico extends Model
     {
         return $this->belongsTo(Farmacia::class);
     }
+
+
 
 
 }

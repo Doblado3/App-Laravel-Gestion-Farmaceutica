@@ -24,7 +24,7 @@ class FarmaceuticoSeeder extends Seeder
                 'dni' => "87654321B",
                 'fecha_contratacion' => "2022-06-01"
                 'user_id' => 3
-            ]
-        ])
+            ],
+        ]);
     }
 }

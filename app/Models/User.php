@@ -52,4 +52,31 @@ class User extends Authenticatable
     {
         return $this->hasOne(Farmaceutico::class);
     }
+
+    public function getTipoUduarioIdAttribute(){
+        if ($this->farmaceutico()->exists()){
+            return 1;
+        }elseif($this->paciente()->exists()){
+            return 2;
+        }else{
+            return 3;
+        }
+    }
+
+    public function getTipoUduarioAttribute(){
+        $tipos_usuario = [1=>trans('Farmacéutico'), 2=> trans('Paciente'), 3=> trans('Administrador')];
+        return $tipos_usuario[$this->tipo_usuario_id];
+    }
+
+    public function getEsFarmaceuticoAttribute(){
+        return $this->tipo_usuario_id == 1;
+    }
+
+    public function getEsPacienteAttribute(){
+        return $this->tipo_usuario_id == 2;
+    }
+
+    public function getEsAdministradorAttribute(){
+        return $this->tipo_usuario_id == 3;
+    }
 }
