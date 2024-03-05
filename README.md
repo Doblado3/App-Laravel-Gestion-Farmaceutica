@@ -60,6 +60,7 @@ Los objetivos de nuestra aplicación web son:
 •	RI_007 - ***Farmacias:*** Sobre cada farmacia, el sistema debe almacenar:  1) ubicación, 2) nombre, 3)horarios en los que está abierta y 4) fecha de guardias asignadas.
 
 - **Requisitos funcionales:**
+
 RF - 1: Como administrador,
     Quiero ver un listado de los farmaceúticos del sistema paginados de 10 en 10.
 
