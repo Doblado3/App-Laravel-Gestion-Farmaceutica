@@ -53,7 +53,7 @@ class User extends Authenticatable
         return $this->hasOne(Farmaceutico::class);
     }
 
-    public function getTipoUduarioIdAttribute(){
+    public function getTipoUsuarioIdAttribute(){
         if ($this->farmaceutico()->exists()){
             return 1;
         }elseif($this->paciente()->exists()){
@@ -63,7 +63,7 @@ class User extends Authenticatable
         }
     }
 
-    public function getTipoUduarioAttribute(){
+    public function getTipoUsuarioAttribute(){
         $tipos_usuario = [1=>trans('Farmacéutico'), 2=> trans('Paciente'), 3=> trans('Administrador')];
         return $tipos_usuario[$this->tipo_usuario_id];
     }
