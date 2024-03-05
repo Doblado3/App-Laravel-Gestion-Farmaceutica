@@ -37,4 +37,4 @@ Route::resources([
 //Route::get('/farmaceuticos', [FarmaceuticoController::class, 'index'])->name('farmaceuticos.index');
 
 
-Route::get('/farmaceuticos/create', [FarmaceuticoController::class, 'create']);
+require __DIR__.'/auth.php';
