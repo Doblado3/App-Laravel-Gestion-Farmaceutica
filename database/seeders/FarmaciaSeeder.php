@@ -18,9 +18,8 @@ class FarmaciaSeeder extends Seeder
             [
                 'ubicacion' => "Avenida Reina Mercedes, 40, Sevilla",
                 'nombre' => "Farmacia1",
-                'email' => "farmacia1@outlook.es",
                 'telefono' => 666555444,
-                'farmacia_id' => 1,
+                'email' => "farmacia1@gmail.com",
             ],
         ]);
     }
