@@ -20,6 +20,7 @@ class FarmaciaSeeder extends Seeder
                 'nombre' => "Farmacia1",
                 'email' => "farmacia1@outlook.es",
                 'telefono' => 666555444,
+                'farmacia_id' => 1
             ],
         ]);
     }
