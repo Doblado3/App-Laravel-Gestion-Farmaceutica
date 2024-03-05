@@ -27,6 +27,16 @@ class UserSeeder extends Seeder
                 'email' => "farmaceutico1@farmaceutico.com",
                 'password' => Hash::make('12345678'),
             ],
+            [
+                'name' => "Farmacéutico2",
+                'email' => "farmaceutico2@farmaceutico.com",
+                'password' => Hash::make('12345678'),
+            ],
+            [
+                'name' => "Farmaceutico3",
+                'email' => "farmaceutico3@farmaceutico.com",
+                'password' => Hash::make('12345678'),
+            ]
         ]);
     }
 }
