@@ -43,7 +43,7 @@
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div style="padding:1em 25em;">
-                <img  style="width:100%;" src="https://www.informatica.us.es/docs/imagen-etsii/logo-ETSII-US-Vertical-Color.png">
+                <img  style="width:100%;" src="public/images">
             </div>
             <div class="grid grid-cols-1 md:grid-cols-1">
                 <div class="p-6">
@@ -54,8 +54,8 @@
                     </div>
 
                     <div class="">
-                        <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            Si pinchas en el título, te llevará al proyecto almacenado en Github. Puedes acceder a la documentación de Laravel 9 <a target="_blank" href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">aquí</a>. Utiliza los enlaces de la esquina superior derecha para acceder.
+                        <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm text-center">
+                            Si pinchas en el título, te llevará al proyecto almacenado en Github. Ha sido desarrollado haciendo uso del framework <a target="_blank" href="https://laravel.com" class="underline text-gray-900 dark:text-white">Laravel</a>.
                         </div>
                     </div>
                 </div>
