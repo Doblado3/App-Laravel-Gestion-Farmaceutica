@@ -16,10 +16,10 @@ class FarmaciaSeeder extends Seeder
     {
         DB::table('farmacias')->insert([
             [
-                'ubicacion' => "Avenida Reina Mercedes, 40, Sevilla"
-                'nombre' => "Farmacia1"
-                'email' => "farmacia1@outlook.es"
-                'telefono' => 666555444
+                'ubicacion' => "Avenida Reina Mercedes, 40, Sevilla",
+                'nombre' => "Farmacia1",
+                'email' => "farmacia1@outlook.es",
+                'telefono' => 666555444,
             ],
         ]);
     }
