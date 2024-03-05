@@ -28,5 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/farmaceuticos', [FarmaceuticoController::class,'index']);
+
+Route::resources([
+    'farmaceuticos' => FarmaceuticoController::class,
+]);
+//Route::get('/farmaceuticos', [FarmaceuticoController::class, 'index'])->name('farmaceuticos.index');
+
+
 Route::get('/farmaceuticos/create', [FarmaceuticoController::class, 'create']);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFarmaceuticoRequest;
 use App\Http\Requests\UpdateFarmaceuticoRequest;
 use App\Models\Farmaceutico;
+use DB;
 
 class FarmaceuticoController extends Controller
 {
@@ -13,8 +14,9 @@ class FarmaceuticoController extends Controller
      */
     public function index()
     {
-        return view('/farmaceuticos/index', ['farmaceuticos' => DB::table('farmaceuticos')->paginate(10)]);
-    }
+        $this->authorize('viewAny', Medico::class);
+        $medicos = Medico::paginate(25);
+        return view('/medicos/index', ['medicos' => $medicos]);    }
 
     /**
      * Show the form for creating a new resource.
