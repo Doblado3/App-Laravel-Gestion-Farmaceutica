@@ -31,7 +31,7 @@ class FarmaceuticoController extends Controller
         // TODO: La creación de user y médico debería hacerse transaccionalmente. ¿Demasiado avanzado?
         $user = $this->createUser($request);
         $farmaceutico = new Farmaceutico($request->validated());
-        $farmaceutico->farmacia_id = $farmacia->id;
+        //$farmaceutico->farmacia_id = $farmacia->id;
         $farmaceutico->user_id = $user->id;
         $farmaceutico->save();
         session()->flash('success', 'Farmacéutico creado correctamente.');
