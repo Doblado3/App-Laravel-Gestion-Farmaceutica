@@ -26,4 +26,5 @@ class Farmacia extends Model
     {
         return $this->hasMany(MedicamentoProveedor::class);
     }
+    
 }
