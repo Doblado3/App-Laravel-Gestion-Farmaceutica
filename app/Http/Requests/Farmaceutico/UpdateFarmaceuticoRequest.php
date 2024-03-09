@@ -11,7 +11,8 @@ class UpdateFarmaceuticoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        $farmaceutico = Farmaceutico::find(($this->route('farmaceutico'))->first());
+        return $farmaceutico && $this->user()->can('update', $farmaceutico);
     }
 
     /**
@@ -22,7 +23,12 @@ class UpdateFarmaceuticoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'dni' => 'required|string|max:255',
+            'fecha_contratacion' => 'required|date',
+            'sueldo' => 'required|numeric',
         ];
     }
 }

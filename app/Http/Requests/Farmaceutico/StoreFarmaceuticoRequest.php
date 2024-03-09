@@ -11,7 +11,7 @@ class StoreFarmaceuticoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('create', Farmaceutico::class);
     }
 
     /**
@@ -22,7 +22,13 @@ class StoreFarmaceuticoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'dni' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|confirmed|min:8',
+            'fecha_contratacion' => 'required|date',
+            'sueldo' => 'required|numeric',
         ];
     }
 }

@@ -26,36 +26,16 @@ class FarmaceuticoController extends Controller
     
     public function store(StoreFarmaceuticoRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:8',
-            'dni' => 'required|string|max:255|unique:users',
-            'fecha_contratacion' => 'required|date',
-            'sueldo' => 'required|numeric',
-            //'farmacia_id' => 'required|exists:farmacias,id' // En caso de más de una farmacia
-
-        ]);
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-        $farmaceutico = new Farmaceutico($request->all());
+        
+        //$this->authorize('create', Medico::class);
+        // TODO: La creación de user y médico debería hacerse transaccionalmente. ¿Demasiado avanzado?
+        $user = $this->createUser($request);
+        $farmaceutico = new Farmaceutico($request->validated());
         $farmaceutico->farmacia_id = $farmacia->id;
         $farmaceutico->user_id = $user->id;
         $farmaceutico->save();
-        session()->flash('success','Farmacéutico creado correctamente');
+        session()->flash('success', 'Farmacéutico creado correctamente.');
         return redirect()->route('farmaceuticos.index');
-        //$this->authorize('create', Medico::class);
-        // TODO: La creación de user y médico debería hacerse transaccionalmente. ¿Demasiado avanzado?
-        //$user = $this->createUser($request);
-        //$medico = new Medico($request->validated());
-        //$medico->user_id = $user->id;
-        //$medico->save();
-        //session()->flash('success', 'Médico creado correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
-        //return redirect()->route('medicos.index');
     }
 
     /**
@@ -79,20 +59,12 @@ class FarmaceuticoController extends Controller
      */
     public function update(UpdateFarmaceuticoRequest $request, Farmaceutico $farmaceutico)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'dni' => 'required|string|max:255',
-            'fecha_contratacion' => 'required|date',
-            'sueldo' => 'required|numeric',
-        ]);
         $user = $farmaceutico->user;
-        $user->fill($request->all());
+        $user->fill($request->validated());
         $user->save();
-        $farmaceutico->fill($request->all());
+        $farmaceutico->fill($request->validated());
         $farmaceutico->save();
-        session()->flash('success','Farmacéutico modificado correctamente');
+        session()->flash('success', 'Farmaceutico modificado correctamente.');
         return redirect()->route('farmaceuticos.index');
     }
 
@@ -105,6 +77,7 @@ class FarmaceuticoController extends Controller
             session()->flash('success','Farmacéutico borrado corréctamente.');
         }else{
             session()->flash('warning','El farmacéutico no pudo borrarse. Inténtelo de nuevo');
+            //¿return back()->withInput();?
         }
         return redirect()->route('farmaceuticos.index');
     }
