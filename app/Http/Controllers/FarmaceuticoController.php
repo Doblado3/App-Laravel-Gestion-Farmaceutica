@@ -13,21 +13,29 @@ class FarmaceuticoController extends Controller
     
     public function index()
     {
-        //$this->authorize('viewAny', Farmaceutico::class);
+        $this->authorize('viewAny', Farmaceutico::class);
         $farmaceuticos = Farmaceutico::paginate(10);
         return view('/farmaceuticos', ['farmaceuticos' => $farmaceuticos]);    }
 
     
     public function create()
     {
+        $this->authorize('create', Farmaceutico::class);
         return view('/farmaceuticos/create');
+    }
+    private function createUser(Request $request)
+    {
+        $user = new User($request->validated());
+        $user->password = Hash::make($user->password);
+        $user->save();
+        return $user;
     }
 
     
     public function store(StoreFarmaceuticoRequest $request)
     {
         
-        //$this->authorize('create', Medico::class);
+        $this->authorize('create', Farmaceutico::class);
         // TODO: La creación de user y médico debería hacerse transaccionalmente. ¿Demasiado avanzado?
         $user = $this->createUser($request);
         $farmaceutico = new Farmaceutico($request->validated());
@@ -43,6 +51,7 @@ class FarmaceuticoController extends Controller
      */
     public function show(Farmaceutico $farmaceutico)
     {
+        $this->authorize('view', Farmaceutico::class);
         return view('farmaceuticos/show',['farmaceutico => $farmaceutico']);
     }
 
@@ -51,6 +60,7 @@ class FarmaceuticoController extends Controller
      */
     public function edit(Farmaceutico $farmaceutico)
     {
+        $this->authorize('update', Farmaceutico::class);
         return view('farmaceuticos/edit',['farmaceutico' => $farmaceutico]);
     }
 
@@ -73,6 +83,7 @@ class FarmaceuticoController extends Controller
      */
     public function destroy(Farmaceutico $farmaceutico)
     {
+        $this->authorize('delete', $farmaceutico);
         if($farmaceutico->delete()){
             session()->flash('success','Farmacéutico borrado corréctamente.');
         }else{

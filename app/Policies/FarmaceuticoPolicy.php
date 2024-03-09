@@ -13,7 +13,7 @@ class FarmaceuticoPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->es_administrador;
     }
 
     /**
@@ -21,7 +21,7 @@ class FarmaceuticoPolicy
      */
     public function view(User $user, Farmaceutico $farmaceutico): bool
     {
-        //
+        return $user->es_administrador;
     }
 
     /**
@@ -29,7 +29,7 @@ class FarmaceuticoPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->es_administrador;
     }
 
     /**
@@ -37,7 +37,7 @@ class FarmaceuticoPolicy
      */
     public function update(User $user, Farmaceutico $farmaceutico): bool
     {
-        //
+        return $user->es_administrador || ($farmaceutico->user_id == $user->id);
     }
 
     /**
@@ -45,22 +45,9 @@ class FarmaceuticoPolicy
      */
     public function delete(User $user, Farmaceutico $farmaceutico): bool
     {
-        //
+        return $user->es_administrador;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Farmaceutico $farmaceutico): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Farmaceutico $farmaceutico): bool
-    {
-        //
-    }
+    
+    
 }

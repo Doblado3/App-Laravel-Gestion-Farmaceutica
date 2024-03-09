@@ -11,7 +11,7 @@
                 <div class="flex items-center mt-4 ml-2">
                     <form method="GET" action="{{ route('farmaceuticos.create') }}">
                         <x-primary-button type="subit" class="ml-4">
-                            {{ __('Crear farmacéutico') }}
+                            {{ __('Crear Farmacéutico') }}
                         </x-primary-button>
                     </form>
                 </div>
@@ -30,7 +30,7 @@
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
 
-                            @foreach ($farmaceuticos as $farmaceuticos)
+                            @foreach ($farmaceutico as $farmaceutico)
                             <tr class="border-b  border-gray-200">
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
@@ -54,7 +54,7 @@
                                 </td> --}}
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$farmaceutico->fecha_contratacion}}</span>
+                                        <span class="font-medium">{{$farmaceutico->fecha_contratacion->format('d/m/Y')}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
@@ -76,7 +76,7 @@
                                             </svg>
                                         </div> --}}
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <a href="{{route('mfarmaceuticos.show', $farmaceutico->id)}}">
+                                            <a href="{{route('farmaceuticos.show', $farmaceutico->id)}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -85,14 +85,14 @@
                                         </div>
 
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <a href="{{route('farmaceuticos.edit', $farmaceutico->id)}}">
+                                            <a href="{{route('farmaceuticos.edit', $farmaceuticos->id)}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                                 </svg>
                                             </a>
                                         </div>
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <form id="delete-form-{{$medico->id}}" method="POST" action="{{ route('farmaceuticos.destroy', $farmaceutico->id) }}">
+                                            <form id="delete-form-{{$farmaceutico->id}}" method="POST" action="{{ route('farmaceuticos.destroy', $farmaceutico->id) }}">
                                                 @csrf
                                                 @method('delete')
                                                 <a class="cursor-pointer" onclick="getElementById('delete-form-{{$farmaceutico->id}}').submit();">
