@@ -13,8 +13,7 @@ class FarmaceuticoPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->es_administrador;
-    }
+        return $user->es_administrador;    }
 
     /**
      * Determine whether the user can view the model.

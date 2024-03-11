@@ -14,4 +14,4 @@ Route::resources([
 ]);
 //Route::get('/farmaceuticos', [FarmaceuticoController::class, 'index'])->name('farmaceuticos.index');
 
-
+//require __DIR__.'/auth.php';
