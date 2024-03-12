@@ -43,6 +43,13 @@
                             </div>
 
                             <div class="mt-4">
+                                <x-input-label for="dni" :value="__('DNI')" />
+
+                                <x-text-input id="dni" class="block mt-1 w-full"  type="text" name="dni" :value="old('dni')" required />
+                            </div>
+
+
+                            <div class="mt-4">
                                 <x-input-label for="password" :value="__('Contraseña')" />
 
                                 <x-text-input id="password" class="block mt-1 w-full"
@@ -70,37 +77,14 @@
                             </div>
 
                             <div class="mt-4">
-                                <x-input-label for="vacunado" :value="__('Vacunado')" />
-
-
-                                <x-select id="vacunado" name="vacunado" required>
-                                    <option value="">{{__('Elige una opción')}}</option>
-                                    <option value="1" @if (old('vacunado') == 1) selected @endif>{{__('Sí')}}</option>
-                                    <option value="0" @if (old('vacunado') == 0) selected @endif>{{__('No')}}</option>
-                                </x-select>
-                            </div>
-
-                            <div class="mt-4">
                                 <x-input-label for="sueldo" :value="__('Sueldo')" />
 
                                 <x-text-input id="sueldo" class="block mt-1 w-full" min="0" step="1" type="number" name="sueldo" :value="old('sueldo')" required />
                             </div>
 
-                            <div class="mt-4">
-                                <x-input-label for="especialidad_id" :value="__('Especialidad')" />
-
-
-                                <x-select id="especialidad_id" name="especialidad_id" required>
-                                    <option value="">{{__('Elige una opción')}}</option>
-                                    @foreach ($especialidads as $especialidad)
-                                    <option value="{{$especialidad->id}}" @if (old('especialidad_id') == $especialidad->id) selected @endif>{{$especialidad->nombre}}</option>
-                                    @endforeach
-                                </x-select>
-                            </div>
-
                             <div class="flex items-center justify-end mt-4">
                                 <x-danger-button type="button">
-                                    <a href={{route('medicos.index')}}>
+                                    <a href={{route('farmaceuticos.index')}}>
                                     {{ __('Cancelar') }}
                                     </a>
                                 </x-danger-button>

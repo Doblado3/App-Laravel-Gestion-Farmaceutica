@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreFarmaceuticoRequest;
-use App\Http\Requests\UpdateFarmaceuticoRequest;
+use App\Http\Requests\Farmaceutico\StoreFarmaceuticoRequest;
+use App\Http\Requests\Farmaceutico\UpdateFarmaceuticoRequest;
 use App\Models\Farmaceutico;
 use DB;
 use Hash;
