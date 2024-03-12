@@ -5,13 +5,16 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
+     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 Route::resources([
     'farmaceuticos' => FarmaceuticoController::class,
     'farmacias' => FarmaciaController::class,
 ]);
-//Route::get('/farmaceuticos', [FarmaceuticoController::class, 'index'])->name('farmaceuticos.index');
 
 //require __DIR__.'/auth.php';
