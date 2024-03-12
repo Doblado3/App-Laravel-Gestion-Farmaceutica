@@ -84,7 +84,7 @@
 
                             <div class="flex items-center justify-end mt-4">
                                 <x-danger-button type="button">
-                                    <a href={{route('farmaceuticos.index')}}>
+                                    <a href="{{route('farmaceuticos.index')}}">
                                     {{ __('Cancelar') }}
                                     </a>
                                 </x-danger-button>
