@@ -34,7 +34,7 @@ class FarmaceuticoController extends Controller
     
     public function store(StoreFarmaceuticoRequest $request)
     {
-        dd("hola");
+        
         $this->authorize('create', Farmaceutico::class);
         // TODO: La creación de user y médico debería hacerse transaccionalmente. ¿Demasiado avanzado?
         $user = $this->createUser($request);

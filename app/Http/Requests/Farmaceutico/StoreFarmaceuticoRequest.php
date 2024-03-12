@@ -23,13 +23,13 @@ class StoreFarmaceuticoRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
+            'apellidos' => 'string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'dni' => 'required|string|max:255|unique:farmaceuticos',
             'password' => 'required|string|confirmed|min:8',
             'fecha_contratacion' => 'required|date',
             'sueldo' => 'required|numeric',
-            'farmacia_id' => 'required|exists:farmacias,id',
+            'farmacia_id' => 'exists:farmacias,id',
         ];
     }
 }
