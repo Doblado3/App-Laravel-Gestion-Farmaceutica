@@ -13,14 +13,14 @@ class FarmaceuticoController extends Controller
     
     public function index()
     {
-        //$this->authorize('viewAny', Farmaceutico::class);
+        $this->authorize('viewAny', Farmaceutico::class);
         $farmaceuticos = Farmaceutico::paginate(10);
         return view('/farmaceuticos/index', ['farmaceuticos' => $farmaceuticos]);    }
 
     
     public function create()
     {
-        //$this->authorize('create', Farmaceutico::class);
+        $this->authorize('create', Farmaceutico::class);
         return view('/farmaceuticos/create');
     }
     private function createUser(Request $request)
