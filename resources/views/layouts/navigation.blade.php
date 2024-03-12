@@ -12,25 +12,9 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    @if(Auth::user()->es_paciente || Auth::user()->es_medico)
-                        <x-nav-link :href="route('citas.index')" :active="request()->routeIs('citas.index') or request()->routeIs('citas.create') or request()->routeIs('citas.edit') or request()->routeIs('citas.show')">
-                            {{ __('Mis citas') }}
-                        </x-nav-link>
-                    @endif
-                    @if(Auth::user()->es_administrador)
-                        <x-nav-link :href="route('medicamentos.index')" :active="request()->routeIs('medicamentos.index') or request()->routeIs('medicamentos.create') or request()->routeIs('medicamentos.edit') or request()->routeIs('medicamentos.show')">
-                            {{ __('Medicamentos') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('especialidads.index')" :active="request()->routeIs('especialidads.index') or request()->routeIs('especialidads.create') or request()->routeIs('especialidads.edit')">
-                            {{ __('Especialidades') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('medicos.index')" :active="request()->routeIs('medicos.index') or request()->routeIs('medicos.create') or request()->routeIs('medicos.edit') or request()->routeIs('medicos.show')">
-                            {{ __('Médicos') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('citas.index')" :active="request()->routeIs('citas.index') or request()->routeIs('citas.create') or request()->routeIs('citas.edit') or request()->routeIs('citas.show')">
-                            {{ __('Citas') }}
-                        </x-nav-link>
-                    @endif
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -50,11 +34,9 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <!--@if(Auth::user()->es_medico)
-                            <x-dropdown-link :href="route('medicos.edit', Auth::user()->medico->id)">
-                                {{ __('Mi perfil') }}
-                            </x-dropdown-link>
-                        @endif-->
+                        <x-dropdown-link :href="route('profile.edit')">
+                            {{ __('Profile') }}
+                        </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -63,7 +45,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Salir') }}
+                                {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

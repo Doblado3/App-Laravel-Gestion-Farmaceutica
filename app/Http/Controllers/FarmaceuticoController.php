@@ -20,7 +20,7 @@ class FarmaceuticoController extends Controller
     
     public function create()
     {
-        $this->authorize('create', Farmaceutico::class);
+        //$this->authorize('create', Farmaceutico::class);
         return view('/farmaceuticos/create');
     }
     private function createUser(Request $request)
