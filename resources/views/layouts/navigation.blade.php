@@ -17,7 +17,7 @@
                             {{ __('Mis citas') }}
                         </x-nav-link>
                     @endif
-                    <!--@if(Auth::user()->es_administrador)
+                    @if(Auth::user()->es_administrador)
                         <x-nav-link :href="route('medicamentos.index')" :active="request()->routeIs('medicamentos.index') or request()->routeIs('medicamentos.create') or request()->routeIs('medicamentos.edit') or request()->routeIs('medicamentos.show')">
                             {{ __('Medicamentos') }}
                         </x-nav-link>
@@ -30,7 +30,7 @@
                         <x-nav-link :href="route('citas.index')" :active="request()->routeIs('citas.index') or request()->routeIs('citas.create') or request()->routeIs('citas.edit') or request()->routeIs('citas.show')">
                             {{ __('Citas') }}
                         </x-nav-link>
-                    @endif-->
+                    @endif
                 </div>
             </div>
 
