@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <link rel="icon" href="components/icono-tittle.blade.php" type="image/x-icon">
+    <title>Asignar nombre al proyecto</title>
+
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -33,8 +35,8 @@
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrarse</a>
                 @endif
-                @if (Route::has('register-medico'))
-                    <a href="{{ route('register-medico') }}" class="ml-4 text-sm text-gray-700 underline">Registrarse como médico</a>
+                @if (Route::has('register-farmaceutico'))
+                    <a href="{{ route('register-farmaceutico') }}" class="ml-4 text-sm text-gray-700 underline">Registrarse como farmaceutico</a>
                 @endif
             @endauth
         </div>

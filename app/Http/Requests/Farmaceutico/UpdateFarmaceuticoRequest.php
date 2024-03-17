@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Farmaceutico;
 
+use App\Models\Farmaceutico;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateFarmaceuticoRequest extends FormRequest
@@ -11,7 +12,7 @@ class UpdateFarmaceuticoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $farmaceutico = Farmaceutico::find(($this->route('farmaceutico'))->first());
+        $farmaceutico = Farmaceutico::find($this->route('farmaceutico'))->first();
         return $farmaceutico && $this->user()->can('update', $farmaceutico);
     }
 

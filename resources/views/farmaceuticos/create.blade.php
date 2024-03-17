@@ -27,13 +27,13 @@
                             <div>
                                 <x-input-label for="name" :value="__('Nombre')" />
 
-                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('nombre')" required autofocus />
+                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
                             </div>
 
                             <div>
-                                <x-input-label for="name" :value="__('Apellidos')" />
+                                <x-input-label for="apellidos" :value="__('Apellidos')" />
 
-                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('apellidos')" required autofocus />
+                                <x-text-input id="apellidos" class="block mt-1 w-full" type="text" name="apellidos" :value="old('apellidos')" required />
                             </div>
 
                             <div class="mt-4">

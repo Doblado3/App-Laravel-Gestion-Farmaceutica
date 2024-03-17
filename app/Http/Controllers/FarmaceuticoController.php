@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Farmaceutico\StoreFarmaceuticoRequest;
 use App\Http\Requests\Farmaceutico\UpdateFarmaceuticoRequest;
 use App\Models\Farmaceutico;
+use App\Models\User;
+
 use DB;
 use Hash;
+use Illuminate\Http\Request;
 
 class FarmaceuticoController extends Controller
 {
@@ -36,7 +39,6 @@ class FarmaceuticoController extends Controller
     {
         
         $this->authorize('create', Farmaceutico::class);
-        // TODO: La creación de user y médico debería hacerse transaccionalmente. ¿Demasiado avanzado?
         $user = $this->createUser($request);
         $farmaceutico = new Farmaceutico($request->validated());
         //$farmaceutico->farmacia_id = $farmacia->id;
@@ -51,8 +53,8 @@ class FarmaceuticoController extends Controller
      */
     public function show(Farmaceutico $farmaceutico)
     {
-        $this->authorize('view', Farmaceutico::class);
-        return view('farmaceuticos/show',['farmaceutico => $farmaceutico']);
+        $this->authorize('view', $farmaceutico);
+        return view('farmaceuticos/show',['farmaceutico' => $farmaceutico]);
     }
 
     /**
@@ -60,7 +62,7 @@ class FarmaceuticoController extends Controller
      */
     public function edit(Farmaceutico $farmaceutico)
     {
-        $this->authorize('update', Farmaceutico::class);
+        $this->authorize('update', $farmaceutico);
         return view('farmaceuticos/edit',['farmaceutico' => $farmaceutico]);
     }
 
