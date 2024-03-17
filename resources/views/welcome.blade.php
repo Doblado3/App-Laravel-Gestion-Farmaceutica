@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="components/icono-tittle.blade.php" type="image/x-icon">
-    <title>Asignar nombre al proyecto</title>
+    <link rel="icon" href="/components/icono-farmacia1.blade.php">
+    <title>ParaFarmacial</title>
 
 
     <!-- Fonts -->
