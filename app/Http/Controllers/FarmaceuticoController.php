@@ -6,6 +6,7 @@ use App\Http\Requests\Farmaceutico\StoreFarmaceuticoRequest;
 use App\Http\Requests\Farmaceutico\UpdateFarmaceuticoRequest;
 use App\Models\Farmaceutico;
 use App\Models\User;
+use App\Models\Farmacia;
 
 use DB;
 use Hash;
@@ -24,7 +25,8 @@ class FarmaceuticoController extends Controller
     public function create()
     {
         $this->authorize('create', Farmaceutico::class);
-        return view('/farmaceuticos/create');
+        $farmacias = Farmacia::all();
+        return view('farmaceuticos/create', ['farmacias' => $farmacias]);
     }
     private function createUser(Request $request)
     {
@@ -54,7 +56,8 @@ class FarmaceuticoController extends Controller
     public function show(Farmaceutico $farmaceutico)
     {
         $this->authorize('view', $farmaceutico);
-        return view('farmaceuticos/show',['farmaceutico' => $farmaceutico]);
+        $farmacias = Farmacia::all();
+        return view('farmaceuticos/show',['farmaceutico' => $farmaceutico, 'farmacias' => $farmacias]);
     }
 
     /**
@@ -63,7 +66,8 @@ class FarmaceuticoController extends Controller
     public function edit(Farmaceutico $farmaceutico)
     {
         $this->authorize('update', $farmaceutico);
-        return view('farmaceuticos/edit',['farmaceutico' => $farmaceutico]);
+        $farmacias = Farmacia::all();
+        return view('farmaceuticos/edit',['farmaceutico' => $farmaceutico, 'farmacias' => $farmacias]);
     }
 
     /**

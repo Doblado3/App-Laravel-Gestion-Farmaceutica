@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('fecha_contratacion');
             $table->double('sueldo');
             $table->foreignId('farmacia_id')->constrained()->oonDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->unique()->constrained()->onDelete('cascade');
 
         });
     }

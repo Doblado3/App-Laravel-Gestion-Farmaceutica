@@ -72,6 +72,18 @@
                                       type="number" name="sueldo" :value="$farmaceutico->sueldo" required/>
                     </div>
 
+                    <div class="mt-4">
+                                <x-input-label for="farmacia_id" :value="__('Farmacia de Trabajo')" />
+
+
+                                <x-select id="farmacia_id" name="farmacia_id" required>
+                                    <option value="">{{__('Elige una opción')}}</option>
+                                    @foreach ($farmacias as $farmacia)
+                                    <option value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}</option>
+                                    @endforeach
+                                </x-select>
+                            </div>
+
 
                     <div class="flex items-center justify-end mt-4">
                         <x-danger-button type="button">

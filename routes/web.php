@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FarmaceuticoController;
+use App\Http\Controllers\FarmaciaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resources([
     'farmaceuticos' => FarmaceuticoController::class,
+    'farmacias' => FarmaciaController::class,
 ]);
 
 require __DIR__.'/auth.php';

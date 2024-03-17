@@ -26,6 +26,7 @@
                                 <th class="py-3 px-6 text-left">Fecha contratación</th>
                                 <th class="py-3 px-6 text-left">DNI</th>
                                 <th class="py-3 px-6 text-left">Sueldo</th>
+                                <th class="py-3 px-6 text-left">Farmacia de Trabajo</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
@@ -65,6 +66,11 @@
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{number_format($farmaceutico->sueldo, 2)}}€</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$farmaceutico->farmacia->nombre}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">

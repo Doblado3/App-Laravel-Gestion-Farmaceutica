@@ -17,6 +17,8 @@ class Farmaceutico extends Model
     protected $fillable = [
         'dni',
         'fecha_contratacion',
+        'sueldo',
+        'farmacia_id',
     ];
 
     protected $casts = [
