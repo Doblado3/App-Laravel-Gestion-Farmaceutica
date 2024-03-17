@@ -4,8 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="/components/icono-farmacia1.blade.php">
+    
     <title>ParaFarmacial</title>
+    <link rel="icon" type="image/svg" href="/components/icono-farmacia1.blade.php">
+    
+    <meta name="description" content="Digitaliza de forma completa la gestión de tu local farmaceutico. Controla
+    tu ventas y tus compras, puediendo comparar entre distintos proveedores, y lleva un listado al completo de tus pacientes
+    y de tus trabajadores">
 
 
     <!-- Fonts -->
@@ -24,10 +29,12 @@
 </head>
 <body class="antialiased">
 
+
 <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
+                <a class= "ml-4 text-sm text-gray-700 underline">Logo y RedesSS</a>
                 <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
             @else
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Acceder</a>
@@ -41,29 +48,31 @@
             @endauth
         </div>
     @endif
-
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-            <div style="padding:1em 25em;">
-                <img  style="width:100%;" src="https://www.informatica.us.es/docs/imagen-etsii/logo-ETSII-US-Vertical-Color.png">
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-1">
+            <div class="grid grid-cols-2 md:grid-cols-2 place-items-start">
+                <div class="p-6 h-4/5">
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 1</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Desarrollo</p>
+                </div>
                 <div class="p-6">
-                    <div class="flex items-center">
-                        <div class="text-lg leading-7 font-semibold text-center block" style="width: 100%">
-                            <a target="_blank" href="https://github.com/DamianUS/cgis-2021" class="underline text-gray-900 dark:text-white">Proyecto citas de ejemplo de CGIS 2021/22</a>
-                        </div>
-                    </div>
-
-                    <div class="">
-                        <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            Si pinchas en el título, te llevará al proyecto almacenado en Github. Puedes acceder a la documentación de Laravel 9 <a target="_blank" href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">aquí</a>. Utiliza los enlaces de la esquina superior derecha para acceder.
-                        </div>
-                    </div>
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 2</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Desarrollo</p>
+                </div>
+                <div class="p-6">
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 3</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Desarrollo</p>
+                </div>
+                <div class="p-6">
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 4</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Desarrollo</p>
                 </div>
             </div>
-        </div>
     </div>
+        
+    
 </div>
+<footer class="relative flex items-top justify-center min-h-60 bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+        Aquí haremos un poco de marketing
+</footer>    
 </body>
 </html>
