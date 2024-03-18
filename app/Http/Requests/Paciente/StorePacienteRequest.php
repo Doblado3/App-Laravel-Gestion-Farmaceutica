@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Paciente;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePacienteRequest extends FormRequest
@@ -11,7 +12,7 @@ class StorePacienteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('create', Paciente::class);
     }
 
     /**
@@ -21,8 +22,13 @@ class StorePacienteRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        return [ // - TODO
+            'name' => 'required|string|max:255',
+            'apellidos' => 'string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'dni' => 'required|string|max:255|unique:pacientes',
+            'password' => 'required|string|confirmed|min:8',
+            'nusha' => 'required|string|max:255|unique:pacientes',
         ];
     }
 }

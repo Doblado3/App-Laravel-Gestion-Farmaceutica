@@ -30,7 +30,7 @@ class UpdateFarmaceuticoRequest extends FormRequest
             'dni' => 'required|string|max:255',
             'fecha_contratacion' => 'required|date',
             'sueldo' => 'required|numeric',
-            'farmacia_id' => 'exists:farmacias,id'
+            'farmacia_id' => 'exists:farmacias,id',
         ];
     }
 }

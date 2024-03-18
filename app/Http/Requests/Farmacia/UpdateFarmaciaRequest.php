@@ -11,7 +11,8 @@ class UpdateFarmaciaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        $farmacia = Farmacia::find($this->route('farmacia'))->first();
+        return $farmacia && $this->user()->can('update', $farmacia);
     }
 
     /**
@@ -21,8 +22,11 @@ class UpdateFarmaciaRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        return [ // - TODO
+            'name' => 'requiered|string|max:255',
+            'ubicacion' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255', #|unique:?'
+            'telefono' => 'required|numeric',
         ];
     }
 }
