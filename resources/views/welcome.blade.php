@@ -34,7 +34,6 @@
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
-                <a class= "ml-4 text-sm text-gray-700 underline">Logo y RedesSS</a>
                 <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
             @else
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Acceder</a>
@@ -48,39 +47,34 @@
             @endauth
         </div>
     @endif
-        <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+        <section class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div class="grid grid-cols-2 md:grid-cols-2 place-items-start">
-                <div class="p-6 h-4/5">
-                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 1</h1>
-                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Visualizar un listado de los medicamentos presentes en la farmacia, pudiendo editarlos, conocer información sobre ellos y establecer su estado, entre otras opciones.</p>
+                <div class="p-6 ">
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Automatiza la gestión de Stock</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Manten un registro actualizado de tus medicamentos, con la capacidad de visualizar,editar y gestionar su estado. Recibe avisos de aquellos medicamentos que necesitan ser repuestos</p>
                 </div>
                 <div class="p-6">
-                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 2</h1>
-                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Conectar al farmaceútico con los medicamentos disponibles en sus proveedores para que pueda comparar y elegir la opción que más le convenga.</p>
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Conexión con proveedores</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Compara productos y precios para realizar tus pedidos de forma eficiente y personalizada</p>
                 </div>
                 <div class="p-6">
-                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 3</h1>
-                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Registrar la entrada y salida de medicamentos de las farmacias para poder actualizar así los niveles de inventario.</p>
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Evita la falta de existencias</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Gracias al registro de entrada y salida de producto, podremos calcular y analizar la tendencia de sus ventas. Así, podremos establecer sus niveles mínimos y lanzar avisos cuando se encuentren por debajo</p>
                 </div>
                 <div class="p-6">
-                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 4</h1>
-                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Ofrecer al cliente un área personal donde visualice su histórico de pedidos para que lleve un registro de sus compras.</p>
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Área personal para el paciente</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">El cliente dispondrá de un área personal donde visualizará su histórico de pedidos para que lleve un registro de sus compras</p>
                 </div>
                 <div class="p-6">
-                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 5</h1>
-                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Calcular, en función de las ventas realizadas, el nivel mínimo de stock necesario antes de necesitar una nueva compra para así poder lanzar avisos y evitar faltas de existencias.</p>
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Innovación</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">La aplicación está en continua evolución incorporando novedades y funcionalidades para adaptarse a las necesidades de las farmacias y el sector</p>
                 </div>
                 <div class="p-6">
-                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 6</h1>
-                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Presentar una sección con todos los medicamentos de la farmacia dentro de la aplicación para que el paciente pueda visualizarlos y reservarlos desde su hogar.</p>
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Portal de Reserva Online</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Presentar una sección con todos los medicamentos de la farmacia dentro de la aplicación para que el paciente pueda visualizarlos y reservarlos desde su hogar</p>
                 </div>
             </div>
-    </div>
-
-
+    </section>
 </div>
-<footer class="relative flex items-top justify-center min-h-60 bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        Aquí haremos un poco de marketing
-</footer>
 </body>
 </html>
