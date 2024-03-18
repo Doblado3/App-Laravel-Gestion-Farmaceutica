@@ -26,7 +26,7 @@ class StoreFarmaciaRequest extends FormRequest
             'name' => 'requiered|string|max:255',
             'ubicacion' => 'required|string|max:255',
             'email' => 'required|string|email|max:255', #|unique:?'
-            'telefono' => 'requiered|integer|max:9'
+            'telefono' => 'required|numeric',
         ];
     }
 }
