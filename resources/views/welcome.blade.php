@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
+
     <title>ParaFarmacial</title>
     <link rel="icon" type="image/svg" href="/components/icono-farmacia1.blade.php">
-    
+
     <meta name="description" content="Digitaliza de forma completa la gestión de tu local farmaceutico. Controla
     tu ventas y tus compras, puediendo comparar entre distintos proveedores, y lleva un listado al completo de tus pacientes
     y de tus trabajadores">
@@ -52,27 +52,35 @@
             <div class="grid grid-cols-2 md:grid-cols-2 place-items-start">
                 <div class="p-6 h-4/5">
                     <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 1</h1>
-                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Desarrollo</p>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Visualizar un listado de los medicamentos presentes en la farmacia, pudiendo editarlos, conocer información sobre ellos y establecer su estado, entre otras opciones.</p>
                 </div>
                 <div class="p-6">
                     <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 2</h1>
-                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Desarrollo</p>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Conectar al farmaceútico con los medicamentos disponibles en sus proveedores para que pueda comparar y elegir la opción que más le convenga.</p>
                 </div>
                 <div class="p-6">
                     <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 3</h1>
-                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Desarrollo</p>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Registrar la entrada y salida de medicamentos de las farmacias para poder actualizar así los niveles de inventario.</p>
                 </div>
                 <div class="p-6">
                     <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 4</h1>
-                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Desarrollo</p>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Ofrecer al cliente un área personal donde visualice su histórico de pedidos para que lleve un registro de sus compras.</p>
+                </div>
+                <div class="p-6">
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 5</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Calcular, en función de las ventas realizadas, el nivel mínimo de stock necesario antes de necesitar una nueva compra para así poder lanzar avisos y evitar faltas de existencias.</p>
+                </div>
+                <div class="p-6">
+                    <h1 class="underline text-gray-900 dark:text-white text-center block">Objetivo 6</h1>
+                    <p class="text-gray-900 dark:text-white text-center block" style="width: 100%">Presentar una sección con todos los medicamentos de la farmacia dentro de la aplicación para que el paciente pueda visualizarlos y reservarlos desde su hogar.</p>
                 </div>
             </div>
     </div>
-        
-    
+
+
 </div>
 <footer class="relative flex items-top justify-center min-h-60 bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
         Aquí haremos un poco de marketing
-</footer>    
+</footer>
 </body>
 </html>
