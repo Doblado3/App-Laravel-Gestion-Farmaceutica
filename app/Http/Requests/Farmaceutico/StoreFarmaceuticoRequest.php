@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Farmaceutico;
 
+use App\Models\Farmaceutico; #Antes no estaba. Quitar en caso de error
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreFarmaceuticoRequest extends FormRequest
