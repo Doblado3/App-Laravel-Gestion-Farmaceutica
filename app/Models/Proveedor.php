@@ -21,9 +21,9 @@ class Proveedor extends Model
         'pais_procedencia',
     ];
 
-    public function medicamentoProveedor()
+    public function medicamentoComercial()
     {
-        return $this->hasOne(MedicamentoProveedor::class);
+        return $this->hasOne(MedicamentoComercial::class);
     }
 
     

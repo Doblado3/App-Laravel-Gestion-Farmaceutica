@@ -22,7 +22,7 @@ return new class extends Migration
             $table->datetime("fecha_compra");
             $table->foreignId('farmacia_id')->constrained()->onDelete('cascade');
             $table->foreignId('paciente_id')->unique()->constrained()->onDelete('cascade');
-            $table->foreignId('medicamento_proveedor_id')->constrained()->onDelete('cascade');
+            $table->foreignId('medicamento_comercial_id')->constrained()->onDelete('cascade');
         });
     }
 

@@ -14,9 +14,9 @@ class Naturaleza extends Model
         return $this->hasMany(MedicamentoFarmacia::class);
     }
 
-    public function medicamento_proveedor()
+    public function medicamentoComercial()
     {
-        return $this->hasMany(MedicamentoProveedor::class);
+        return $this->hasMany(MedicamentoComercial::class);
     }
 
 }
