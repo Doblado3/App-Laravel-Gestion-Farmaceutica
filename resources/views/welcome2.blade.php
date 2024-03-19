@@ -51,9 +51,18 @@
             </div>
         </nav>
     </header>
-    <section class="mt-8">
-        <div>
-            Aquí iran los objetivos
+    <section class="grid grid-cols-4 gap-4 h-[100vh]">
+        <div class="px col-span-2 row-span-2">
+            Descripción de una funcionalidad
+        </div>
+        <div class="col-span-2 row-span-2">
+            Descripción de una funcionalidad
+        </div>
+        <div class="col-span-2 row-span-2">
+            Descripción de una funcionalidad
+        </div>
+        <div class="col-span-2 row-span-2">
+            Descripción de una funcionalidad
         </div>
     </section>
     <footer>
