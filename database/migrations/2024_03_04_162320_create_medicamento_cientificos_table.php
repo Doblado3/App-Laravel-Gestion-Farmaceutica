@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->integer('PRM');
+            $table->text('formula_componente_activo');
             $table->text('descripcion');
             $table->tinyInteger('prescripcion');
-            $table->string('laboratorio_fabricante');
             $table->tinyInteger('refrigerado');
-            $table->date('fecha_expiracion');
-            $table->double('cantidad_producto');
+            $table->double('dosis');
         });
     }
 
