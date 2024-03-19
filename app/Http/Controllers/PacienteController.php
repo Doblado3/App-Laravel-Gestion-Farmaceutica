@@ -13,7 +13,9 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('viewAny', Paciente::class);
+        $pacientes = Paciente::paginate(10);
+        return view('/pacientes/index', ['pacientes' => $pacientes]);    }
     }
 
     /**
@@ -21,15 +23,34 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Paciente::class);
+        $pacientes = Paciente::all();
+        return view('pacientes/create', ['pacientes' => $pacientes]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Crea un usuario paciente
+     */
+    public function createUser(Request $request)
+    {
+        $user = new User($request->validated());
+        $user->password = Hash::make($user->password);
+        $user->save();
+        return $user;
+    }
+    /**
+     * Store a newly created resource (paciente) in storage.
      */
     public function store(StorePacienteRequest $request)
     {
-        //
+        $this->authorize('create', Paciente::class);
+        $user = $this->createUser($request);
+        $paciente = new Paciente($request->validated());
+        //$paciente->farmacia_id = $farmacia->id;
+        $paciente->user_id = $user->id;
+        $àciente->save();
+        session()->flash('success', 'Paciente creado correctamente.');
+        return redirect()->route('pacientes.index');
     }
 
     /**
@@ -37,7 +58,9 @@ class PacienteController extends Controller
      */
     public function show(Paciente $paciente)
     {
-        //
+        $this->authorize('view', $paciente);
+        $farmacias = Farmacia::all();
+        return view('pacientes/show',['paciente' => $paciente, 'farmacias' => $farmacias]);
     }
 
     /**
@@ -45,7 +68,9 @@ class PacienteController extends Controller
      */
     public function edit(Paciente $paciente)
     {
-        //
+        $this->authorize('update', $paciente);
+        $farmacias = Farmacia::all();
+        return view('pacientes/edit',['paciente' => $paciente, 'farmacias' => $farmacias]);
     }
 
     /**
@@ -53,7 +78,13 @@ class PacienteController extends Controller
      */
     public function update(UpdatePacienteRequest $request, Paciente $paciente)
     {
-        //
+        $user = $paciente->user;
+        $user->fill($request->validated());
+        $user->save();
+        $paciente->fill($request->validated());
+        $paciente->save();
+        session()->flash('success', 'Paciente modificado correctamente.');
+        return redirect()->route('pacientes.index');
     }
 
     /**
@@ -61,6 +92,14 @@ class PacienteController extends Controller
      */
     public function destroy(Paciente $paciente)
     {
-        //
+        $this->authorize('delete', $paciente);
+        if($paciente->delete()){
+            session()->flash('success','Paciente borrado corréctamente.');
+        }else{
+            session()->flash('warning','El paciente no pudo borrarse. Inténtelo de nuevo');
+            //¿return back()->withInput();?
+        }
+        return redirect()->route('pacientes.index');
+    }
     }
 }
