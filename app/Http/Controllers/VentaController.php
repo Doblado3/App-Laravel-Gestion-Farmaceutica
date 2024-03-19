@@ -13,7 +13,9 @@ class VentaController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('viewAny', Venta::class);
+        $venta = Venta::paginate(10);
+        return view('/ventas/index', ['ventas' => $ventas]);
     }
 
     /**
@@ -21,7 +23,8 @@ class VentaController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Venta::class);
+        return view('ventas/create');
     }
 
     /**
