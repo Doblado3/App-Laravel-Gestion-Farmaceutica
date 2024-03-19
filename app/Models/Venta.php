@@ -16,4 +16,9 @@ class Venta extends Model
     {
         return $this->belongsTo(Farmacia::class);
     }
+
+    public function medicamentoComercial()
+    {
+        return $this->belongsTo(MedicamentoComercial::class);
+    }
 }

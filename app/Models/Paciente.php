@@ -33,6 +33,10 @@ class Paciente extends Model
         return $this->hasMany(Venta::class);
     }
 
+    public function farmacia(){
+        return $this->hasManyThrough(Farmacia::class, Venta::class);
+    }
+
    
     
 }

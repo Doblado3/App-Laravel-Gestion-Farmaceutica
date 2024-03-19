@@ -23,7 +23,7 @@ class Proveedor extends Model
 
     public function medicamentoComercial()
     {
-        return $this->hasOne(MedicamentoComercial::class);
+        return $this->hasMany(MedicamentoComercial::class);
     }
 
     
