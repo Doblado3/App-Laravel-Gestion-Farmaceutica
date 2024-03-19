@@ -28,9 +28,9 @@ class Paciente extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function medicamento_farmacia()
+    public function venta()
     {
-        return $this->belongsTo(MedicamentoFarmacia::class);
+        return $this->hasMany(Venta::class);
     }
 
    

@@ -14,6 +14,15 @@ return new class extends Migration
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
+            $table->string("descripcion_producto");
+            $table->integer("cantidad");
+            $table->double("precio_total");
+            $table->double("precio_unitario"); //Tendremos que ver cómo hacer este precio sea fijo(linea_venta)
+            $table->datetime("fecha_compra");
+            $table->foreignId('farmacia_id')->constrained()->onDelete('cascade');
+            $table->foreignId('paciente_id')->unique()->constrained()->onDelete('cascade');
+            $table->foreignId('medicamento_proveedor_id')->constrained()->onDelete('cascade');
         });
     }
 

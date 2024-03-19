@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Venta extends Model
 {
-    use HasFactory;
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class);
+    }
+
+    public function farmacia()
+    {
+        return $this->belongsTo(Farmacia::class);
+    }
 }

@@ -25,4 +25,6 @@ class Proveedor extends Model
     {
         return $this->hasOne(MedicamentoProveedor::class);
     }
+
+    
 }

@@ -22,9 +22,14 @@ class Farmacia extends Model
     ];
 
 
-    public function medicamento_farmacia()
+    public function medicamentoComercial()
     {
         return $this->hasMany(MedicamentoProveedor::class);
+    }
+
+    public function venta()
+    {
+        return $this->hasMany(Venta::class);
     }
     
 }
