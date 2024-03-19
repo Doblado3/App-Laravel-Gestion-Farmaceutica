@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->integer('telefono');
             $table->string('email');
+            $table->foreignId('medicamento_comercial_id')->constrained()->onDelete('cascade');
         });
     }
 

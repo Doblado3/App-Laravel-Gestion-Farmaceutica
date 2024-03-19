@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('medicamento_comercials', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
+            $table->string("nombre_medicamento");
+            $table->string("fabricante");
+            $table->double("precio_unidad");
+            $table->foreignId('medicamento_cientifico_id')->constrained()->onDelete('cascade');
+            $table->foreignId('proveedor_id')->constrained()->onDelete('cascade');
         });
     }
 
