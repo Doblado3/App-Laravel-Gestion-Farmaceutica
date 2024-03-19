@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medicamento_proveedors', function (Blueprint $table) {
+        Schema::create('medicamento_comercials', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nombre_medicamento');
-            $table->string('nombre_proveedor');
-            $table->double('pvp');
-            $table->string('laboratorio_fabricante');
         });
     }
 
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medicamento_proveedors');
+        Schema::dropIfExists('medicamento_comercials');
     }
 };

@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\MedicamentoProveedor;
+use App\Models\MedicamentoComercial;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class MedicamentoProveedorPolicy
+class MedicamentoComercialPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class MedicamentoProveedorPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, MedicamentoProveedor $medicamentoProveedor): bool
+    public function view(User $user, MedicamentoComercial $medicamentoComercial): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class MedicamentoProveedorPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, MedicamentoProveedor $medicamentoProveedor): bool
+    public function update(User $user, MedicamentoComercial $medicamentoComercial): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class MedicamentoProveedorPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, MedicamentoProveedor $medicamentoProveedor): bool
+    public function delete(User $user, MedicamentoComercial $medicamentoComercial): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class MedicamentoProveedorPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, MedicamentoProveedor $medicamentoProveedor): bool
+    public function restore(User $user, MedicamentoComercial $medicamentoComercial): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class MedicamentoProveedorPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, MedicamentoProveedor $medicamentoProveedor): bool
+    public function forceDelete(User $user, MedicamentoComercial $medicamentoComercial): bool
     {
         //
     }

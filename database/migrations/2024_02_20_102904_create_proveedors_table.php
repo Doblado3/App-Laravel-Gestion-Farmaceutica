@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->integer('telefono');
             $table->string('pais_origen');
-            $table->text('direecion');
+            $table->text('direcion');
         });
     }
 

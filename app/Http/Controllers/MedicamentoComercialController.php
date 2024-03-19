@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMedicamentoProveedorRequest;
-use App\Http\Requests\UpdateMedicamentoProveedorRequest;
-use App\Models\MedicamentoProveedor;
+use App\Http\Requests\StoreMedicamentoComercialRequest;
+use App\Http\Requests\UpdateMedicamentoComercialRequest;
+use App\Models\MedicamentoComercial;
 
-class MedicamentoProveedorController extends Controller
+class MedicamentoComercialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class MedicamentoProveedorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMedicamentoProveedorRequest $request)
+    public function store(StoreMedicamentoComercialRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class MedicamentoProveedorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MedicamentoProveedor $medicamentoProveedor)
+    public function show(MedicamentoComercial $medicamentoComercial)
     {
         //
     }
@@ -43,7 +43,7 @@ class MedicamentoProveedorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MedicamentoProveedor $medicamentoProveedor)
+    public function edit(MedicamentoComercial $medicamentoComercial)
     {
         //
     }
@@ -51,7 +51,7 @@ class MedicamentoProveedorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMedicamentoProveedorRequest $request, MedicamentoProveedor $medicamentoProveedor)
+    public function update(UpdateMedicamentoComercialRequest $request, MedicamentoComercial $medicamentoComercial)
     {
         //
     }
@@ -59,7 +59,7 @@ class MedicamentoProveedorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MedicamentoProveedor $medicamentoProveedor)
+    public function destroy(MedicamentoComercial $medicamentoComercial)
     {
         //
     }
