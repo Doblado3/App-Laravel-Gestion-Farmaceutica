@@ -24,8 +24,7 @@ class PacienteController extends Controller
     public function create()
     {
         $this->authorize('create', Paciente::class);
-        $pacientes = Paciente::all();
-        return view('pacientes/create', ['pacientes' => $pacientes]);
+        return view('pacientes/create');
     }
 
     /**
@@ -46,7 +45,6 @@ class PacienteController extends Controller
         $this->authorize('create', Paciente::class);
         $user = $this->createUser($request);
         $paciente = new Paciente($request->validated());
-        //$paciente->farmacia_id = $farmacia->id;
         $paciente->user_id = $user->id;
         $àciente->save();
         session()->flash('success', 'Paciente creado correctamente.');
@@ -59,8 +57,7 @@ class PacienteController extends Controller
     public function show(Paciente $paciente)
     {
         $this->authorize('view', $paciente);
-        $farmacias = Farmacia::all();
-        return view('pacientes/show',['paciente' => $paciente, 'farmacias' => $farmacias]);
+        return view('pacientes/show',['paciente' => $paciente]);
     }
 
     /**
