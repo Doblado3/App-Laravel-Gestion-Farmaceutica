@@ -15,10 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->string("nombre");
-            $table->string("fabricante");
             $table->double("precio_unidad");
-            $table->date('fecha_expiracion');
+            $table->integer('cantidad');
             $table->foreignId('medicamento_cientifico_id')->constrained()->onDelete('cascade');
             $table->foreignId('proveedor_id')->constrained()->onDelete('cascade');
         });

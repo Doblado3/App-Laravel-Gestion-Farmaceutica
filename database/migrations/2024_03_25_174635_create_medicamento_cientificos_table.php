@@ -14,13 +14,16 @@ return new class extends Migration
         Schema::create('medicamento_cientificos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('PRM');
             $table->string('nombre');
-            $table->text('formula_componente_activo');
-            $table->text('descripcion');
-            $table->tinyInteger('prescripcion');
-            $table->tinyInteger('refrigerado');
-            $table->double('dosis');
+            $table->text('codigos_ATC');
+            $table->date('fecha_autorizacion');
+            $table->string('principio_activo');
+            $table->string('caracteristicas');
+            $table->string("laboratorio");
+            $table->string('excipientes');
+            $table->text('dosis');
+            $table->integer('codigo_nacional');
+            $table->foreignId('naturaleza_id')->constrained()->onDelete('cascade');
         });
     }
 
