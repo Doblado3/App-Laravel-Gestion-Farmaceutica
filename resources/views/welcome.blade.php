@@ -6,7 +6,7 @@
 
 
     <title>ParaFarmacial</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta name="description" content="Digitaliza de forma completa la gestión de tu local farmaceutico. Controla
     tu ventas y tus compras, puediendo comparar entre distintos proveedores, y lleva un listado al completo de tus pacientes
     y de tus trabajadores">
