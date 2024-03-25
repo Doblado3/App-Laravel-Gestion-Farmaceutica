@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class MedicamentoCientifico extends Model
 {
     use HasFactory;
+
+    public function naturaleza()
+    {
+        return $this->belongsTo(Naturaleza::class);
+    }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('DNI');
             $table->string('nuhsa');
+            $table->foreignId('user_id')->unique()->constrained()->onDelete('cascade');
         });
     }
 
