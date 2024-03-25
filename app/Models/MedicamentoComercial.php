@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class MedicamentoComercial extends Model
 {
-    public function farmacia()
-    {
-        return $this->belongsTo(Farmacia::class);
-    }
 
     public function proveedor()
     {

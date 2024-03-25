@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->integer('PRM');
+            $table->string('nombre');
             $table->text('formula_componente_activo');
             $table->text('descripcion');
             $table->tinyInteger('prescripcion');

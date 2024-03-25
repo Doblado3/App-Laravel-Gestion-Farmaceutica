@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->string("nombre_medicamento");
+            $table->string("nombre");
             $table->string("fabricante");
             $table->double("precio_unidad");
             $table->date('fecha_expiracion');
