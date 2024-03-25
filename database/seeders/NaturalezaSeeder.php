@@ -16,8 +16,10 @@ class NaturalezaSeeder extends Seeder
         DB::table('naturalezas')->insert([
             [
                 'nombre' => "alivio sintomático dolores leves",
+            ],
+            [
                 'nombre' => "anticoagulantes",
-            ]
+            ],
             ]);
     }
 }

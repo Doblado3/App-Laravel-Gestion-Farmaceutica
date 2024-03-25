@@ -13,7 +13,7 @@ class ProveedorSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('medicamento_comercials')->insert([
+        DB::table('proveedors')->insert([
             [
                 'nombre' => "FarmaciasDirect",
                 'email' => "farmaciasdirect@correo.com",
