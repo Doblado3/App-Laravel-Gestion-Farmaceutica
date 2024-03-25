@@ -28,11 +28,6 @@ class Paciente extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function venta()
-    {
-        return $this->hasMany(Venta::class);
-    }
-
     public function farmacia(){
         return $this->hasManyThrough(Farmacia::class, Venta::class);
     }
