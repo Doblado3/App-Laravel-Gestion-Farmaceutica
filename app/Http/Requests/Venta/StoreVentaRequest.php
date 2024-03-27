@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Venta;
+use Illuminate\Validation\Rule;
 
 class StoreVentaRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class StoreVentaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('create',Venta::class);
     }
 
     /**
@@ -21,8 +23,24 @@ class StoreVentaRequest extends FormRequest
      */
     public function rules(): array
     {
+        if($this->user()->es_paciente)
+            return [
+                'cantidad' => 'required',
+                'precio_total' => 'required',
+                'precio_unitario' => 'required|',
+                'fecha_compra' => 'required|',
+                'paciente_id' => ['required|'],
+                'farmacia_id' => '',
+                'medicamento_comercial_id' => 'required|'
+            ];          
         return [
-            //
+            'cantidad' => 'required',
+            'precio_total' => 'required',
+            'precio_unitario' => 'required|',
+            'fecha_compra' => 'required|',
+            'paciente_id' => 'required|',
+            'farmacia_id' => '',
+            'medicamento_comercial_id' => 'required|'
         ];
     }
 }
