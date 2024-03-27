@@ -16,7 +16,7 @@ class PacienteController extends Controller
         $this->authorize('viewAny', Paciente::class);
         $pacientes = Paciente::paginate(10);
         return view('/pacientes/index', ['pacientes' => $pacientes]);    }
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -98,5 +98,5 @@ class PacienteController extends Controller
         }
         return redirect()->route('pacientes.index');
     }
-    }
+    
 }
