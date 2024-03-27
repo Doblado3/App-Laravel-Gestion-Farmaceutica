@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreVentaRequest;
-use App\Http\Requests\UpdateVentaRequest;
+use App\Http\Requests\Venta\StoreVentaRequest;
+use App\Http\Requests\Venta\UpdateVentaRequest;
 use App\Models\Venta;
+use App\Models\Paciente;
+use App\Models\Farmacia;
+use App\Models\MedicamentoComercial;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VentaController extends Controller
 {

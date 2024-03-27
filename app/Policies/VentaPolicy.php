@@ -8,6 +8,20 @@ use Illuminate\Auth\Access\Response;
 
 class VentaPolicy
 {
+
+    private function esVentaPropiaDeFarmacia(User $user,Venta $venta):bool
+    {
+        return $user->es_farmaceutico && $venta->farmacia_id == $user->farmaceutico->farmacia->id;
+    }
+    private function esVentaPropiaDePaciente(User $user,Venta $venta):bool
+    {
+        return $user->es_paciente && $venta->paciente_id == $user->paciente->id;
+    }
+    private function esVentaPropia(User $user,Venta $venta):bool
+    {
+        return $this->esCitaPropiaDeFarmacia($user,$venta) || $this->esCitaPropiaDePaciente($user,$venta);
+    }
+
     /**
      * Determine whether the user can view any models.
      */
