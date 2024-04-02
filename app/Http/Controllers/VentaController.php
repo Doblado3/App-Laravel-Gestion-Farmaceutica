@@ -14,7 +14,11 @@ class VentaController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Venta::class);
-        $venta = Venta::paginate(10);
+        $ventas = Venta::orderBy('fecha_de_compra', 'desc')->paginate(10);
+        if(Auth::user()->es_farmaceutico)
+            $ventas = Auth::user()->farmaceutico->ventas()->orderBy('fecha_de_compra', 'desc')->paginate(25);
+        elseif(Auth::user()->es_paciente)
+            $ventas = Auth::user()->paciente->ventas()->orderBy('fecha_de_compra', 'desc')->paginate(25);
         return view('/ventas/index', ['ventas' => $ventas]);
     }
 
@@ -24,7 +28,8 @@ class VentaController extends Controller
     public function create()
     {
         $this->authorize('create', Venta::class);
-        return view('ventas/create');
+        $medicamentos = MedicamentoComercial::all();
+        return view('ventas/create', ['medicamentos' => $medicamentos]);
     }
 
     /**
@@ -32,7 +37,10 @@ class VentaController extends Controller
      */
     public function store(StoreVentaRequest $request)
     {
-        //
+        $venta = new Venta($request->validated());
+        $venta->save();
+        session()->flash('success', 'Venta creada correctamente');
+        return redirect()->route('ventas.index');
     }
 
     /**
@@ -40,7 +48,8 @@ class VentaController extends Controller
      */
     public function show(Venta $venta)
     {
-        //
+        $this->authorize('view', $venta);
+        return view('ventas/show', ['venta' => $venta]);
     }
 
     /**
@@ -48,7 +57,8 @@ class VentaController extends Controller
      */
     public function edit(Venta $venta)
     {
-        //
+        $this->authorize('update', $venta);
+        return view('ventas/edit', ['venta' => $venta]);
     }
 
     /**
@@ -56,7 +66,10 @@ class VentaController extends Controller
      */
     public function update(UpdateVentaRequest $request, Venta $venta)
     {
-        //
+        $venta->fill($request->validated());
+        &venta->save();
+        session()->flash('succes','Venta modificada correctamente.');
+        return redirect()->route('ventas.index');
     }
 
     /**
@@ -64,6 +77,13 @@ class VentaController extends Controller
      */
     public function destroy(Venta $venta)
     {
-        //
+        $this->authorize('delete', $venta);
+        if($venta->delete()){
+            session()->flash('success','Venta borrada corréctamente.');
+        }else{
+            session()->fash('warning','La venta no pudo borrarse. Inténtelo de nuevo');
+            //¿return back()->withInput();?
+        }
+        return redirect()->route('ventas.index');
     }
 }
