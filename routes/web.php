@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FarmaceuticoController;
 use App\Http\Controllers\FarmaciaController;
+use App\Http\Controllers\VentaController;
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\MedicamentoComercialController;
 
 
 /*
