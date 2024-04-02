@@ -13,7 +13,9 @@ class MedicamentoComercialController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('viewAny', MedicamentoComercial::class);
+        $medicamentosComerciales = MedicamentoComercial::paginate(10);
+        return view();
     }
 
     /**
