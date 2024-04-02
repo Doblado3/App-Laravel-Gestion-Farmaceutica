@@ -23,24 +23,24 @@ class StoreVentaRequest extends FormRequest
      */
     public function rules(): array
     {
-        if($this->user()->es_paciente)
+        if($this->user()->es_farmaceutico)
             return [
-                'cantidad' => 'required',
-                'precio_total' => 'required',
-                'precio_unitario' => 'required|',
-                'fecha_compra' => 'required|',
-                'paciente_id' => ['required|'],
-                'farmacia_id' => '',
-                'medicamento_comercial_id' => 'required|'
-            ];          
+                'cantidad' => 'required|double|min:0',
+                'precio_total' => 'required|double|min:0',
+                'precio_unitario' => 'required|double|min:0',
+                'fecha_compra' => 'required|date|after:yesterday',
+                'paciente_id' => ['required', 'exists:pacientes,id', Rule::in($this->user()->paciente->id)],
+                'farmacia_id' => 'required|exists:farmacia,id',
+                'medicamento_comercial_id' => 'required|exists:medicamentos_comerciales,id' //medicamentos_comerciales se escribe asi?
+            ];
         return [
-            'cantidad' => 'required',
-            'precio_total' => 'required',
-            'precio_unitario' => 'required|',
-            'fecha_compra' => 'required|',
-            'paciente_id' => 'required|',
-            'farmacia_id' => '',
-            'medicamento_comercial_id' => 'required|'
+            'cantidad' => 'required|double|min:0',
+            'precio_total' => 'required|double|min:0',
+            'precio_unitario' => 'required|double|min:0|',
+            'fecha_compra' => 'required|date|after:yesterday',
+            'paciente_id' => 'required|exists:pacientes,id',
+            'farmacia_id' => 'required|exists:farmacia,id',
+            'medicamento_comercial_id' => 'required|exists:medicamentos_comerciales,id' //medicamentos_comerciales se escribe asi?
         ];
     }
 }
