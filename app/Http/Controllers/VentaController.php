@@ -33,7 +33,14 @@ class VentaController extends Controller
     public function create()
     {
         $this->authorize('create', Venta::class);
-        return view('ventas/create');
+        $medicamentoComercials = MedicamentoComercial::all();
+        $farmacias = Farmacia::all();
+        $pacientes = Paciente::all();
+        if(Auth::user()->es_farmaceutico)
+            return view('ventas/create',['farmacia' => Auth::user()->farmaceutico->farmacia, 'pacientes' => $pacientes, 'medicamentos' => $medicamentoComercials]);
+        elseif(Auth::user()->es_paciente)
+            return view('ventas/create',['paciente' => Auth::user()->paciente, 'farmacias' => $farmacias]);
+        return view('ventas/create', ['pacientes' => $pacientes, 'farmacias' => $farmacias, 'medicamentos' => $medicamentoComercials]);
     }
 
     /**
@@ -91,6 +98,37 @@ class VentaController extends Controller
      */
     public function destroy(Venta $venta)
     {
-        //
+        $this->authorize('delete',$venta);
+        if($venta->delete())
+            session()->flash('succes', 'Venta borrada correctamente');
+        else
+            session()->flash('warning', 'La venta no pudo borrarse. Probablemente se deba a que haya información que dependa de ella');
+        return redirect()->route('ventas.index');
+    }
+
+    //---------- PREGUNTAR ESTA FUNCIÓN ----------
+
+    //----------                        ----------
+    public function attach_medicamento_comercial(Request $request, Venta $venta)
+    {
+
+        $this->validateWithBag('attach', $request, [
+            'medicamento_comercial_id' => 'required|exists:medicamentoComercial,id',
+            'fecha_compra' => 'required|date',
+            'cantidad' => 'integer',
+            'precio_total' => 'required|numeric|min:0',
+        ]);
+        $venta->medicamento_comercials()->attach($request->medicamento_comercial_id, [
+            'fecha_compra' => $request->fecha_compra,
+            'cantidad' => $request->cantidad,
+            'precio_total' => $request->precio_total,
+        ]);
+        return redirect()->route('ventas.edit', $venta->id);
+    }
+
+    public function detach_medicamento_comercial(Venta $venta, MedicamentoComercial $medicamentoComercial)
+    {
+        $venta->medicamento_comercials()->detach($medicamentoComercial->id);
+        return redirect()->route('ventas.edit', $venta->id);
     }
 }
