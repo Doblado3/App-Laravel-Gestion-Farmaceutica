@@ -17,12 +17,12 @@ class PacienteSeeder extends Seeder
             [
                 'dni' => "22233345L",
                 'nuhsa' => "AN999999",
-                'user_id' => "5",
+                'user_id' => 5,
             ],
             [
                 'dni' => "33344456A",
                 'nuhsa' => "AN888888",
-                'user_id' => "6",
+                'user_id' => 6,
             ],
         ]);
     }

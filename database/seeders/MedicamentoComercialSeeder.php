@@ -15,12 +15,14 @@ class MedicamentoComercialSeeder extends Seeder
     {
         DB::table('medicamento_comercials')->insert([
             [
+                'nombre' => "medicamento1",
                 'precio_unidad' => 9.17,
                 'cantidad' => 3000,
                 'medicamento_cientifico_id' => 1,
                 'proveedor_id' => 1,
             ],
             [
+                'nombre' => "medicamento2",
                 'precio_unidad' => 30.0,
                 'cantidad' => 1000,
                 'medicamento_cientifico_id' => 2,
