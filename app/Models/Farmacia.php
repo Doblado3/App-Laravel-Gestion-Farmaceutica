@@ -22,15 +22,7 @@ class Farmacia extends Model
     ];
 
 
-    public function medicamentoComercial()
-    {
-        return $this->hasMany(MedicamentoComercial::class);
-    }
-
-    public function venta()
-    {
-        return $this->hasMany(Venta::class);
-    }
+   
 
     public function paciente(){
         return $this->hasManyThrough(Paciente::class, Venta::class);

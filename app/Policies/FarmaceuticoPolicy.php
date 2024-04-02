@@ -13,7 +13,7 @@ class FarmaceuticoPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;    
+        return $user->es_administrador;    
     }
 
     /**

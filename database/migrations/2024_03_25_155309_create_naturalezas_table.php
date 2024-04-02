@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nombre');
-            $table->foreignId('medicamento_cientifico_id')->constrained()->onDelete('cascade');
             
         });
     }

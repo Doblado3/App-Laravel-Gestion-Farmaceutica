@@ -40,7 +40,19 @@ class UserSeeder extends Seeder
                 'apellidos' => 'Doblado Sanchez',
                 'email' => "farmaceutico3@farmaceutico.com",
                 'password' => Hash::make('12345678'),
-            ]
+            ],
+            [
+                'name' => "Paciente1",
+                'apellido' => "Paciente1 Prueba1",
+                'email' => "paciente1@paciente.com",
+                'password' => Hash::make('12345678'),
+            ],
+            [
+                'name' => "Paciente2",
+                'apellido' => "Paciente2 Prueba2",
+                'email' => "paciente2@paciente.com",
+                'password' => Hash::make('12345678'),
+            ],
         ]);
     }
 }

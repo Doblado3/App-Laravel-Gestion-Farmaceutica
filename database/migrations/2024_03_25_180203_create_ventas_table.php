@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->string("descripcion_producto");
             $table->integer("cantidad");
             $table->double("precio_total");
             $table->double("precio_unitario"); //Tendremos que ver cómo hacer este precio sea fijo(linea_venta)

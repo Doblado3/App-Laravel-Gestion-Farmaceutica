@@ -9,14 +9,9 @@ class Naturaleza extends Model
 {
     use HasFactory;
 
-    public function medicamento_farmacia()
+    public function medicamentoCientifico()
     {
-        return $this->hasMany(MedicamentoFarmacia::class);
-    }
-
-    public function medicamentoComercial()
-    {
-        return $this->hasMany(MedicamentoComercial::class);
+        return $this->hasMany(MedicamentoCientifico::class);
     }
 
 }
