@@ -15,7 +15,7 @@ class MedicamentoComercialController extends Controller
     {
         $this->authorize('viewAny', MedicamentoComercial::class);
         $medicamentosComerciales = MedicamentoComercial::paginate(10);
-        return view();
+        return view('/medicamentos_comerciales/index', ['medicamentos_comerciales' => $medicamentosComerciales]);
     }
 
     /**
@@ -23,7 +23,8 @@ class MedicamentoComercialController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', MedicamentoComercial::class);
+        return view('medicamentos_comerciales/create');
     }
 
     /**
@@ -31,7 +32,10 @@ class MedicamentoComercialController extends Controller
      */
     public function store(StoreMedicamentoComercialRequest $request)
     {
-        //
+        $medicamentoComercial = new MedicamentoComercial($request->validated());
+        $medicamentoComercial->save();
+        session()->flash('success','Medicamento Comercial creado correctamente');
+        return redirect()->route('medicamentos_comerciales.index');
     }
 
     /**
@@ -47,7 +51,8 @@ class MedicamentoComercialController extends Controller
      */
     public function edit(MedicamentoComercial $medicamentoComercial)
     {
-        //
+        $this->authorize('update', $medicamentoComercial)
+        return view('medicamentos_comerciales/edit', ['medicamento_comercial' => $medicamentoComercial]);
     }
 
     /**
