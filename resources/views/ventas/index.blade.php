@@ -8,22 +8,21 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="flex items-center mt-4 ml-2">
-                    <form method="GET" action="{{ route('ventas.create') }}">
-                        <x-primary-button type="subit" class="ml-4">
-                            @if(Auth::user()->es_farmaceutico)
-                                {{ __('Crear Venta') }}
-                            @endif
-                        </x-primary-button>
-                    </form>
-                </div>
+                @if(Auth::user()->es_farmaceutico || Auth::user()->es_administrador) 
+                    <div class="flex items-center mt-4 ml-2">
+                            <form method="GET" action="{{ route('ventas.create') }}">
+                                <x-primary-button type="subit" class="ml-4">
+                                        {{ __('Crear Venta') }}
+                                </x-primary-button>
+                            </form>
+                    </div>
+                @endif
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table class="min-w-max w-full table-auto">
                         <thead>
                         <tr class="bg-gray-200 text-gray-900 uppercase text-sm leading-normal">
                             <th class="py-3 px-6 text-left">ID</th>
                             <th class="py-3 px-6 text-left">Paciente</th>
-                            <th class="py-3 px-6 text-left">Farmaceutico</th>
                             <th class="py-3 px-6 text-left">Cantidad</th>
                             <th class="py-3 px-6 text-left">Farmacia</th>
                             <th class="py-3 px-6 text-left">Fecha</th>
@@ -49,22 +48,17 @@
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$venta->farmacia->farmaceutico->user->name}}</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 text-left whitespace-nowrap">
-                                    <div class="flex items-center">
                                         <span class="font-medium">{{$venta->cantidad}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$venta->farmacia->id}}</span>
+                                        <span class="font-medium">{{$venta->farmacia->nombre}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$venta->fecha_de_compra->format('d/m/Y H:i')}}</span>
+                                        <span class="font-medium">{{$venta->fecha_compra->format('d/m/Y')}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
@@ -79,7 +73,7 @@
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$venta->medicamento_comercials()->count()}}</span>
+                                        <span class="font-medium">{{$venta->medicamento_comercial->nombre}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
@@ -92,7 +86,7 @@
                                                 </svg>
                                             </a>
                                         </div>
-                                        @if(Auth::user()->es_farmaceutico)
+                                        @if(Auth::user()->es_farmaceutico || Auth::user()->es_administrador)
                                             <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                 <a href="{{route('ventas.edit', $venta->id)}}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

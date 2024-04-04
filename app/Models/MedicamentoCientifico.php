@@ -13,4 +13,6 @@ class MedicamentoCientifico extends Model
     {
         return $this->belongsTo(Naturaleza::class);
     }
+
+    
 }

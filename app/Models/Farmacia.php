@@ -24,8 +24,14 @@ class Farmacia extends Model
 
    
 
-    public function paciente(){
+    public function paciente()
+    {
         return $this->hasManyThrough(Paciente::class, Venta::class);
+    }
+
+    public function farmaceutico()
+    {
+        return $this->hasMany(Farmaceutico::class);
     }
     
 }

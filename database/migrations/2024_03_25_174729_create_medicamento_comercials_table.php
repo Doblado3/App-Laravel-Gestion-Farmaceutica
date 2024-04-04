@@ -17,7 +17,6 @@ return new class extends Migration
             $table->softDeletes();
             $table->string('nombre');
             $table->double("precio_unidad");
-            $table->integer('cantidad');
             $table->foreignId('medicamento_cientifico_id')->constrained()->onDelete('cascade');
             $table->foreignId('proveedor_id')->constrained()->onDelete('cascade');
         });

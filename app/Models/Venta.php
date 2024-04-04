@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Venta extends Model
 {
+
+    protected $casts = [
+        'fecha_compra' => 'datetime:Y-m-d'
+    ];
+
     public function paciente()
     {
         return $this->belongsTo(Paciente::class);
@@ -17,7 +22,7 @@ class Venta extends Model
         return $this->belongsTo(Farmacia::class);
     }
 
-    public function medicamentoComercial()
+    public function medicamento_comercial()
     {
         return $this->belongsTo(MedicamentoComercial::class);
     }

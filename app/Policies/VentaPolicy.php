@@ -43,7 +43,7 @@ class VentaPolicy
      */
     public function create(User $user): bool
     {
-        return $user->es_farmaceutico;
+        return $user->es_farmaceutico || $user->es_administrador;
     }
 
     /**
@@ -51,7 +51,7 @@ class VentaPolicy
      */
     public function update(User $user, Venta $venta): bool
     {
-        return $user->es_farmaceutico;
+        return $user->es_farmaceutico || $user->es_administrador;
     }
 
     /**

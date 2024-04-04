@@ -23,6 +23,15 @@ class VentaSeeder extends Seeder
                 'farmacia_id' => 1,
                 'medicamento_comercial_id' => 1,
             ],
+            [
+                'cantidad' => 7,
+                'precio_total' => 100.0,
+                'precio_unitario' => 7.5,
+                'fecha_compra' => "2018-01-01",
+                'paciente_id' => 2,
+                'farmacia_id' => 1,
+                'medicamento_comercial_id' => 2,
+            ],
         ]);
     }
 }

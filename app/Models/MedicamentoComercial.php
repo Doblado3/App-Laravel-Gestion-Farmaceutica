@@ -8,13 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class MedicamentoComercial extends Model
 {
 
-    public function proveedor()
-    {
-        return $this->belongsTo(Proveedor::class);
-    }
+    protected $fillable = [
+        'nombre',
+    ];
 
     public function venta()
     {
-        return $this->hasMany(Venta::class);
+        return $this->hashMany(Venta::class);
     }
 }
