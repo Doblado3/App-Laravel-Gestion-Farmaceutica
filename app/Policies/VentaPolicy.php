@@ -59,7 +59,7 @@ class VentaPolicy
      */
     public function delete(User $user, Venta $venta): bool
     {
-        return $user->es_farmaceutico;
+        return $user->es_farmaceutico || $user->es_administrador;
     }
 
     /**
@@ -67,7 +67,7 @@ class VentaPolicy
      */
     public function restore(User $user, Venta $venta): bool
     {
-        return $user->es_farmaceutico;
+        return $user->es_farmaceutico || $user->es_administrador;
     }
 
     /**
@@ -75,6 +75,6 @@ class VentaPolicy
      */
     public function forceDelete(User $user, Venta $venta): bool
     {
-        return $user->es_farmaceutico;
+        return $user->es_farmaceutico || $user->es_administrador;
     }
 }

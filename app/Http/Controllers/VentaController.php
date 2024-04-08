@@ -19,10 +19,15 @@ class VentaController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Venta::class);
+        
         $ventas = Venta::orderBy('fecha_compra','desc')->paginate(15);
-        if(Auth::user()->es_farmaceutico)
-            $ventas = Auth::user()->farmaceutico->farmacia->ventas()->orderBy('fecha_compra','desc')->paginate(15);
-        elseif(Auth::user()->es_paciente)
+        /** 
+        *if(Auth::user()->es_farmaceutico)
+            *$ventas = Auth::user()->farmaceutico->farmacia->ventas()->orderBy('fecha_compra','desc')->paginate(15);
+        *elseif(Auth::user()->es_paciente)
+            *$ventas = Auth::user()->paciente->ventas()->orderBy('fecha_compra','desc')->paginate(15);
+        */
+        if(Auth::user()->es_paciente)
             $ventas = Auth::user()->paciente->ventas()->orderBy('fecha_compra','desc')->paginate(15);
         return view('/ventas/index', ['ventas' => $ventas]);
     }
@@ -73,7 +78,7 @@ class VentaController extends Controller
         $farmacias = Farmacia::all();
         $pacientes = Paciente::all();
         if(Auth::user()->es_farmaceutico){
-            return view('ventas/edit', ['venta' => $venta, 'farmacia' => Auth::user()->farmaceutico->farmacia, 'pacientes' => $pacientes, 'medicamentos' => $medicamentoComercials]);
+            return view('ventas/edit', ['venta' => $venta, 'farmacia' => Auth::user()->farmacia, 'pacientes' => $pacientes, 'medicamentos' => $medicamentoComercials]);
         }
         elseif(Auth::user()->es_paciente){
             return view('ventas/edit', ['venta' => $venta, 'paciente' => Auth::user()->paciente, 'farmacias' => $farmacias, 'medicamentos' => $medicamentoComercials]);

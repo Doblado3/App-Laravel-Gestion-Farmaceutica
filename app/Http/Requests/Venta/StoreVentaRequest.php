@@ -25,22 +25,13 @@ class StoreVentaRequest extends FormRequest
     {
         if($this->user()->es_farmaceutico)
             return [
-                'cantidad' => 'required|double|min:0',
-                'precio_total' => 'required|double|min:0',
-                'precio_unitario' => 'required|double|min:0',
+                'cantidad' => 'required|numeric|min:0',
+                'precio_total' => 'required|numeric|min:0',
+                'precio_unitario' => 'required|numeric|min:0',
                 'fecha_compra' => 'required|date|after:yesterday',
-                'paciente_id' => ['required', 'exists:pacientes,id', Rule::in($this->user()->paciente->id)],
-                'farmacia_id' => 'required|exists:farmacia,id',
-                'medicamento_comercial_id' => 'required|exists:medicamentos_comerciales,id' //medicamentos_comerciales se escribe asi?
+                'paciente_id' => 'required|exists:pacientes,id',
+                'farmacia_id' => 'required|exists:farmacias,id',
+                'medicamento_comercial_id' => 'exists:medicamentos_comercials,id',
             ];
-        return [
-            'cantidad' => 'required|double|min:0',
-            'precio_total' => 'required|double|min:0',
-            'precio_unitario' => 'required|double|min:0|',
-            'fecha_compra' => 'required|date|after:yesterday',
-            'paciente_id' => 'required|exists:pacientes,id',
-            'farmacia_id' => 'required|exists:farmacia,id',
-            'medicamento_comercial_id' => 'required|exists:medicamentos_comerciales,id' //medicamentos_comerciales se escribe asi?
-        ];
     }
 }

@@ -46,30 +46,6 @@
                                 @endforeach
                             </x-select>
                             @endisset
-                        </div>
-                        <div class="mt-4">
-                            <x-input-label for="farmaceutico_id" :value="__('Farmacéutico')" />
-
-                            @isset($farmaceutico)
-                                <x-text-input id="farmaceutico_id" class="block mt-1 w-full"
-                                         type="hidden"
-                                         name="farmaceutico_id"
-                                         :value="$farmaceutico->id"
-                                         required />
-                                <x-text-input class="block mt-1 w-full"
-                                         type="text"
-                                         disabled
-                                         value="{{$farmacia->farmaceutico->user->name}}"
-                                          />
-                            @else
-                                <x-select id="farmaceutico_id" name="farmaceutico_id" required>
-                                    <option value="">{{__('Elige un farmacéutico')}}</option>
-                                    @foreach ($farmaceuticos as $farmaceutico)
-                                        <option value="{{$farmaceutico->id}}" @if (old('farmaceutico_id') == $farmacia->farmaceutico->id) selected @endif>{{$farmacia->farmaceutico->user->name}}</option>
-                                    @endforeach
-                                </x-select>
-                            @endisset
-                        </div>
                         <div>
                                 <x-input-label for="cantidad" :value="__('Cantidad')" />
 
@@ -105,29 +81,11 @@
 
                                 <x-text-input id="precio_total" class="block mt-1 w-full" type="text" name="precio_total" :value="old('precio_total')" required autofocus />
                         </div>
-                        <div class="mt-4">
-                            <x-input-label for="medicamento_comercial_id" :value="__('Medicamento')" />
+                        <div>
+                                <x-input-label for="medicamento_comercial_id" :value="__('Medicamento')" />
 
-                            @isset($medicamentoComercials)
-                                <x-text-input id="medicamento_comercial_id" class="block mt-1 w-full"
-                                         type="hidden"
-                                         name="medicamento_comercial_id"
-                                         :value="$medicamentoComercial->id"
-                                         required />
-                                <x-text-input class="block mt-1 w-full"
-                                         type="text"
-                                         disabled
-                                         value="{{$medicamentoComercial->name}}"
-                                          />
-                            @else
-                                <x-select id="medicamento_comercial_id" name="medicamento_comercial_id" required>
-                                    <option value="">{{__('Medicamentos vendidos')}}</option>
-                                    @foreach ($medicamentoComercials as $medicamentoComercial)
-                                        <option value="{{$medicamentoComercial->id}}" @if (old('medicamento_comercial_id') == $medicamentoComercial->id) selected @endif>{{$medicamentoComercial->name}}</option>
-                                    @endforeach
-                                </x-select>
-                            @endisset
-                        </div>
+                                <x-text-input id="medicamento_comercial_id" class="block mt-1 w-full" type="text" name="medicameno_comercial_id" :value="old('medicamento_comercial_id')" required />
+                            </div>
                         <div class="flex items-center justify-end mt-4">
                             <x-danger-button type="button">
                                 <a href="{{route('ventas.index')}}">

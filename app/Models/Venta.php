@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Venta extends Model
 {
 
+    protected $fillable = [
+        'cantidad',
+        'precio_unitario',
+        'precio_total',
+        'fecha_compra',
+        'medicamento_comercial_id',
+    ];
+
     protected $casts = [
         'fecha_compra' => 'datetime:Y-m-d'
     ];

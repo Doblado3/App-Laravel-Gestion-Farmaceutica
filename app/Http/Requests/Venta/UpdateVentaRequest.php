@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Venta;
 
+use App\Models\Venta;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Rule;
 
 class UpdateVentaRequest extends FormRequest
 {
@@ -23,22 +25,13 @@ class UpdateVentaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cantidad' => 'required|double|min:0',
-                'precio_total' => 'required|double|min:0',
-                'precio_unitario' => 'required|double|min:0',
+                'cantidad' => 'required|numeric|min:0',
+                'precio_total' => 'required|numeric|min:0',
+                'precio_unitario' => 'required|numeric|min:0',
                 'fecha_compra' => 'required|date|after:yesterday',
-                'paciente_id' => ['required', 'exists:pacientes,id', Rule::in($this->user()->paciente->id)],
-                'farmacia_id' => 'required|exists:farmacia,id',
-                'medicamento_comercial_id' => 'required|exists:medicamentos_comerciales,id' //medicamentos_comerciales se escribe asi?
+                'paciente_id' => 'required|exists:pacientes,id',// Rule::in($this->user()->paciente->id)],
+                'farmacia_id' => 'required|exists:farmacias,id',
+                'medicamento_comercial_id' => 'exists:medicamento_comercials,id' //medicamentos_comerciales se escribe asi?
             ];
-        return [
-            'cantidad' => 'required|double|min:0',
-            'precio_total' => 'required|double|min:0',
-            'precio_unitario' => 'required|double|min:0|',
-            'fecha_compra' => 'required|date|after:yesterday',
-            'paciente_id' => 'required|exists:pacientes,id',
-            'farmacia_id' => 'required|exists:farmacia,id',
-            'medicamento_comercial_id' => 'required|exists:medicamentos_comerciales,id' //medicamentos_comerciales se escribe asi?
-        ];
     }
 }
