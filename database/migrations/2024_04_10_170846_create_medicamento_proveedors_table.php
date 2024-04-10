@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ventas', function (Blueprint $table) {
+        Schema::create('medicamento_proveedors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('cantidad_total');
-            $table->double("precio_total");
-            $table->text('descripcion');
-            $table->foreignId('farmacia_id')->constrained()->onDelete('cascade');
-            $table->foreignId('paciente_id')->unique()->constrained()->onDelete('cascade');
+            $table->double('precio_unidad');
+            $table->integer('stock');
+            $table->foreignId('medicamento_id')->unique()->constrained()->onDelete('cascade');
+            $table->foreignId('proveedor_id')->unique()->constrained()->onDelete('cascade');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ventas');
+        Schema::dropIfExists('medicamento_proveedors');
     }
 };

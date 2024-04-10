@@ -17,13 +17,13 @@ class Proveedor extends Model
     protected $fillable = [
         'email',
         'telefono',
-        'pais_origen',
-        'pais_procedencia',
+        'pais',
+        'direccion',
     ];
 
-    public function medicamentoComercial()
+    public function medicamentoProveedor()
     {
-        return $this->hasMany(MedicamentoComercial::class);
+        return $this->hasMany(MedicamentoProveedor::class);
     }
 
     

@@ -17,6 +17,11 @@ class Paciente extends Model
     protected $fillable = [
         'dni',
         'nusha',
+        'fecha_nacimiento',
+    ];
+
+    protected $casts = [
+        'fecha_nacimiento' => 'datetime:Y-m-d'
     ];
 
 
@@ -28,12 +33,8 @@ class Paciente extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function farmacia(){
-        return $this->hasManyThrough(Farmacia::class, Venta::class);
-    }
-
-    public function ventas(){
-        return $this->hasMany(Venta::class);
+    public function venta(){
+        return $this->hashMany(Venta::class);
     }
 
    

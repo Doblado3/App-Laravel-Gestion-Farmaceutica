@@ -24,14 +24,20 @@ class Farmacia extends Model
 
    
 
-    public function paciente()
+    public function venta()
     {
-        return $this->hasManyThrough(Paciente::class, Venta::class);
+        return $this->hasMany(Venta::class);
     }
 
     public function farmaceutico()
     {
         return $this->hasMany(Farmaceutico::class);
     }
+
+    public function medicamentos()
+    {
+        return $this->belongsToMany(MedicamentoProveedor::class)->using(LineaCompra::class)->withPivot('precio_unidad','cantidad','fecha_compra');
+    }
+
     
 }

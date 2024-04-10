@@ -9,16 +9,10 @@ class Venta extends Model
 {
 
     protected $fillable = [
-        'cantidad',
-        'precio_unitario',
         'precio_total',
-        'fecha_compra',
-        'medicamento_comercial_id',
+        'descripcion',
     ];
 
-    protected $casts = [
-        'fecha_compra' => 'datetime:Y-m-d'
-    ];
 
     public function paciente()
     {
@@ -30,8 +24,8 @@ class Venta extends Model
         return $this->belongsTo(Farmacia::class);
     }
 
-    public function medicamento_comercial()
+    public function medicamentos()
     {
-        return $this->belongsTo(MedicamentoComercial::class);
+        return $this->belongsToMany(Medicamento::class)->using(LineaVenta::class)->withPivot('precio_unidad','cantidad','fecha_compra');
     }
 }

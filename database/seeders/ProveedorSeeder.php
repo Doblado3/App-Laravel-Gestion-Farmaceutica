@@ -18,14 +18,14 @@ class ProveedorSeeder extends Seeder
                 'nombre' => "FarmaciasDirect",
                 'email' => "farmaciasdirect@correo.com",
                 'telefono' => "951 12 04 03",
-                'pais_origen' => "España",
+                'pais' => "España",
                 'direccion' => "C/Ciudad de Carlet,1,41019",
             ],
             [
                 'nombre' => "Cofares",
                 'email' => "cofares@correo.com",
                 'telefono' => "949 79 00 00",
-                'pais_origen' => "España",
+                'pais' => "España",
                 'direccion' => "C/Santa Engracia 31,28010",
             ],
         ]);

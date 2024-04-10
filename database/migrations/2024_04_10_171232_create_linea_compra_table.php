@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ventas', function (Blueprint $table) {
+        Schema::create('linea_compra', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('cantidad_total');
-            $table->double("precio_total");
-            $table->text('descripcion');
+            $table->integer('cantidad');
+            $table->double('precio_unidad');
+            $table->dateTime('fecha_compra');
+            $table->foreignId('medicamento_proveedor_id')->constrained()->onDelete('cascade');
             $table->foreignId('farmacia_id')->constrained()->onDelete('cascade');
-            $table->foreignId('paciente_id')->unique()->constrained()->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ventas');
+        Schema::dropIfExists('linea_compra');
     }
 };

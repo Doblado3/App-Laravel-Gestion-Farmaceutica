@@ -15,22 +15,35 @@ class VentaSeeder extends Seeder
     {
         DB::table('ventas')->insert([
             [
-                'cantidad' => 3,
+                'cantidad_total' => 10,
                 'precio_total' => 400.0,
-                'precio_unitario' => 12.0,
-                'fecha_compra' => "2020-01-01",
+                'descripcion' => "Pago efectuado mediante tarjeta",
                 'paciente_id' => 1,
                 'farmacia_id' => 1,
-                'medicamento_comercial_id' => 1,
             ],
             [
-                'cantidad' => 7,
-                'precio_total' => 100.0,
-                'precio_unitario' => 7.5,
-                'fecha_compra' => "2018-01-01",
+                'cantidad_total' => 10,
+                'precio_total' => 400.0,
+                'descripcion' => "Pago efectuado mediante tarjeta",
                 'paciente_id' => 2,
-                'farmacia_id' => 1,
-                'medicamento_comercial_id' => 2,
+                'farmacia_id' => 2,
+            ],
+        ]);
+
+        DB::table('linea_venta')->insert([
+            [
+                'cantidad' => 30,
+                'precio_unidad' => 30.0,
+                'fecha_compra' => "2021-01-01",
+                'medicamento_id' => 1,
+                'venta_id' => 1,
+            ],
+            [
+                'cantidad' => 50,
+                'precio_unidad' => 50.0,
+                'fecha_compra' => "2021-05-05",
+                'medicamento_id' => 2,
+                'venta_id' => 2,
             ],
         ]);
     }

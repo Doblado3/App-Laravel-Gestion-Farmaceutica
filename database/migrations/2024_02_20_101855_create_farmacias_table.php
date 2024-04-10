@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('farmacias', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
             $table->text('ubicacion');
             $table->string('nombre');
             $table->integer('telefono');
