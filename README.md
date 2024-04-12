@@ -129,8 +129,8 @@ RF – 12: Como farmacéutico, quiero que el sistema actualice los niveles de ca
 
 
 - **Modelado conceptual en UML:**  
+![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/19d628e9-f79d-470b-9440-fee1d0953ebe)
 
-![Farmacia_actualizado_v3 4 drawio](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/06f8a914-59f1-427e-9a4e-ff49ea3fe3fd)
 
 
 
