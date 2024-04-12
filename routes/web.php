@@ -39,7 +39,6 @@ Route::resources([
     'farmacias' => FarmaciaController::class,
     'ventas' => VentaController::class,
     'pacientes' => PacienteController::class,
-    'medicamento_comercials' => MedicamentoComercialController::class,
 ]);
 
 

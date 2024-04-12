@@ -14,7 +14,7 @@
                     </svg>
                 </li>
                 <li>
-                    <a href="#" class="text-gray-500" aria-current="page">{{__('Editar')}} {{$farmaceutico->user->name}}</a>
+                    <a href="#" class="text-gray-500" aria-current="page">{{$farmaceutico->user->name}}</a>
                 </li>
             </ol>
         </nav>
@@ -28,24 +28,24 @@
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div>
-                        <x-input-label for="name" :value="__('Nombre')"/>
+                        <x-input-label for="name" :value="__('Farmacia')"/>
 
                         <x-text-input id="name" readonly disabled class="block mt-1 w-full" type="text" name="name"
-                                      :value="$farmaceutico->user->name" required autofocus/>
+                                      :value="$farmaceutico->farmacia->nombre" required autofocus/>
                     </div>
 
                     <div>
-                        <x-input-label for="apellidos" :value="__('Apellidos')"/>
+                        <x-input-label for="genero" :value="__('Sexo')"/>
 
-                        <x-text-input id="apellidos" readonly disabled class="block mt-1 w-full" type="text" name="apellidos"
-                                      :value="$farmaceutico->user->apellidos" required />
+                        <x-text-input id="genero" readonly disabled class="block mt-1 w-full" type="text" name="genero"
+                                      :value="$farmaceutico->user->genero" required />
                     </div>
 
                     <div class="mt-4">
-                        <x-input-label for="email" :value="__('Email')"/>
+                        <x-input-label for="sueldo" :value="__('Sueldo')"/>
 
-                        <x-text-input id="email" readonly disabled class="block mt-1 w-full" type="email" name="email"
-                                      :value="$farmaceutico->user->email" required/>
+                        <x-text-input id="sueldo" readonly disabled class="block mt-1 w-full" type="number" name="sueldo"
+                                      :value="$farmaceutico->sueldo" required/>
                     </div>
 
                     <div class="mt-4">
@@ -59,32 +59,11 @@
                     </div>
 
                     <div>
-                        <x-input-label for="dni" :value="__('DNI')"/>
+                        <x-input-label for="antiguedad" :value="__('Días Contratado')"/>
 
-                        <x-text-input id="dni" readonly disabled class="block mt-1 w-full" type="text" name="dni"
-                                      :value="$farmaceutico->dni" required />
+                        <x-text-input id="antiguedad" readonly disabled class="block mt-1 w-full" type="number" name="antiguedad"
+                                      :value="$farmaceutico->dias_contratado" required />
                     </div>
-
-                    <div class="mt-4">
-                        <x-input-label for="sueldo" :value="__('Sueldo')"/>
-
-                        <x-text-input readonly disabled id="sueldo" class="block mt-1 w-full" min="0" step="1"
-                                      type="number" name="sueldo" :value="$farmaceutico->sueldo" required/>
-                    </div>
-
-                    <div class="mt-4">
-                                <x-input-label for="farmacia_id" :value="__('Farmacia de Trabajo')" />
-
-
-                                <x-select id="farmacia_id" name="farmacia_id" required>
-                                    <option value="">{{__('Elige una opción')}}</option>
-                                    @foreach ($farmacias as $farmacia)
-                                    <option value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}</option>
-                                    @endforeach
-                                </x-select>
-                            </div>
-
-
                     <div class="flex items-center justify-end mt-4">
                         <x-danger-button type="button">
                             <a href="{{route('farmaceuticos.index')}}">

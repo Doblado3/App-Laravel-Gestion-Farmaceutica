@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Farmaceutico extends Model
 {
@@ -34,6 +35,13 @@ class Farmaceutico extends Model
     {
         return $this->belongsTo(Farmacia::class);
     }
+
+    public function getDiasContratadoAttribute()
+    {
+        return Carbon::now()->diffInDays($this->fecha_contratacion);
+    }
+
+
 
 
 

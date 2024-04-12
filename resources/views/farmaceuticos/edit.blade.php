@@ -36,6 +36,16 @@
 
                                 <x-text-input id="apellidos" class="block mt-1 w-full" type="text" name="apellidos" :value="$farmaceutico->user->apellidos" required />
                             </div>
+                            
+                            <div class="mt-4">
+                                <x-input-label for="genero" :value="__('Sexo')" />
+
+                                <x-select id="genero" name="genero" required>
+                                    <option value="{{$farmaceutico->user->genero}}" >{{$farmaceutico->user->genero}}</option>
+                                    <option value="Femenino">{{__('Femenino')}}</option>
+                                    <option value="Otro">{{__('Otro')}}</option>
+                                </x-select>
+                            </div>
 
                             <div class="mt-4">
                                 <x-input-label for="email" :value="__('Email')" />

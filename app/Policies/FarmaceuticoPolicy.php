@@ -21,7 +21,7 @@ class FarmaceuticoPolicy
      */
     public function view(User $user, Farmaceutico $farmaceutico): bool
     {
-        return true;
+        return $user->es_administrador;
     }
 
     /**
@@ -29,7 +29,7 @@ class FarmaceuticoPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->es_administrador;
     }
 
     /**
@@ -37,7 +37,7 @@ class FarmaceuticoPolicy
      */
     public function update(User $user, Farmaceutico $farmaceutico): bool
     {
-        return true;
+        return $user->es_administrador;
     }
 
     /**
@@ -45,7 +45,7 @@ class FarmaceuticoPolicy
      */
     public function delete(User $user, Farmaceutico $farmaceutico): bool
     {
-        return true;
+        return $user->es_administrador;
     }
 
     

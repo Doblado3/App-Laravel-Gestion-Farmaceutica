@@ -43,7 +43,6 @@ class FarmaceuticoController extends Controller
         $this->authorize('create', Farmaceutico::class);
         $user = $this->createUser($request);
         $farmaceutico = new Farmaceutico($request->validated());
-        //$farmaceutico->farmacia_id = $farmacia->id;
         $farmaceutico->user_id = $user->id;
         $farmaceutico->save();
         session()->flash('success', 'Farmacéutico creado correctamente.');
@@ -94,7 +93,6 @@ class FarmaceuticoController extends Controller
             session()->flash('success','Farmacéutico borrado corréctamente.');
         }else{
             session()->flash('warning','El farmacéutico no pudo borrarse. Inténtelo de nuevo');
-            //¿return back()->withInput();?
         }
         return redirect()->route('farmaceuticos.index');
     }

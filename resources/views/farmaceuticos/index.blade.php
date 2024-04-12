@@ -19,25 +19,16 @@
                     <table class="min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-900 uppercase text-sm leading-normal">
-                                <th class="py-3 px-6 text-left">ID</th>
                                 <th class="py-3 px-6 text-left">Nombre</th>
                                 <th class="py-3 px-6 text-left">Apellidos</th>
-                                {{-- <th class="py-3 px-6 text-left">Email</th> --}}
-                                <th class="py-3 px-6 text-left">Fecha contratación</th>
+                                <th class="py-3 px-6 text-left">Email</th>
                                 <th class="py-3 px-6 text-left">DNI</th>
-                                <th class="py-3 px-6 text-left">Sueldo</th>
-                                <th class="py-3 px-6 text-left">Farmacia de Trabajo</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm font-light">
 
                             @foreach ($farmaceuticos as $farmaceutico)
                             <tr class="border-b  border-gray-200">
-                                <td class="py-3 px-6 text-left whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <span class="font-medium">{{$farmaceutico->id}}</span>
-                                    </div>
-                                </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$farmaceutico->user->name}}</span>
@@ -48,29 +39,14 @@
                                         <span class="font-medium">{{$farmaceutico->user->apellidos}}</span>
                                     </div>
                                 </td>
-                                {{-- <td class="py-3 px-6 text-left whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <span class="font-medium">{{$farmaceutico->user->email}}</span>
-                                    </div>
-                                </td> --}}
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$farmaceutico->fecha_contratacion->format('d/m/Y')}}</span>
+                                        <span class="font-medium">{{$farmaceutico->user->email}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$farmaceutico->dni}}</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 text-left whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <span class="font-medium">{{number_format($farmaceutico->sueldo, 2)}}€</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 text-left whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <span class="font-medium">{{$farmaceutico->farmacia->nombre}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
