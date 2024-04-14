@@ -23,7 +23,7 @@ class Medicamento extends Model
 
     public function ventas()
     {
-        return $this->belongsToMany(Venta::class)->using(LineaVenta::class)->withPivot('precio_unidad','cantidad','fecha_compra');
+        return $this->belongsToMany(Venta::class)->using(LineaVenta::class)->withPivot('precio_unidad','cantidad');
     }
 
     public function medicamento_proveedor()

@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('linea_venta', function (Blueprint $table) {
+        Schema::create('medicamento_venta', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->softDeletes();
             $table->double('precio_unidad');
-            $table->dateTime('fecha_compra');
             $table->integer('cantidad');
             $table->foreignId('medicamento_id')->unique()->constrained()->onDelete('cascade');
-            $table->foreignId('venta_id')->unique()->constrained()->onDelete('cascade');
+            $table->foreignId('venta_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('linea_venta');
+        Schema::dropIfExists('medicamento_venta');
     }
 };

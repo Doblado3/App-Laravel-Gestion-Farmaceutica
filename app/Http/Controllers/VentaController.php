@@ -7,7 +7,7 @@ use App\Http\Requests\Venta\UpdateVentaRequest;
 use App\Models\Venta;
 use App\Models\Paciente;
 use App\Models\Farmacia;
-use App\Models\MedicamentoComercial;
+use App\Models\Medicamento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,14 +21,10 @@ class VentaController extends Controller
         $this->authorize('viewAny', Venta::class);
         
         $ventas = Venta::orderBy('fecha_compra','desc')->paginate(15);
-        /** 
-        *if(Auth::user()->es_farmaceutico)
-            *$ventas = Auth::user()->farmaceutico->farmacia->ventas()->orderBy('fecha_compra','desc')->paginate(15);
-        *elseif(Auth::user()->es_paciente)
-            *$ventas = Auth::user()->paciente->ventas()->orderBy('fecha_compra','desc')->paginate(15);
-        */
         if(Auth::user()->es_paciente)
-            $ventas = Auth::user()->paciente->ventas()->orderBy('fecha_compra','desc')->paginate(15);
+            $ventas = Auth::user()->paciente->venta()->orderBy('fecha_compra','desc')->paginate(15);
+        elseif(Auth::user()->es_farmaceutico)
+        $ventas = Auth::user()->farmaceutico->farmacia->venta()->orderBy('fecha_compra','desc')->paginate(15);
         return view('/ventas/index', ['ventas' => $ventas]);
     }
 
@@ -38,19 +34,13 @@ class VentaController extends Controller
     public function create()
     {
         $this->authorize('create', Venta::class);
-        $medicamentoComercials = MedicamentoComercial::all();
+        //$medicamentos = Medicamento::all();
         $farmacias = Farmacia::all();
-        $pacientes = Paciente::all();
         if(Auth::user()->es_farmaceutico)
-            return view('ventas/create',['farmacia' => Auth::user()->farmaceutico->farmacia, 'pacientes' => $pacientes, 'medicamentos' => $medicamentoComercials]);
-        elseif(Auth::user()->es_paciente)
-            return view('ventas/create',['paciente' => Auth::user()->paciente, 'farmacias' => $farmacias]);
-        return view('ventas/create', ['pacientes' => $pacientes, 'farmacias' => $farmacias, 'medicamentos' => $medicamentoComercials]);
+            return view('ventas/create',['farmacia' => Auth::user()->farmaceutico->farmacia]);
+        return view('ventas/create', ['farmacias' => $farmacias]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreVentaRequest $request)
     {
         $venta = new Venta($request->validated());

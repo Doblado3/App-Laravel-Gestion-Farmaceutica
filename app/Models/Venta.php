@@ -13,6 +13,10 @@ class Venta extends Model
         'descripcion',
     ];
 
+    protected $casts = [
+        'fecha_compra' => 'datetime:Y-m-d'
+    ];
+
 
     public function paciente()
     {
@@ -26,6 +30,6 @@ class Venta extends Model
 
     public function medicamentos()
     {
-        return $this->belongsToMany(Medicamento::class)->using(LineaVenta::class)->withPivot('precio_unidad','cantidad','fecha_compra');
+        return $this->belongsToMany(Medicamento::class)->using(LineaVenta::class)->withPivot('precio_unidad','cantidad');
     }
 }

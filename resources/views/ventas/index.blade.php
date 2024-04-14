@@ -21,14 +21,11 @@
                     <table class="min-w-max w-full table-auto">
                         <thead>
                         <tr class="bg-gray-200 text-gray-900 uppercase text-sm leading-normal">
-                            <th class="py-3 px-6 text-left">ID</th>
                             <th class="py-3 px-6 text-left">Paciente</th>
+                            <th class="py-3 px-6 text-left">Fecha</th>
                             <th class="py-3 px-6 text-left">Cantidad</th>
                             <th class="py-3 px-6 text-left">Farmacia</th>
-                            <th class="py-3 px-6 text-left">Fecha</th>
-                            <th class="py-3 px-6 text-left">Precio Unitario</th>
-                            <th class="py-3 px-6 text-left">Precio Total</th>
-                            <th class="py-3 px-6 text-left">Medicamentos</th>
+                            <th class="py-3 px-6 text-left">Total</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -38,22 +35,7 @@
                             <tr class="border-b border-gray-200">
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$venta->id}}</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 text-left whitespace-nowrap">
-                                    <div class="flex items-center">
                                         <span class="font-medium">{{$venta->paciente->user->name}}</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 text-left whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <span class="font-medium">{{$venta->cantidad}}</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 text-left whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <span class="font-medium">{{$venta->farmacia->nombre}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
@@ -63,17 +45,17 @@
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$venta->precio_unitario}}</span>
+                                        <span class="font-medium">{{$venta->cantidad_total}}</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$venta->farmacia->nombre}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$venta->precio_total}}</span>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 text-left whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <span class="font-medium">{{$venta->medicamento_comercial->nombre}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">

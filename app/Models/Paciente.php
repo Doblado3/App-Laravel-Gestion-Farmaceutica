@@ -34,7 +34,7 @@ class Paciente extends Model
     }
 
     public function venta(){
-        return $this->hashMany(Venta::class);
+        return $this->hasMany(Venta::class);
     }
 
    
