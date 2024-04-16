@@ -48,22 +48,6 @@
                             </x-select>
                             @endisset
                             </div>
-                            <div>
-                                <x-input-label for="cantidad" :value="__('Cantidad')" />
-
-                                <x-text-input id="cantidad" class="block mt-1 w-full" type="text" name="cantidad" :value="old('cantidad')" required />
-                            </div>
-                            <div class="mt-4">
-                                <x-input-label for="farmacia_id" :value="__('Farmacia de Trabajo')" />
-
-
-                                <x-select id="farmacia_id" name="farmacia_id" required>
-                                    <option value="">{{__('Elige una opción')}}</option>
-                                    @foreach ($farmacias as $farmacia)
-                                    <option value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}</option>
-                                    @endforeach
-                                </x-select>
-                            </div>
                             <div class="mt-4">
                                 <x-input-label for="fecha_compra" :value="__('Fecha y hora de venta')" />
 
@@ -74,25 +58,98 @@
                                         required />
                             </div>
                             <div>
-                                <x-input-label for="precio_unitario" :value="__('Precio por Unidad')" />
+                                <x-input-label for="cantidad" :value="__('Cantidad Total')" />
+
+                                <x-text-input id="cantidad" class="block mt-1 w-full" type="text" name="cantidad" :value="old('cantidad')" required />
+                            </div>
+                            <div>
+                                <x-input-label for="precio_unitario" :value="__('Precio Total')" />
 
                                 <x-text-input id="precio_unitario" class="block mt-1 w-full" type="text" name="precio_unitario" :value="old('precio_unitario')" required autofocus />
                             </div>
                             <div>
-                                <x-input-label for="precio_total" :value="__('Precio Total')" />
+                                <x-input-label for="farmacia_id" :value="__('Farmacia')" />
 
-                                <x-text-input id="precio_total" class="block mt-1 w-full" type="text" name="precio_total" :value="old('precio_total')" required autofocus />
+                                <x-text-input id="farmacia_id" class="block mt-1 w-full" type="text" name="farmacia_id" :value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}
                             </div>
-                            <div>
-                                <x-input-label for="medicamento_comercial_id" :value="__('Medicamento')" />
+                            <div class="py-12">
+                                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                                        <div class="font-semibold text-lg px-6 py-4 bg-white border-b border-gray-200">
+                                            Añadir medicamentos
+                                        </div>
+                                        <div class="p-6 bg-white border-b border-gray-200" id="medicamentos_container">
+                                            <div class="medicamento">
+                                                <div class="mt-4">
+                                                    <x-input-label for="medicamento_id[]" :value="__('Selecciona un medicamento')" />
+                                                    <select class="medicamento_id" name="medicamento_id[]" required>
+                                                        @foreach ($medicamentos as $medicamento)
+                                                            <option value="{{$medicamento->nombre_comercial}}" >{{$medicamento->nombre_comercial}}</option>                                                        
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="mt-4">
+                                                    <x-input-label for="precio_unitario[]" :value="__('Precio por Unidad')" />
+                                                    <x-text-input class="precio_unitario block mt-1 w-full" type="text" name="precio_unitario[]" required autofocus />
+                                                </div>
+                                                <div class="mt-4">
+                                                    <x-input-label for="cantidad[]" :value="__('Cantidad de Unidades')" />
+                                                    <x-text-input class="cantidad block mt-1 w-full" type="text" name="cantidad[]" required autofocus />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-end mt-4">
+                                                <x-primary-button id="agregar_medicamento" type="button" class="ml-4">
+                                                        {{ __('Añadir medicamento') }}
+                                                </x-primary-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Necesitamos usar JavaScript para poder añadir varios medicamentos del tiron al crear/editar ventas  -->
+                            <script>
+                                document.getElementById('agregar_medicamento').addEventListener('click', function() {
+                                    var container = document.getElementById('medicamentos_container');
+                                    var newMedicamento = document.createElement('div');
+                                    newMedicamento.classList.add('medicamento');
+                                    newMedicamento.innerHTML = `
+                                        <div class="mt-4">
+                                            <x-input-label for="medicamento_id[]" :value="__('Selecciona un medicamento')" />
+                                            <select class="medicamento_id" name="medicamento_id[]" required>
+                                                <option value="">{{ __('Elige una opción') }}</option>
+                                                @foreach ($medicamentos as $medicamento)
+                                                    <option value="{{ $medicamento->id }}">{{ $medicamento->nombre_comercial }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="mt-4">
+                                            <x-input-label for="precio_unitario[]" :value="__('Precio por Unidad')" />
+                                            <x-text-input class="precio_unitario block mt-1 w-full" type="text" name="precio_unitario[]" required autofocus />
+                                        </div>
+                                        <div class="mt-4">
+                                            <x-input-label for="cantidad[]" :value="__('Cantidad de Unidades')" />
+                                            <x-text-input class="cantidad block mt-1 w-full" type="text" name="cantidad[]" required autofocus />
+                                        </div>
+                                        <div class="flex items-center justify-end mt-4">
+                                                <x-danger-button type="button" class="eliminar_medicamento">
+                                                        {{ __('Eliminar medicamento') }}
+                                                </x-danger-button>
+                                        </div>
+        `                           ;
+                                    container.appendChild(newMedicamento);
+                                });
 
-                                <x-text-input id="medicamento_comercial_id" class="block mt-1 w-full" type="text" name="medicameno_comercial_id" :value="old('medicamento_comercial_id')" required />
-                            </div>
+                                document.addEventListener('click', function(event) {
+                                    if (event.target.classList.contains('eliminar_medicamento')) {
+                                        event.target.closest('.medicamento').remove();
+                                    }
+                                });
+                            </script>
 
 
                             <div class="flex items-center justify-end mt-4">
                                 <x-danger-button type="button">
-                                    <a href= "{{Auth::user()->es_adminitrador ? route('ventas.index') : url()->previous()}}">
+                                    <a href="{{route('ventas.index')}}">
                                     {{ __('Cancelar') }}
                                     </a>
                                 </x-danger-button>

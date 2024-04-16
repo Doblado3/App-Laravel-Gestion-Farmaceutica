@@ -24,7 +24,7 @@ class VentaController extends Controller
         if(Auth::user()->es_paciente)
             $ventas = Auth::user()->paciente->venta()->orderBy('fecha_compra','desc')->paginate(15);
         elseif(Auth::user()->es_farmaceutico)
-        $ventas = Auth::user()->farmaceutico->farmacia->venta()->orderBy('fecha_compra','desc')->paginate(15);
+            $ventas = Auth::user()->farmaceutico->farmacia->venta()->orderBy('fecha_compra','desc')->paginate(15);
         return view('/ventas/index', ['ventas' => $ventas]);
     }
 
@@ -34,11 +34,10 @@ class VentaController extends Controller
     public function create()
     {
         $this->authorize('create', Venta::class);
-        //$medicamentos = Medicamento::all();
+        $medicamentos = Medicamento::all();
+        $pacientes = Paciente::all();
         $farmacias = Farmacia::all();
-        if(Auth::user()->es_farmaceutico)
-            return view('ventas/create',['farmacia' => Auth::user()->farmaceutico->farmacia]);
-        return view('ventas/create', ['farmacias' => $farmacias]);
+        return view('ventas/create', ['farmacias' => $farmacias, 'pacientes' => $pacientes, 'medicamentos' => $medicamentos]);
     }
 
     public function store(StoreVentaRequest $request)
@@ -64,16 +63,13 @@ class VentaController extends Controller
     public function edit(Venta $venta)
     {
         $this->authorize('update', $venta);
-        $medicamentoComercials = MedicamentoComercial::all();
+        $medicamentos = Medicamento::all();
         $farmacias = Farmacia::all();
         $pacientes = Paciente::all();
         if(Auth::user()->es_farmaceutico){
-            return view('ventas/edit', ['venta' => $venta, 'farmacia' => Auth::user()->farmacia, 'pacientes' => $pacientes, 'medicamentos' => $medicamentoComercials]);
+            return view('ventas/edit', ['venta' => $venta, 'farmacia' => Auth::user()->farmaceutico->farmacia, 'pacientes' => $pacientes, 'medicamentos' => $medicamentos]);
         }
-        elseif(Auth::user()->es_paciente){
-            return view('ventas/edit', ['venta' => $venta, 'paciente' => Auth::user()->paciente, 'farmacias' => $farmacias, 'medicamentos' => $medicamentoComercials]);
-        }
-        return view('ventas/edit',['venta' => $venta, 'pacientes' => $pacientes, 'farmacias' => $farmacias, 'medicamentos' => $medicamentoComercials]);
+        return view('ventas/edit',['venta' => $venta, 'pacientes' => $pacientes, 'farmacias' => $farmacias, 'medicamentos' => $medicamentos]);
 
     }
 
@@ -104,26 +100,24 @@ class VentaController extends Controller
     //---------- PREGUNTAR ESTA FUNCIÓN ----------
 
     //----------                        ----------
-    public function attach_medicamento_comercial(Request $request, Venta $venta)
+    public function attach_medicamento(Request $request, Venta $venta)
     {
 
         $this->validateWithBag('attach', $request, [
-            'medicamento_comercial_id' => 'required|exists:medicamentoComercial,id',
-            'fecha_compra' => 'required|date',
+            'medicamento_id' => 'required|exists:medicamentoComercial,id',
             'cantidad' => 'integer',
-            'precio_total' => 'required|numeric|min:0',
+            'precio_unidad' => 'required|numeric|min:0',
         ]);
-        $venta->medicamento_comercials()->attach($request->medicamento_comercial_id, [
-            'fecha_compra' => $request->fecha_compra,
+        $venta->medicamentos()->attach($request->medicamento_id, [
             'cantidad' => $request->cantidad,
-            'precio_total' => $request->precio_total,
+            'precio_unitario' => $request->precio_unitario,
         ]);
-        return redirect()->route('ventas.edit', $venta->id);
+        return redirect()->route('ventas.create', $venta->id)->with('success', 'Venta creada exitosamente');
     }
 
-    public function detach_medicamento_comercial(Venta $venta, MedicamentoComercial $medicamentoComercial)
+    public function detach_medicamento(Venta $venta, Medicamento $medicamento)
     {
-        $venta->medicamento_comercials()->detach($medicamentoComercial->id);
-        return redirect()->route('ventas.edit', $venta->id);
+        $venta->medicamentos()->detach($medicamento->id);
+        return redirect()->route('ventas.create', $venta->id);
     }
 }

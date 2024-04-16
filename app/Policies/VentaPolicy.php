@@ -27,7 +27,7 @@ class VentaPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->es_paciente || $user->es_farmaceutico || $user->es_administrador;
     }
 
     /**
@@ -35,7 +35,7 @@ class VentaPolicy
      */
     public function view(User $user, Venta $venta): bool
     {
-        return true;
+        return $user->es_paciente || $user->es_farmaceutico || $user->es_administrador;
     }
 
     /**

@@ -17,10 +17,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="font-semibold text-lg px-6 py-4 bg-white border-b border-gray-200">
-                    Información de la venta
+                    Formulario de creación
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <!-- Errores de validación en servidor -->
                     <x-input-error class="mb-4" :messages="$errors->all()" />
                     <form method="POST" action="{{ route('ventas.store') }}">
                         @csrf
@@ -46,10 +45,24 @@
                                 @endforeach
                             </x-select>
                             @endisset
-                        <div>
-                                <x-input-label for="cantidad" :value="__('Cantidad')" />
+                        <div class="mt-4">
+                            <x-input-label for="fecha_compra" :value="__('Fecha y hora de venta')" />
 
-                                <x-text-input id="cantidad" class="block mt-1 w-full" type="text" name="name" :value="old('cantidad')" required autofocus />
+                            <x-text-input id="fecha_compra" class="block mt-1 w-full"
+                                     type="datetime-local"
+                                     name="fecha_compra"
+                                     :value="old('fecha_compra')"
+                                     required />
+                        </div>
+                        <div>
+                                <x-input-label for="cantidad_total" :value="__('Cantidad Total')" />
+
+                                <x-text-input id="cantidad_total" class="block mt-1 w-full" type="text" name="name" :value="old('cantidad_total')" required autofocus />
+                        </div>
+                        <div>
+                                <x-input-label for="precio_total" :value="__('Precio Total')" />
+
+                                <x-text-input id="precio_total" class="block mt-1 w-full" type="text" name="precio_total" :value="old('precio_total')" required autofocus />
                         </div>
                         <div class="mt-4">
                                 <x-input-label for="farmacia_id" :value="__('Farmacia')" />
@@ -62,30 +75,83 @@
                                     @endforeach
                                 </x-select>
                         </div>
-                        <div class="mt-4">
-                            <x-input-label for="fecha_de_compra" :value="__('Fecha y hora de venta')" />
-
-                            <x-text-input id="fecha_de_compra" class="block mt-1 w-full"
-                                     type="datetime-local"
-                                     name="fecha_de_compra"
-                                     :value="old('fecha_de_compra')"
-                                     required />
-                        </div>
-                        <div>
-                                <x-input-label for="precio_unitario" :value="__('Precio por Unidad')" />
-
-                                <x-text-input id="precio_unitario" class="block mt-1 w-full" type="text" name="precio_unitario" :value="old('precio_unitario')" required autofocus />
-                        </div>
-                        <div>
-                                <x-input-label for="precio_total" :value="__('Precio Total')" />
-
-                                <x-text-input id="precio_total" class="block mt-1 w-full" type="text" name="precio_total" :value="old('precio_total')" required autofocus />
-                        </div>
-                        <div>
-                                <x-input-label for="medicamento_comercial_id" :value="__('Medicamento')" />
-
-                                <x-text-input id="medicamento_comercial_id" class="block mt-1 w-full" type="text" name="medicameno_comercial_id" :value="old('medicamento_comercial_id')" required />
+                        <div class="py-12">
+                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                                    <div class="font-semibold text-lg px-6 py-4 bg-white border-b border-gray-200">
+                                        Añadir medicamentos
+                                    </div>
+                                    <div class="p-6 bg-white border-b border-gray-200" id="medicamentos_container">
+                                        <div class="medicamento">
+                                            <div class="mt-4">
+                                                <x-input-label for="medicamento_id[]" :value="__('Selecciona un medicamento')" />
+                                                <select class="medicamento_id" name="medicamento_id[]" required>
+                                                    <option value="">{{ __('Elige una opción') }}</option>
+                                                    @foreach ($medicamentos as $medicamento)
+                                                        <option value="{{ $medicamento->id }}">{{ $medicamento->nombre_comercial }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="mt-4">
+                                                <x-input-label for="precio_unitario[]" :value="__('Precio por Unidad')" />
+                                                <x-text-input class="precio_unitario block mt-1 w-full" type="text" name="precio_unitario[]" required autofocus />
+                                            </div>
+                                            <div class="mt-4">
+                                                <x-input-label for="cantidad[]" :value="__('Cantidad de Unidades')" />
+                                                <x-text-input class="cantidad block mt-1 w-full" type="text" name="cantidad[]" required autofocus />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-end mt-4">
+                                            <x-primary-button id="agregar_medicamento" type="button" class="ml-4">
+                                                    {{ __('Añadir medicamento') }}
+                                            </x-primary-button>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <!-- Necesitamos usar JavaScript para poder añadir varios medicamentos del tiron al crear/editar ventas  -->
+                        <script>
+                            document.getElementById('agregar_medicamento').addEventListener('click', function() {
+                                var container = document.getElementById('medicamentos_container');
+                                var newMedicamento = document.createElement('div');
+                                newMedicamento.classList.add('medicamento');
+                                newMedicamento.innerHTML = `
+                                    <div class="mt-4">
+                                        <x-input-label for="medicamento_id[]" :value="__('Selecciona un medicamento')" />
+                                        <select class="medicamento_id" name="medicamento_id[]" required>
+                                            <option value="">{{ __('Elige una opción') }}</option>
+                                            @foreach ($medicamentos as $medicamento)
+                                                <option value="{{ $medicamento->id }}">{{ $medicamento->nombre_comercial }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mt-4">
+                                        <x-input-label for="precio_unitario[]" :value="__('Precio por Unidad')" />
+                                        <x-text-input class="precio_unitario block mt-1 w-full" type="text" name="precio_unitario[]" required autofocus />
+                                    </div>
+                                    <div class="mt-4">
+                                        <x-input-label for="cantidad[]" :value="__('Cantidad de Unidades')" />
+                                        <x-text-input class="cantidad block mt-1 w-full" type="text" name="cantidad[]" required autofocus />
+                                    </div>
+                                    <div class="flex items-center justify-end mt-4">
+                                            <x-danger-button type="button" class="eliminar_medicamento">
+                                                    {{ __('Eliminar medicamento') }}
+                                            </x-danger-button>
+                                    </div>
+        `                       ;
+                                container.appendChild(newMedicamento);
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                if (event.target.classList.contains('eliminar_medicamento')) {
+                                    event.target.closest('.medicamento').remove();
+                                }
+                            });
+                        </script>
+
+
+      
                         <div class="flex items-center justify-end mt-4">
                             <x-danger-button type="button">
                                 <a href="{{route('ventas.index')}}">
