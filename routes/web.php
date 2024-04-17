@@ -6,7 +6,7 @@ use App\Http\Controllers\FarmaceuticoController;
 use App\Http\Controllers\FarmaciaController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\PacienteController;
-use App\Http\Controllers\MedicamentoComercialController;
+use App\Http\Controllers\MedicamentoController;
 
 
 /*
@@ -34,12 +34,26 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth'])->group(function () {
+ 
+    Route::post('/ventas/{venta}/attach-medicamentoe', [VentaController::class, 'attach_medicamentoe'])
+        ->name('ventas.attachMedicamentoe')
+        ->middleware('can:attach_medicamentoe,venta');
+    Route::post('/ventas/attach-medicamentoc', [VentaController::class, 'attach_medicamentoc'])
+        ->name('ventas.attachMedicamentoc')
+        ->middleware('can:attach_medicamentoc,venta');
+    Route::delete('/ventas/{venta}/detach-medicamentoe/{medicamento}', [VentaController::class, 'detach_medicamentoe'])
+        ->name('ventas.detachMedicamentoe')
+        ->middleware('can:detach_medicamentoe,venta');
+
 Route::resources([
     'farmaceuticos' => FarmaceuticoController::class,
     'farmacias' => FarmaciaController::class,
     'ventas' => VentaController::class,
     'pacientes' => PacienteController::class,
-]);
+    ]);
+    
+});
 
 
 require __DIR__.'/auth.php';

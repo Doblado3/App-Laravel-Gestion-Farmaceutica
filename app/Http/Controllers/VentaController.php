@@ -31,12 +31,15 @@ class VentaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Venta $venta)
     {
         $this->authorize('create', Venta::class);
         $medicamentos = Medicamento::all();
         $pacientes = Paciente::all();
         $farmacias = Farmacia::all();
+        if(Auth::user()->es_farmaceutico){
+            return view('ventas/create', ['venta' => $venta, 'farmacia' => Auth::user()->farmaceutico->farmacia, 'pacientes' => $pacientes, 'medicamentos' => $medicamentos]);
+        }
         return view('ventas/create', ['farmacias' => $farmacias, 'pacientes' => $pacientes, 'medicamentos' => $medicamentos]);
     }
 
@@ -100,24 +103,39 @@ class VentaController extends Controller
     //---------- PREGUNTAR ESTA FUNCIÓN ----------
 
     //----------                        ----------
-    public function attach_medicamento(Request $request, Venta $venta)
+    public function attach_medicamentoe(Request $request, Venta $venta)
     {
 
         $this->validateWithBag('attach', $request, [
-            'medicamento_id' => 'required|exists:medicamentoComercial,id',
-            'cantidad' => 'integer',
+            'medicamento_id' => 'required|exists:medicamentos,id',
+            'cantidad' => 'numeric',
             'precio_unidad' => 'required|numeric|min:0',
         ]);
         $venta->medicamentos()->attach($request->medicamento_id, [
             'cantidad' => $request->cantidad,
             'precio_unitario' => $request->precio_unitario,
         ]);
-        return redirect()->route('ventas.create', $venta->id)->with('success', 'Venta creada exitosamente');
+        return redirect()->route('ventas.edit', $venta->id)->with('success', 'Medicamento añadido exitosamente');
     }
 
-    public function detach_medicamento(Venta $venta, Medicamento $medicamento)
+    public function detach_medicamentoe(Venta $venta, Medicamento $medicamento)
     {
         $venta->medicamentos()->detach($medicamento->id);
         return redirect()->route('ventas.create', $venta->id);
+    }
+
+    public function attach_medicamentoc(Request $request, Venta $venta)
+    {
+
+        $this->validateWithBag('attach', $request, [
+            'medicamento_id' => 'required|exists:medicamentos,id',
+            'cantidad' => 'numeric',
+            'precio_unidad' => 'required|numeric|min:0',
+        ]);
+        $venta->medicamentos()->attach($request->medicamento_id, [
+            'cantidad' => $request->cantidad,
+            'precio_unitario' => $request->precio_unitario,
+        ]);
+        return redirect()->route('ventas.create', $venta->id)->with('success', 'Medicamento añadido exitosamente');
     }
 }

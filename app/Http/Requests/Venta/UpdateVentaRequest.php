@@ -25,13 +25,10 @@ class UpdateVentaRequest extends FormRequest
     public function rules(): array
     {
         return [
-                'cantidad' => 'required|numeric|min:0',
+                'cantidad_total' => 'required|numeric|min:0',
                 'precio_total' => 'required|numeric|min:0',
-                'precio_unitario' => 'required|numeric|min:0',
                 'fecha_compra' => 'required|date|after:yesterday',
                 'paciente_id' => 'required|exists:pacientes,id',// Rule::in($this->user()->paciente->id)],
-                'farmacia_id' => 'required|exists:farmacias,id',
-                'medicamento_comercial_id' => 'exists:medicamento_comercials,id' //medicamentos_comerciales se escribe asi?
-            ];
+                'farmacia_id' => 'exists:farmacias,id',            ];
     }
 }
