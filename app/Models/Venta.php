@@ -10,7 +10,10 @@ class Venta extends Model
 
     protected $fillable = [
         'precio_total',
-        'descripcion',
+        'cantidad_total',
+        'fecha_compra',
+        'farmacia_id',
+        'paciente_id',
     ];
 
     protected $casts = [

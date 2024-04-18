@@ -27,8 +27,9 @@ class UpdateVentaRequest extends FormRequest
         return [
                 'cantidad_total' => 'required|numeric|min:0',
                 'precio_total' => 'required|numeric|min:0',
-                'fecha_compra' => 'required|date|after:yesterday',
+                'fecha_compra' => 'required|date|before:yesterday',
                 'paciente_id' => 'required|exists:pacientes,id',// Rule::in($this->user()->paciente->id)],
-                'farmacia_id' => 'exists:farmacias,id',            ];
+                'farmacia_id' => 'exists:farmacias,id',           
+            ];
     }
 }

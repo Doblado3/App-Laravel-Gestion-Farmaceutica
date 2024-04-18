@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Venta;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Venta;
-use Illuminate\Validation\Rule;
 
 class StoreVentaRequest extends FormRequest
 {
@@ -23,11 +22,10 @@ class StoreVentaRequest extends FormRequest
      */
     public function rules(): array
     {
-        if($this->user()->es_farmaceutico)
-            return [
-                'cantidad_total' => 'required|numeric|min:0',
+        return [
                 'precio_total' => 'required|numeric|min:0',
-                'fecha_compra' => 'required|date|after:yesterday',
+                'cantidad_total' => 'numeric|min:0',
+                'fecha_compra' => 'required|date|before:yesterday',
                 'paciente_id' => 'required|exists:pacientes,id',
                 'farmacia_id' => 'exists:farmacias,id',
             ];

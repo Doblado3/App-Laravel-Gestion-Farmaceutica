@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('cantidad_total');
+            $table->integer('cantidad_total')->nullable();
             $table->double("precio_total");
             $table->dateTime("fecha_compra");
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->foreignId('farmacia_id')->constrained()->onDelete('cascade');
-            $table->foreignId('paciente_id')->unique()->constrained()->onDelete('cascade');
+            $table->foreignId('paciente_id')->constrained()->onDelete('cascade');
         });
     }
 

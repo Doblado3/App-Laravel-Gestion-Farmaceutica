@@ -55,20 +55,23 @@
                                      required />
                         </div>
                         <div>
-                                <x-input-label for="cantidad_total" :value="__('Cantidad Total')" />
-
-                                <x-text-input id="cantidad_total" class="block mt-1 w-full" type="text" name="name" :value="old('cantidad_total')" required autofocus />
-                        </div>
-                        <div>
                                 <x-input-label for="precio_total" :value="__('Precio Total')" />
 
-                                <x-text-input id="precio_total" class="block mt-1 w-full" type="text" name="precio_total" :value="old('precio_total')" required autofocus />
+                                <x-text-input id="precio_total" class="block mt-1 w-full" type="text" name="precio_total" :value="old('precio_total')" required  />
                         </div>
                         <div>
-                                <x-input-label for="farmacia_id" :value="__('Farmacia')" />
+                                <x-input-label for="cantidad_total" :value="__('Cantidad Total')" />
 
-                                <x-text-input id="farmacia_id" class="block mt-1 w-full" type="text" name="farmacia_id" :value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}
+                                <x-text-input id="cantidad_total" class="block mt-1 w-full" type="text" name="name" :value="old('cantidad_total')" required  />
                         </div>
+                        <div class="mt-4">
+                                <x-input-label for="farmacia_id" :value="__('Farmacia de Trabajo')" />
+
+
+                                <x-select id="farmacia_id" name="farmacia_id" required>
+                                    <option  value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}</option>
+                                </x-select>
+                            </div>
 
 
                         <div class="py-12">
@@ -126,54 +129,87 @@
                                             <form method="POST" action="{{ route('ventas.attachMedicamentoc', [$venta->id]) }}">
                                                 @csrf
 
-                                                <div class="mt-4">
-                                                    <x-input-label for="medicamento_id" :value="__('Medicamento')"/>
-
-                                                    <x-select id="medicamento_id" name="medicamento_id" required>
-                                                        <option value="">{{__('Elige un medicamento')}}</option>
-                                                        @foreach ($medicamentos as $medicamento)
-                                                            <option value="{{$medicamento->id}}"@if (old('medicamento_id') == $medicamento->id) selected @endif>{{$medicamento->nombre_comercial}}
-                                                            </option>
-                                                        @endforeach
-                                                    </x-select>
-                                                </div>
-
-                                                <div class="mt-4">
-                                                    <x-input-label for="precio_unidad" :value="__('Precio Unitario')"/>
-
-                                                    <x-text-input id="precio_unidad" class="block mt-1 w-full"
-                                                                type="text"
-                                                                name="precio_unidad"
-                                                                :value="old('precio_unidad')"
-                                                                required/>
-                                                </div>
-
-                                                <div class="mt-4">
-                                                    <x-input-label for="cantidad" :value="__('Cantidad Unitaria')"/>
-
-                                                    <x-text-input id="cantidad" class="block mt-1 w-full"
-                                                                type="text"
-                                                                name="cantidad"
-                                                                :value="old('cantidad')"
-                                                                required/>
-                                                </div>
-
-
+                                                <div id="medicationFields">
+                                <div class="medication-field">
+                                    <div class="mt-4">
+                                        <x-input-label for="medicamento_id" :value="__('Medicamento')"/>
             
+                                        <x-select id="medicamento_id" name="medicamento_id[]" required>
+                                            <option value="">{{__('Elige un medicamento')}}</option>
+                                            @foreach ($medicamentos as $medicamento)
+                                                <option value="{{$medicamento->id}}">{{$medicamento->nombre_comercial}}</option>
+                                            @endforeach
+                                        </x-select>
+                                    </div>
+            
+                                    <div class="mt-4">
+                                        <x-input-label for="precio_unidad" :value="__('Precio Unitario')"/>
+            
+                                        <x-text-input id="precio_unidad" class="block mt-1 w-full"
+                                                    type="text"
+                                                    name="precio_unidad[]"
+                                                    required/>
+                                    </div>
+            
+                                    <div class="mt-4">
+                                        <x-input-label for="cantidad" :value="__('Cantidad Unitaria')"/>
+            
+                                        <x-text-input id="cantidad" class="block mt-1 w-full"
+                                                    type="text"
+                                                    name="cantidad[]"
+                                                    required/>
+                                    </div>
 
-                                                <div class="flex items-center justify-end mt-4">
-                                                    <x-danger-button type="button">
-                                                        <a href="{{route('ventas.index')}}">
-                                                            {{ __('Cancelar') }}
-                                                        </a>
-                                                    </x-danger-button>
-                                                    <x-primary-button class="ml-4">
-                                                        {{ __('Guardar') }}
-                                                    </x-primary-button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                    <div class="flex items-center justify-end mt-4" style="display: none;">
+                                
+                                        <x-danger-button type="button" onclick="removeLastMedicationField()">
+                                            {{ __('Eliminar') }}
+                                        </x-danger-button>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="flex items-center justify-end mt-4">
+                                <x-primary-button type="button" onclick="addMedicationField()">
+                                    {{ __('Añadir') }}
+                                </x-primary-button>
+                            </div>
+
+
+                            <div class="flex items-center justify-end mt-4">
+                                <x-danger-button type="button">
+                                    <a href="{{route('ventas.index')}}">
+                                        {{ __('Cancelar') }}
+                                    </a>
+                                </x-danger-button>
+                                <x-primary-button class="ml-4">
+                                    {{ __('Guardar') }}
+                                </x-primary-button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Existing code -->
+
+    <script>
+        function addMedicationField() {
+            const medicationFields = document.getElementById('medicationFields');
+            const newMedicationField = document.querySelector('.medication-field').cloneNode(true);
+            medicationFields.appendChild(newMedicationField);
+            // Show remove button for newly added field
+            newMedicationField.querySelector('.flex').style.display = 'flex';
+        }
+
+        function removeLastMedicationField() {
+            const medicationFields = document.getElementById('medicationFields');
+            const fields = medicationFields.getElementsByClassName('medication-field');
+            if (fields.length > 1) { // Ensure there's at least one initial field
+                medicationFields.removeChild(fields[fields.length - 1]);
+            }
+        }
+    </script>
 </x-app-layout>
