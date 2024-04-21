@@ -42,9 +42,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/ventas/attach-medicamentoc', [VentaController::class, 'attach_medicamentoc'])
         ->name('ventas.attachMedicamentoc')
         ->middleware('can:attach_medicamentoc,venta');
-    Route::delete('/ventas/{venta}/detach-medicamentoe/{medicamento}', [VentaController::class, 'detach_medicamentoe'])
-        ->name('ventas.detachMedicamentoe')
-        ->middleware('can:detach_medicamentoe,venta');
+    Route::delete('/ventas/{venta}/detach-medicamento/{medicamento}', [VentaController::class, 'detach_medicamento'])
+        ->name('ventas.detachMedicamento')
+        ->middleware('can:detach_medicamento,venta');
 
 Route::resources([
     'farmaceuticos' => FarmaceuticoController::class,

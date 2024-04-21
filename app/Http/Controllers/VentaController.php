@@ -40,7 +40,7 @@ class VentaController extends Controller
         if(Auth::user()->es_farmaceutico){
             return view('ventas/create', ['venta' => $venta, 'farmacia' => Auth::user()->farmaceutico->farmacia, 'pacientes' => $pacientes, 'medicamentos' => $medicamentos]);
         }
-        return view('ventas/create', ['farmacias' => $farmacias, 'pacientes' => $pacientes, 'medicamentos' => $medicamentos]);
+        return view('ventas/create', ['venta' => $venta,'farmacias' => $farmacias, 'pacientes' => $pacientes, 'medicamentos' => $medicamentos]);
     }
 
     public function store(StoreVentaRequest $request)
@@ -113,15 +113,15 @@ class VentaController extends Controller
         ]);
         $venta->medicamentos()->attach($request->medicamento_id, [
             'cantidad' => $request->cantidad,
-            'precio_unitario' => $request->precio_unitario,
+            'precio_unidad' => $request->precio_unidad,
         ]);
         return redirect()->route('ventas.edit', $venta->id)->with('success', 'Medicamento añadido exitosamente');
     }
 
-    public function detach_medicamentoe(Venta $venta, Medicamento $medicamento)
+    public function detach_medicamento(Venta $venta, Medicamento $medicamento)
     {
         $venta->medicamentos()->detach($medicamento->id);
-        return redirect()->route('ventas.create', $venta->id);
+        return redirect()->route('ventas.edit', $venta->id);
     }
 
     public function attach_medicamentoc(Request $request, Venta $venta)
@@ -134,7 +134,7 @@ class VentaController extends Controller
         ]);
         $venta->medicamentos()->attach($request->medicamento_id, [
             'cantidad' => $request->cantidad,
-            'precio_unitario' => $request->precio_unitario,
+            'precio_unidad' => $request->precio_unidad,
         ]);
         return redirect()->route('ventas.create', $venta->id)->with('success', 'Medicamento añadido exitosamente');
     }

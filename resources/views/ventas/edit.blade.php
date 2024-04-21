@@ -58,20 +58,34 @@
                                         required />
                             </div>
                             <div>
-                                <x-input-label for="cantidad" :value="__('Cantidad Total')" />
+                                <x-input-label for="cantidad_total" :value="__('Cantidad Total')" />
 
-                                <x-text-input id="cantidad" class="block mt-1 w-full" type="text" name="cantidad" :value="old('cantidad')" required />
+                                <x-text-input id="cantidad_total" class="block mt-1 w-full" type="number" name="cantidad_total" :value="old('cantidad_total')" required autofocus />
                             </div>
                             <div>
-                                <x-input-label for="precio_unitario" :value="__('Precio Total')" />
+                                <x-input-label for="precio_total" :value="__('Precio Total')" />
 
-                                <x-text-input id="precio_unitario" class="block mt-1 w-full" type="text" name="precio_unitario" :value="old('precio_unitario')" required autofocus />
+                                <x-text-input id="precio_total" class="block mt-1 w-full" type="number" name="precio_total" :value="old('precio_total')" required autofocus />
                             </div>
-                            <div>
-                                <x-input-label for="farmacia_id" :value="__('Farmacia')" />
+                            @if(Auth::user()->es_farmaceutico)
+                                <div>
+                                    <x-input-label for="farmacia_id" :value="__('Farmacia')" />
 
-                                <x-text-input id="farmacia_id" class="block mt-1 w-full" type="text" name="farmacia_id" :value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}
-                            </div>
+                                    <x-text-input id="farmacia_id" class="block mt-1 w-full" type="text" name="farmacia_id" :value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}
+                                </div>
+                            @else
+                                <div class="mt-4">
+                                    <x-input-label for="farmacia_id" :value="__('Farmacia')" />
+
+
+                                    <x-select id="farmacia_id" name="farmacia_id" required>
+                                        @foreach($farmacias as $farmacia)
+                                        <option  value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}</option>
+                                        @endforeach
+                                    </x-select>
+                                </div>
+                            @endif
+
 
                             <div class="py-12">
                                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -112,11 +126,11 @@
                                                             <div class="flex item-center justify-center">
                                                                 <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                                     <form id="detach-form-{{$venta->id}}-{{$medicamento->id}}" method="POST"
-                                                                        action="{{ route('ventas.detachMedicamentoe', [$venta->id, $medicamento->id]) }}">
+                                                                        action="{{ route('ventas.detachMedicamento', [$venta->id, $medicamento->id]) }}">
                                                                         @csrf
                                                                         @method('delete')
                                                                         <a class="cursor-pointer"
-                                                                        onclick="getElementById('detach-form-{{$venta->id}}-{{$medicamento->id}}').submit();">
+                                                                            onclick="getElementById('detach-form-{{$venta->id}}-{{$medicamento->id}}').submit();">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                                                 <path stroke-linecap="round" stroke-linejoin="round"

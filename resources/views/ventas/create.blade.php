@@ -57,21 +57,31 @@
                         <div>
                                 <x-input-label for="precio_total" :value="__('Precio Total')" />
 
-                                <x-text-input id="precio_total" class="block mt-1 w-full" type="text" name="precio_total" :value="old('precio_total')" required  />
+                                <x-text-input id="precio_total" class="block mt-1 w-full" type="number" name="precio_total" :value="old('precio_total')" required autofocus  />
                         </div>
                         <div>
                                 <x-input-label for="cantidad_total" :value="__('Cantidad Total')" />
 
-                                <x-text-input id="cantidad_total" class="block mt-1 w-full" type="text" name="name" :value="old('cantidad_total')" required  />
+                                <x-text-input id="cantidad_total" class="block mt-1 w-full" type="number" name="cantidad_total" :value="old('cantidad_total')" required autofocus />
                         </div>
-                        <div class="mt-4">
-                                <x-input-label for="farmacia_id" :value="__('Farmacia de Trabajo')" />
+                        @if(Auth::user()->es_farmaceutico)
+                                <div>
+                                    <x-input-label for="farmacia_id" :value="__('Farmacia')" />
+
+                                    <x-text-input id="farmacia_id" class="block mt-1 w-full" type="text" name="farmacia_id" :value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}
+                                </div>
+                            @else
+                                <div class="mt-4">
+                                    <x-input-label for="farmacia_id" :value="__('Farmacia')" />
 
 
-                                <x-select id="farmacia_id" name="farmacia_id" required>
-                                    <option  value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}</option>
-                                </x-select>
-                            </div>
+                                    <x-select id="farmacia_id" name="farmacia_id" required>
+                                        @foreach($farmacias as $farmacia)
+                                        <option  value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}</option>
+                                        @endforeach
+                                    </x-select>
+                                </div>
+                            @endif
 
 
                         <div class="py-12">
@@ -129,8 +139,8 @@
                                             <form method="POST" action="{{ route('ventas.attachMedicamentoc', [$venta->id]) }}">
                                                 @csrf
 
-                                                <div id="medicationFields">
-                                <div class="medication-field">
+                                                <div id="medicamentosN">
+                                <div class="selecciona-med">
                                     <div class="mt-4">
                                         <x-input-label for="medicamento_id" :value="__('Medicamento')"/>
             
@@ -170,7 +180,7 @@
                             </div>
 
                             <div class="flex items-center justify-end mt-4">
-                                <x-primary-button type="button" onclick="addMedicationField()">
+                                <x-primary-button type="button" onclick="añadeMed()">
                                     {{ __('Añadir') }}
                                 </x-primary-button>
                             </div>
@@ -196,19 +206,18 @@
     <!-- Existing code -->
 
     <script>
-        function addMedicationField() {
-            const medicationFields = document.getElementById('medicationFields');
-            const newMedicationField = document.querySelector('.medication-field').cloneNode(true);
-            medicationFields.appendChild(newMedicationField);
-            // Show remove button for newly added field
-            newMedicationField.querySelector('.flex').style.display = 'flex';
+        function añadeMed() {
+            const medicamentoN = document.getElementById('medicamentoN');
+            const nuevoMedicamentoN = document.querySelector('.selecciona-med').cloneNode(true);
+            medicamentosN.appendChild(nuevoMedicamentoN);
+            nuevoMedicamentoN.querySelector('.flex').style.display = 'flex';
         }
 
         function removeLastMedicationField() {
-            const medicationFields = document.getElementById('medicationFields');
-            const fields = medicationFields.getElementsByClassName('medication-field');
-            if (fields.length > 1) { // Ensure there's at least one initial field
-                medicationFields.removeChild(fields[fields.length - 1]);
+            const medicamentosN = document.getElementById('medicamentosN');
+            const campos = medicamentosN.getElementsByClassName('selecciona-med');
+            if (campos.length > 1) { 
+                medicamentosN.removeChild(campos[campos.length - 1]);
             }
         }
     </script>

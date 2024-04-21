@@ -25,10 +25,10 @@ class UpdateVentaRequest extends FormRequest
     public function rules(): array
     {
         return [
-                'cantidad_total' => 'required|numeric|min:0',
-                'precio_total' => 'required|numeric|min:0',
                 'fecha_compra' => 'required|date|before:yesterday',
-                'paciente_id' => 'required|exists:pacientes,id',// Rule::in($this->user()->paciente->id)],
+                'paciente_id' => 'required|exists:pacientes,id',
+                'cantidad_total' => 'required|numeric',
+                'precio_total' => 'required|numeric',
                 'farmacia_id' => 'exists:farmacias,id',           
             ];
     }
