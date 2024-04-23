@@ -13,7 +13,7 @@ class MedicamentoProveedorPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->es_administrador;
     }
 
     /**
@@ -21,7 +21,7 @@ class MedicamentoProveedorPolicy
      */
     public function view(User $user, MedicamentoProveedor $medicamentoProveedor): bool
     {
-        //
+        return $user->es_administrador;
     }
 
     /**
@@ -29,7 +29,7 @@ class MedicamentoProveedorPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->es_administrador;
     }
 
     /**
@@ -37,7 +37,7 @@ class MedicamentoProveedorPolicy
      */
     public function update(User $user, MedicamentoProveedor $medicamentoProveedor): bool
     {
-        //
+        return $user->es_administrador;
     }
 
     /**
@@ -45,7 +45,7 @@ class MedicamentoProveedorPolicy
      */
     public function delete(User $user, MedicamentoProveedor $medicamentoProveedor): bool
     {
-        //
+        return $user->es_administrador;
     }
 
     /**
@@ -53,7 +53,7 @@ class MedicamentoProveedorPolicy
      */
     public function restore(User $user, MedicamentoProveedor $medicamentoProveedor): bool
     {
-        //
+        return $user->es_administrador;
     }
 
     /**
@@ -61,6 +61,6 @@ class MedicamentoProveedorPolicy
      */
     public function forceDelete(User $user, MedicamentoProveedor $medicamentoProveedor): bool
     {
-        //
+        return $user->es_administrador;
     }
 }
