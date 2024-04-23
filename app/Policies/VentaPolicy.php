@@ -62,19 +62,13 @@ class VentaPolicy
         return $user->es_farmaceutico || $user->es_administrador;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Venta $venta): bool
+    public function attach_medicamento(User $user, Venta $venta)
     {
-        return $user->es_farmaceutico || $user->es_administrador;
+        return true;
     }
 
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Venta $venta): bool
+    public function detach_medicamento(User $user, Venta $venta)
     {
-        return $user->es_farmaceutico || $user->es_administrador;
+        return $user->es_administrador || $user->es_farmaceutico;
     }
 }

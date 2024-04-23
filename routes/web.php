@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FarmaceuticoController;
 use App\Http\Controllers\FarmaciaController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\MedicamentoController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+
 
 
 /*
@@ -36,12 +37,9 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
  
-    Route::post('/ventas/{venta}/attach-medicamentoe', [VentaController::class, 'attach_medicamentoe'])
-        ->name('ventas.attachMedicamentoe')
-        ->middleware('can:attach_medicamentoe,venta');
-    Route::post('/ventas/attach-medicamentoc', [VentaController::class, 'attach_medicamentoc'])
-        ->name('ventas.attachMedicamentoc')
-        ->middleware('can:attach_medicamentoc,venta');
+    Route::post('/ventas/{venta}/attach-medicamento', [VentaController::class, 'attach_medicamento'])
+        ->name('ventas.attachMedicamento')
+        ->middleware('can:attach_medicamento,venta');
     Route::delete('/ventas/{venta}/detach-medicamento/{medicamento}', [VentaController::class, 'detach_medicamento'])
         ->name('ventas.detachMedicamento')
         ->middleware('can:detach_medicamento,venta');
@@ -51,6 +49,7 @@ Route::resources([
     'farmacias' => FarmaciaController::class,
     'ventas' => VentaController::class,
     'pacientes' => PacienteController::class,
+    'medicamentos' => MedicamentoController::class,
     ]);
     
 });

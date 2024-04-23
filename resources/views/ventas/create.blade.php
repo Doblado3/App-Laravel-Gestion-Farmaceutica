@@ -82,6 +82,16 @@
                                     </x-select>
                                 </div>
                             @endif
+                            <div class="flex items-center justify-end mt-4">
+                                <x-danger-button type="button">
+                                    <a href="{{route('ventas.index')}}">
+                                        {{ __('Cancelar') }}
+                                    </a>
+                                </x-danger-button>
+                                <x-primary-button class="ml-4">
+                                    {{ __('Guardar') }}
+                                </x-primary-button>
+                            </div>
 
 
                         <div class="py-12">
@@ -157,7 +167,7 @@
             
                                         <x-text-input id="precio_unidad" class="block mt-1 w-full"
                                                     type="text"
-                                                    name="precio_unidad[]"
+                                                    name="precio_unidad"
                                                     required/>
                                     </div>
             
@@ -166,7 +176,7 @@
             
                                         <x-text-input id="cantidad" class="block mt-1 w-full"
                                                     type="text"
-                                                    name="cantidad[]"
+                                                    name="cantidad"
                                                     required/>
                                     </div>
 
@@ -184,11 +194,9 @@
                                     {{ __('Añadir') }}
                                 </x-primary-button>
                             </div>
-
-
                             <div class="flex items-center justify-end mt-4">
                                 <x-danger-button type="button">
-                                    <a href="{{route('ventas.index')}}">
+                                    <a href="{{route('ventas.create')}}">
                                         {{ __('Cancelar') }}
                                     </a>
                                 </x-danger-button>
@@ -203,7 +211,7 @@
         </div>
     </div>
 
-    <!-- Existing code -->
+  
 
     <script>
         function añadeMed() {

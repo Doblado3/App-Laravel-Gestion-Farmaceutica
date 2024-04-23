@@ -103,13 +103,13 @@ class VentaController extends Controller
     //---------- PREGUNTAR ESTA FUNCIÓN ----------
 
     //----------                        ----------
-    public function attach_medicamentoe(Request $request, Venta $venta)
+    public function attach_medicamento(Request $request, Venta $venta)
     {
 
         $this->validateWithBag('attach', $request, [
-            'medicamento_id' => 'required|exists:medicamentos,id',
+            'medicamento_id' => 'exists:medicamentos,id',
             'cantidad' => 'numeric',
-            'precio_unidad' => 'required|numeric|min:0',
+            'precio_unidad' => 'numeric|min:0',
         ]);
         $venta->medicamentos()->attach($request->medicamento_id, [
             'cantidad' => $request->cantidad,
@@ -122,20 +122,5 @@ class VentaController extends Controller
     {
         $venta->medicamentos()->detach($medicamento->id);
         return redirect()->route('ventas.edit', $venta->id);
-    }
-
-    public function attach_medicamentoc(Request $request, Venta $venta)
-    {
-
-        $this->validateWithBag('attach', $request, [
-            'medicamento_id' => 'required|exists:medicamentos,id',
-            'cantidad' => 'numeric',
-            'precio_unidad' => 'required|numeric|min:0',
-        ]);
-        $venta->medicamentos()->attach($request->medicamento_id, [
-            'cantidad' => $request->cantidad,
-            'precio_unidad' => $request->precio_unidad,
-        ]);
-        return redirect()->route('ventas.create', $venta->id)->with('success', 'Medicamento añadido exitosamente');
     }
 }
