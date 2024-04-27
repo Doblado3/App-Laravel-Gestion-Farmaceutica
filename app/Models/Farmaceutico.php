@@ -25,6 +25,17 @@ class Farmaceutico extends Model
         'fecha_contratacion' => 'datetime:Y-m-d'
     ];
 
+    protected $hidden = [
+        'user', //Laravel muestra todo el user al hacer lo de abajo
+    ];
+
+    protected $appends = [
+        'Nombre',
+        'Apellidos',
+        'Email',
+        'Genero',
+    ]; //Appends es para poder pasarle al index de farmacéuticos de React los datos de User, sin necesidad de pasarle todo el modelo
+
 
     public function user()
     {
@@ -39,6 +50,26 @@ class Farmaceutico extends Model
     public function getDiasContratadoAttribute()
     {
         return Carbon::now()->diffInDays($this->fecha_contratacion);
+    }
+
+    public function getNombreAttribute()
+    {
+        return $this->user->name;
+    }
+
+    public function getApellidosAttribute()
+    {
+        return $this->user->apellidos;
+    }
+
+    public function getEmailAttribute()
+    {
+        return $this->user->email;
+    }
+
+    public function getGeneroAttribute()
+    {
+        return $this->user->genero;
     }
 
 

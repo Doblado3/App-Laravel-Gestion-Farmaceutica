@@ -7,6 +7,8 @@ use App\Http\Requests\Farmaceutico\UpdateFarmaceuticoRequest;
 use App\Models\Farmaceutico;
 use App\Models\User;
 use App\Models\Farmacia;
+use Inertia\Inertia;
+use Inertia\Response;
 
 use DB;
 use Hash;
@@ -15,11 +17,14 @@ use Illuminate\Http\Request;
 class FarmaceuticoController extends Controller
 {
     
-    public function index()
+    public function index(): Response
     {
-        $this->authorize('viewAny', Farmaceutico::class);
-        $farmaceuticos = Farmaceutico::paginate(10);
-        return view('/farmaceuticos/index', ['farmaceuticos' => $farmaceuticos]);    }
+       $this->authorize('viewAny', Farmaceutico::class);
+        $farmaceuticos = Farmaceutico::All();
+        return Inertia::render('Farmaceutico/Index', [
+            'farmaceuticos' => $farmaceuticos,
+        ]);
+    }
 
     
     public function create()
@@ -62,11 +67,13 @@ class FarmaceuticoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Farmaceutico $farmaceutico)
+    public function edit(Farmaceutico $farmaceutico): Response
     {
         $this->authorize('update', $farmaceutico);
         $farmacias = Farmacia::all();
-        return view('farmaceuticos/edit',['farmaceutico' => $farmaceutico, 'farmacias' => $farmacias]);
+        return Inertia::render('Farmaceutico/Edit', [
+            'farmaceutico' => $farmaceutico
+        ]);
     }
 
     /**
@@ -74,13 +81,9 @@ class FarmaceuticoController extends Controller
      */
     public function update(UpdateFarmaceuticoRequest $request, Farmaceutico $farmaceutico)
     {
-        $user = $farmaceutico->user;
-        $user->fill($request->validated());
-        $user->save();
-        $farmaceutico->fill($request->validated());
-        $farmaceutico->save();
-        session()->flash('success', 'Farmaceutico modificado correctamente.');
-        return redirect()->route('farmaceuticos.index');
+        $farmaceutico->update([
+            'genero'=> $request->genero,
+        ]);
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FarmaceuticoController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,6 +31,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/farmaceuticos', [FarmaceuticoController::class, 'index'])->name('farmaceuticos.index');
+    Route::get('/farmaceuticos/{farmaceutico}', [FarmaceuticoController::class, 'edit'])->name('farmaceuticos.edit');
+    Route::patch('/farmaceuticos/{farmaceutico}', [FarmaceuticoController::class, 'update'])->name('farmaceuticos.update'); //patch es lo mismo que PUT pero cambiando sólo lo necesario, no todo
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
