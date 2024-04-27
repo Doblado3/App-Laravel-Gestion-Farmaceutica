@@ -9,6 +9,23 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
+        <div>
+            <x-input-label for="apellidos" :value="__('Apellidos')" />
+            <x-text-input id="apellidos" class="block mt-1 w-full" type="text" name="apellidos" :value="old('apellidos')" autofocus autocomplete="apellidos" />
+            <x-input-error :messages="$errors->get('apellidos')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="genero" :value="__('Sexo')" />
+
+            <x-select id="genero" name="genero" required>
+                    <option value="">{{__('Elige una opción')}}</option>
+                    <option value="Masculino">{{__('Masculino')}}</option>
+                    <option value="Femenino">{{__('Femenino')}}</option>
+                    <option value="Otro">{{__('Otro')}}</option>
+            </x-select>
+        </div>
+
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />

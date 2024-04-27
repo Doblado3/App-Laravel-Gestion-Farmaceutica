@@ -55,7 +55,7 @@
                         </tbody>
                     </table>
                 </div>  
-                <div class="flex justify-end mt-4 mb-4">
+                <div class="flex items-center justify-end mr-8 mt-4 mb-4">
                     <x-danger-button type="button">
                         <a href="{{route('ventas.index')}}">
                             {{ __('Volver') }}

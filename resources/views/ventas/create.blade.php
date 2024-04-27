@@ -65,23 +65,27 @@
                                 <x-text-input id="cantidad_total" class="block mt-1 w-full" type="number" name="cantidad_total" :value="old('cantidad_total')" required autofocus />
                         </div>
                         @if(Auth::user()->es_farmaceutico)
-                                <div>
-                                    <x-input-label for="farmacia_id" :value="__('Farmacia')" />
+                        <div class="mt-4">
+                                <x-input-label for="farmacia_id" :value="__('Farmacia')" />
 
-                                    <x-text-input id="farmacia_id" class="block mt-1 w-full" type="text" name="farmacia_id" :value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}
-                                </div>
-                            @else
-                                <div class="mt-4">
-                                    <x-input-label for="farmacia_id" :value="__('Farmacia')" />
+                                <x-select id="farmacia_id" name="farmacia_id" required>
+                                    
+                                    <option  value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}</option>
+                                    
+                                </x-select>
+                        </div>
+                        @else
+                        <div class="mt-4">
+                                <x-input-label for="farmacia_id" :value="__('Farmacia')" />
 
-
-                                    <x-select id="farmacia_id" name="farmacia_id" required>
-                                        @foreach($farmacias as $farmacia)
-                                        <option  value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}</option>
-                                        @endforeach
-                                    </x-select>
-                                </div>
+                                <x-select id="farmacia_id" name="farmacia_id" required>
+                                    @foreach($farmacias as $farmacia)
+                                    <option  value="{{$farmacia->id}}" @if (old('farmacia_id') == $farmacia->id) selected @endif>{{$farmacia->nombre}}</option>
+                                    @endforeach
+                                </x-select>
+                            </div>
                             @endif
+                            
                             <div class="flex items-center justify-end mt-4">
                                 <x-danger-button type="button">
                                     <a href="{{route('ventas.index')}}">
@@ -94,139 +98,5 @@
                             </div>
 
 
-                        <div class="py-12">
-                                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                        <div class="font-semibold text-lg px-6 py-4 bg-white border-b border-gray-200">
-                                            Medicamentos
-                                        </div>
-                                        <div class="p-6 bg-white border-b border-gray-200">
-                                            <table class="min-w-max w-full table-auto">
-                                                <thead>
-                                                <tr class="bg-gray-200 text-gray-900 uppercase text-sm leading-normal">
-                                                    <th class="py-3 px-6 text-left">Medicamento</th>
-                                                    <th class="py-3 px-6 text-left">Cantidad Unitaria</th>
-                                                    <th class="py-3 px-6 text-left">Precio Unitario</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody class="text-gray-600 text-sm font-light">
-                                                @foreach ($venta->medicamentos as $medicamento)
-                                                    <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                                        <td class="py-3 px-6 text-left whitespace-nowrap">
-                                                            <div class="flex items-center">
-                                                                <span
-                                                                    class="font-medium">{{$medicamento->nombre_comercial}}</span>
-                                                            </div>
-                                                        </td>
-                                                        <td class="py-3 px-6 text-center whitespace-nowrap">
-                                                            <div class="flex items-center">
-                                                                <span
-                                                                    class="font-medium">{{$medicamento->pivot->cantidad}} </span>
-                                                            </div>
-                                                        </td>
-                                                        <td class="py-3 px-6 text-center whitespace-nowrap">
-                                                            <div class="flex items-center">
-                                                                <span class="font-medium">{{$medicamento->pivot->precio_unidad}} </span>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="py-12">
-                                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                        <div class="font-semibold text-lg px-6 py-4 bg-white border-b border-gray-200">
-                                            Añadir nuevos medicamentos
-                                        </div>
-                                        <div class="p-6 bg-white border-b border-gray-200">
-                                            <x-input-error class="mb-4" :messages="$errors->attach->all()"/>
-                                            <form method="POST" action="{{ route('ventas.attachMedicamentoc', [$venta->id]) }}">
-                                                @csrf
-
-                                                <div id="medicamentosN">
-                                <div class="selecciona-med">
-                                    <div class="mt-4">
-                                        <x-input-label for="medicamento_id" :value="__('Medicamento')"/>
-            
-                                        <x-select id="medicamento_id" name="medicamento_id[]" required>
-                                            <option value="">{{__('Elige un medicamento')}}</option>
-                                            @foreach ($medicamentos as $medicamento)
-                                                <option value="{{$medicamento->id}}">{{$medicamento->nombre_comercial}}</option>
-                                            @endforeach
-                                        </x-select>
-                                    </div>
-            
-                                    <div class="mt-4">
-                                        <x-input-label for="precio_unidad" :value="__('Precio Unitario')"/>
-            
-                                        <x-text-input id="precio_unidad" class="block mt-1 w-full"
-                                                    type="text"
-                                                    name="precio_unidad"
-                                                    required/>
-                                    </div>
-            
-                                    <div class="mt-4">
-                                        <x-input-label for="cantidad" :value="__('Cantidad Unitaria')"/>
-            
-                                        <x-text-input id="cantidad" class="block mt-1 w-full"
-                                                    type="text"
-                                                    name="cantidad"
-                                                    required/>
-                                    </div>
-
-                                    <div class="flex items-center justify-end mt-4" style="display: none;">
-                                
-                                        <x-danger-button type="button" onclick="removeLastMedicationField()">
-                                            {{ __('Eliminar') }}
-                                        </x-danger-button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center justify-end mt-4">
-                                <x-primary-button type="button" onclick="añadeMed()">
-                                    {{ __('Añadir') }}
-                                </x-primary-button>
-                            </div>
-                            <div class="flex items-center justify-end mt-4">
-                                <x-danger-button type="button">
-                                    <a href="{{route('ventas.create')}}">
-                                        {{ __('Cancelar') }}
-                                    </a>
-                                </x-danger-button>
-                                <x-primary-button class="ml-4">
-                                    {{ __('Guardar') }}
-                                </x-primary-button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-  
-
-    <script>
-        function añadeMed() {
-            const medicamentoN = document.getElementById('medicamentoN');
-            const nuevoMedicamentoN = document.querySelector('.selecciona-med').cloneNode(true);
-            medicamentosN.appendChild(nuevoMedicamentoN);
-            nuevoMedicamentoN.querySelector('.flex').style.display = 'flex';
-        }
-
-        function removeLastMedicationField() {
-            const medicamentosN = document.getElementById('medicamentosN');
-            const campos = medicamentosN.getElementsByClassName('selecciona-med');
-            if (campos.length > 1) { 
-                medicamentosN.removeChild(campos[campos.length - 1]);
-            }
-        }
-    </script>
+                        
 </x-app-layout>
