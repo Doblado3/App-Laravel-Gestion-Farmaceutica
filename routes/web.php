@@ -1,14 +1,9 @@
 <?php
 
-use App\Http\Controllers\FarmaceuticoController;
-use App\Http\Controllers\FarmaciaController;
-use App\Http\Controllers\VentaController;
-use App\Http\Controllers\PacienteController;
-use App\Http\Controllers\MedicamentoController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-
-
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,17 +11,22 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -34,25 +34,5 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::middleware(['auth'])->group(function () {
- 
-    Route::post('/ventas/{venta}/attach-medicamento', [VentaController::class, 'attach_medicamento'])
-        ->name('ventas.attachMedicamento')
-        ->middleware('can:attach_medicamento,venta');
-    Route::delete('/ventas/{venta}/detach-medicamento/{medicamento}', [VentaController::class, 'detach_medicamento'])
-        ->name('ventas.detachMedicamento')
-        ->middleware('can:detach_medicamento,venta');
-
-Route::resources([
-    'farmaceuticos' => FarmaceuticoController::class,
-    'farmacias' => FarmaciaController::class,
-    'ventas' => VentaController::class,
-    'pacientes' => PacienteController::class,
-    'medicamentos' => MedicamentoController::class,
-    ]);
-    
-});
-
 
 require __DIR__.'/auth.php';
