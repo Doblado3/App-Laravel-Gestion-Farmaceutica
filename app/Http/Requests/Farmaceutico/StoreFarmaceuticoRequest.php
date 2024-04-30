@@ -4,6 +4,7 @@ namespace App\Http\Requests\Farmaceutico;
 
 use App\Models\Farmaceutico; #Antes no estaba. Quitar en caso de error
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\DNI;
 
 class StoreFarmaceuticoRequest extends FormRequest
 {
@@ -27,7 +28,7 @@ class StoreFarmaceuticoRequest extends FormRequest
             'apellidos' => 'string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'genero' => 'string|max:255',
-            'dni' => 'string|max:255|unique:farmaceuticos',
+            'dni' => ['required','string', 'unique:farmaceuticos', new DNI()],
             'password' => 'required|string|confirmed|min:8',
             'fecha_contratacion' => 'date',
             'sueldo' => 'numeric',
