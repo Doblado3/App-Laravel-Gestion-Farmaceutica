@@ -31,9 +31,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/farmaceuticos', [FarmaceuticoController::class, 'index'])->name('farmaceuticos.index');
-    Route::get('/farmaceuticos/{farmaceutico}', [FarmaceuticoController::class, 'edit'])->name('farmaceuticos.edit');
-    Route::patch('/farmaceuticos/{farmaceutico}', [FarmaceuticoController::class, 'update'])->name('farmaceuticos.update'); //patch es lo mismo que PUT pero cambiando sólo lo necesario, no todo
+    Route::resource('farmaceuticos', FarmaceuticoController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

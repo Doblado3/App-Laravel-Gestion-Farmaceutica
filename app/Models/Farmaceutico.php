@@ -19,6 +19,7 @@ class Farmaceutico extends Model
         'dni',
         'fecha_contratacion',
         'sueldo',
+        
     ];
 
     protected $casts = [

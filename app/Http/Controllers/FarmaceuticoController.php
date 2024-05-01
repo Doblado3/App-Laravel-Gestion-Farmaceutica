@@ -79,11 +79,12 @@ class FarmaceuticoController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
     public function update(UpdateFarmaceuticoRequest $request, Farmaceutico $farmaceutico)
     {
-        $farmaceutico->update([
-            'genero'=> $request->genero,
-        ]);
+        $data = $request->validated();
+        $farmaceutico->update($data);
+        return to_route('farmaceuticos.index');
     }
 
     /**
