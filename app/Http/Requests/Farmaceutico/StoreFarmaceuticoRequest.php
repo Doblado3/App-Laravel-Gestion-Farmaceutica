@@ -28,7 +28,7 @@ class StoreFarmaceuticoRequest extends FormRequest
             'apellidos' => 'string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'genero' => 'string|max:255',
-            'dni' => ['required','string', 'unique:farmaceuticos', new DNI()],
+            'dni' => ['required', 'string', 'unique:farmaceuticos', new DNI()],
             'password' => 'required|string|confirmed|min:8',
             'fecha_contratacion' => 'date',
             'sueldo' => 'numeric',
