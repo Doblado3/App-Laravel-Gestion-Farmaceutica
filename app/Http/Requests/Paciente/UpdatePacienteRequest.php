@@ -27,7 +27,7 @@ class UpdatePacienteRequest extends FormRequest
             'name' => 'required|string|max:255',
             'apellidos' => 'string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'dni' => 'required|string|max:255|unique:pacientes',
+            'dni' => ['required', 'string', 'unique:pacientes', new DNI],
             'nusha' => 'required|string|max:255|unique:pacientes',
         ];
     }
