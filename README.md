@@ -204,4 +204,5 @@ RF – 13: Como farmacéutico, quiero que el sistema actualice los niveles de ca
 
 - **Manual de usuario con capturas:**
 
-Acceso a usuarios:
+Acceso para usuarios:
+![Acceso](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/37a6f470-af71-41a8-b91c-b1d963cfc7ec)
