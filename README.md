@@ -212,4 +212,9 @@ Registro de nuevos usuarios:
 
 ![Registro](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/c725f820-f888-4d62-ab14-b070be60ec6b)
 
+Listado de farmaceuticos visto como administrador:
+
+![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/6b255de8-0085-4bc1-aa59-5b59e275f058)
+
+
 
