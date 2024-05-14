@@ -28,7 +28,7 @@ class UpdateFarmaceuticoRequest extends FormRequest
             'apellidos' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'genero' => 'required|string|max:255',
-            'dni' => 'required|string|max:255',
+            'dni' => ['required', 'string', 'unique:farmaceuticos', new DNI],
             'fecha_contratacion' => 'required|date',
             'sueldo' => 'required|numeric',
             'farmacia_id' => 'exists:farmacias,id',
