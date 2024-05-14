@@ -14,14 +14,15 @@ use Illuminate\Http\Request;
 
 class FarmaceuticoController extends Controller
 {
-    
+
     public function index()
     {
         $this->authorize('viewAny', Farmaceutico::class);
         $farmaceuticos = Farmaceutico::paginate(10);
-        return view('/farmaceuticos/index', ['farmaceuticos' => $farmaceuticos]);    }
+        return view('/farmaceuticos/index', ['farmaceuticos' => $farmaceuticos]);
+       }
 
-    
+
     public function create()
     {
         $this->authorize('create', Farmaceutico::class);
@@ -36,10 +37,10 @@ class FarmaceuticoController extends Controller
         return $user;
     }
 
-    
+
     public function store(StoreFarmaceuticoRequest $request)
     {
-        
+
         $this->authorize('create', Farmaceutico::class);
         $user = $this->createUser($request);
         $farmaceutico = new Farmaceutico($request->validated());

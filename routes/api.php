@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Ruta para acceder al user
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//API - TODO
+/*
+Route::get('farmaceuticos', function(){
+    return Farmaceutico::all();
+});
+*/
