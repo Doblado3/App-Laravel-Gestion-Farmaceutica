@@ -18,13 +18,13 @@ class DNI implements Rule
     public function passes($attribute, $value)
     {
         #$letrasDNI = "TRWAGMYFPDXBNJZSQVHLCKE";
-        #$indice = (int)substr($dni, 0, 8) % 23;
+        #$indice = (int)substr($value, 0, 8) % 23;
         #$letraCalculada = $letrasDNI[$indice]; #letra dni correspondiente
-        #$letraDNI = strtoupper(substr($dni, -1));
+        #$letraDNI = strtoupper(substr($value, -1));
         if(strlen($value)!=9 || !is_numeric(substr($value, 0, 8)) || !ctype_alpha(substr($value, -1))){
             return false;
         #} elseif ($letraCalculada != $letraDNI){
-        #    return false;
+        #   return false;
         }else {
             return true;
         }
