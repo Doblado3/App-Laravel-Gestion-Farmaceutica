@@ -144,7 +144,7 @@ RF - 4: Como administrador,
         Quiero borrar una venta. El sistema deberá alertarme de la irrevocabilidad de esta acción y pedir confirmación. En caso de confirmación, el sistema deberá borrar la venta y navegar al listado actualizado de ventas con un mensaje de éxito.
 
             
-RF –54: Como farmacéutico, quiero poder diferenciar los medicamentos preescritos de los que no lo son.  
+RF –5: Como farmacéutico, quiero poder diferenciar los medicamentos preescritos de los que no lo son.  
 
 
 RF – 6: Como farmacéutico, quiero controlar el estado de inventario de medicamentos de las farmacias.  
