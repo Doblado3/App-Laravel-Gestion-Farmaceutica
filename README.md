@@ -221,6 +221,10 @@ Sin embargo, si intentaramos acceder al listado de farmaceuticos como un pacient
 ![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/871f2f42-ae34-4e57-a9f5-c65c21bf5bde)
 ![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/9bf30bc8-a63c-41c7-89c7-4ad88060e343)
 
+En cuanto a la custom Rule, en nuestro caso hemos realizado una comprobación detellada para que el DNI introducido a la hora de registrar un nuevo farmaceutico se un DNI válido (que tenga 9 caracteres en total, que los 8 primeros sean números y el noveno sea una letra):
+
+![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/af167a47-19c2-4970-a29c-aa229cf160fe)
+
 
 Editado de un Farmaceutico con Inertia y React:
 
