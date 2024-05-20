@@ -234,6 +234,16 @@ Visualizador de ventas vistas como paciente. en este caso, solo se podrán visua
 
 ![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/73aa4281-0bc7-45a5-b64e-65dddefbc3f7)
 
+Editado de un Farmaceutico con Inertia y React:
+
+<img width="1440" alt="Captura de pantalla 2024-05-20 a las 17 17 10" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/73b0e63f-270f-4823-8ac1-912ad23619dc">
+
+<img width="1440" alt="Captura de pantalla 2024-05-20 a las 17 17 26" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/2d238229-c39f-4685-b9db-26cbcac3d624">
+
+<img width="1440" alt="Captura de pantalla 2024-05-20 a las 17 17 36" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/2be014f3-6e81-4b44-954d-16c08d9925b0">
+
+
+
 
 API REST usando Potsman:
 <img width="1440" alt="Captura de pantalla 2024-05-20 a las 16 45 31" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/622a013e-d0ce-41f1-b0c7-b32fa858cc1d">
