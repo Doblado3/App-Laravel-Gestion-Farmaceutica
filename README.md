@@ -212,6 +212,16 @@ Visualizador de ventas vistas como paciente. en este caso, solo se podrán visua
 
 ![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/73aa4281-0bc7-45a5-b64e-65dddefbc3f7)
 
+En cuanto a las policy del proyecto, podemos observar como, si entramos como el ususario administrador, podemos acceder a la lista de farmaceuticos registrados:
+
+![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/a0909b86-1d15-456c-98ea-385b44d563ac)
+
+Sin embargo, si intentaramos acceder al listado de farmaceuticos como un paciente, se nos deniega el acceso:
+
+![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/871f2f42-ae34-4e57-a9f5-c65c21bf5bde)
+![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/9bf30bc8-a63c-41c7-89c7-4ad88060e343)
+
+
 Editado de un Farmaceutico con Inertia y React:
 
 <img width="1440" alt="Captura de pantalla 2024-05-20 a las 17 22 03" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/193c2131-10a1-46de-a806-a5e8310561bf">
