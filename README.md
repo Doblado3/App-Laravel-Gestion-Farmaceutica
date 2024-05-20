@@ -217,11 +217,14 @@ Listado de farmaceuticos visto como administrador:
 ![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/6b255de8-0085-4bc1-aa59-5b59e275f058)
 
 Acceso al perfil de usuario para editar sus datos:
+
 ![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/3d214b35-ba24-4418-a415-c0a3e4c739e5)
 
 Visualizador de ventas realizadas realizadas como farmacéuticos, con posibilidad de visualizar en detalles la venta, modificarla y borrarla:
+
 ![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/39f4df87-0dd6-4eda-8b42-e8a3734e05a6)
 
 Modelo de crción de venta:
+
 ![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/02d48173-afb8-4ca8-bd66-d51a366d4ad7)
 
