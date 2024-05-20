@@ -90,7 +90,7 @@ class FarmaceuticoController extends Controller
     public function destroy(Farmaceutico $farmaceutico)
     {
         $this->authorize('delete', $farmaceutico);
-        if($farmaceutico->delete()){
+        if($farmaceutico->delete() && $farmaceutico->user->delete()){
             session()->flash('success','Farmacéutico borrado corréctamente.');
         }else{
             session()->flash('warning','El farmacéutico no pudo borrarse. Inténtelo de nuevo');
