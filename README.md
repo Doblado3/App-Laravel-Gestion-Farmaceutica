@@ -186,7 +186,7 @@ RF – 13: Como farmacéutico, quiero que el sistema actualice los niveles de ca
 
 •	RNF – 5: Como paciente, quiero que el sistema sea de uso intuitivo.
 
-•	RNF – 6: Como administrador, quiero que los pacientes tengan una capacidad limitada a sus ventas y que los farmacéuticos la tenga a su farmacia.
+•	RNF – 6: Como administrador, quiero que los pacientes tengan una capacidad ilimitada a sus ventas y que los farmacéuticos la tenga a su farmacia.
 
 - **Trabajo extra:**
 
