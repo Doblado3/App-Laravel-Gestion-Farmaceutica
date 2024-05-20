@@ -15,15 +15,15 @@ export default function Table({ items, columns, primary, action }) {
                 {items.map((item) =>
                     <tr key={item.id} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            #{item.id}
+                            {item.id}
                         </th>
                         {columns.map((column) =>
                             <td key={column} className="px-6 py-4">
-                                {item[column]}
+                                {column in item.user ? item.user[column] : item[column]}
                             </td>
                         )}
                         <td className="px-6 py-4">
-                            <a href={route(action, item.id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">View Details</a>
+                            <a href={route(action, item.id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar Farmaceutico</a>
                         </td>
                     </tr>
                 )}

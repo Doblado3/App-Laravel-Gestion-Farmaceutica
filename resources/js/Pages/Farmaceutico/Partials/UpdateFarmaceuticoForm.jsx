@@ -1,36 +1,40 @@
 import InputLabel from '@/Components/InputLabel';
 import InputError from '@/Components/InputError';
-import { router } from '@inertiajs/vue3'
-import { reactive } from 'vue'
 import TextInput from '@/Components/TextInput';
 import { Transition } from '@headlessui/react';
-import { Link, useForm, usePage } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 import SelectInput from "@/Components/SelectInput.jsx";
+import React from 'react';
 
 
-export default function UpdatePizzaOrderForm({ farmaceutico, className = '' }) {
+export default function UpdateFarmaceuticoOrderForm({ farmaceutico, className = '' }) {
 
-    const {form, data, setData, errors, recentlySuccessful} = useForm({ //data representa al objeto con los valores iniciales para cada uno de los campos
-        Nombre:farmaceutico.Nombre,                                                  //setData es un método para poder cambiarlos
-        Apellidos:farmaceutico.Apellidos,                                            //errors es el bad de validación
-        Email:farmaceutico.Email,                                                    //processing es un boolean que determina si estamos o no cambiando la información
-        Genero:farmaceutico.Genero,                                                  //recentlySuccessfull es el mensaje para indicar que todo ha ido bien
-        dni:farmaceutico.dni,
-        fecha_contratacion:farmaceutico.fecha_contratacion,
-        sueldo:farmaceutico.sueldo,
+    const {data, setData, patch,errors,recentlySuccessful} = useForm({ 
+        name: farmaceutico.user.name,
+        apellidos: farmaceutico.user.apellidos,
+        email: farmaceutico.user.email,
+        genero: farmaceutico.user.genero,
+        dni: farmaceutico.dni,
+        fecha_contratacion: farmaceutico.fecha_contratacion,
+        sueldo: farmaceutico.sueldo,
     });
 
-    
-
-    function submit() {
-        router.post('farmaceuticos.update', form)
-      }
+    const submit = (e) => {
+        e.preventDefault();
+        console.log(data);
+        patch(route('farmaceuticos.update', farmaceutico.id));
+    };
 
     const generoOptions = [
         'Masculino',
         'Femenino',
         'Otro',
     ];
+
+    React.useEffect(() => {
+        console.log(farmaceutico.user)
+    }, [])
+
     return (
         <section className={className}>
             <header>
@@ -43,51 +47,51 @@ export default function UpdatePizzaOrderForm({ farmaceutico, className = '' }) {
 
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
-                    <InputLabel htmlFor="Nombre" value="Nombre" />
+                    <InputLabel htmlFor="name" value="name" />
 
                     <TextInput
-                        id="Nombre"
+                        id="name"
                         className="mt-1 block w-full"
-                        value={data.Nombre} //antes aqui ponía farmaceutico.Nombre, cambiándolo usamos el useForm de Inertia
-                        onChange={(e) => setData('Nombre', e.target.value)}
-
+                        value={data.name}
+                        onChange={(e) => setData('name', e.target.value)}
+                        autoFocus
                     />
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="Apellidos" value="Apellidos" />
+                    <InputLabel htmlFor="apellidos" value="apellidos" />
 
                     <TextInput
-                        id="Apellidos"
+                        id="apellidos"
                         className="mt-1 block w-full"
-                        value={data.Apellidos}
-                        onChange={(e) => setData('Apellidos', e.target.value)}
-
+                        value={data.apellidos}
+                        onChange={(e) => setData('apellidos', e.target.value)}
+                        autoFocus
                     />
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="Email" value="Email" />
+                    <InputLabel htmlFor="email" value="email" />
 
                     <TextInput
-                        id="Email"
+                        id="email"
                         className="mt-1 block w-full"
-                        value={data.Email}
-                        onChange={(e) => setData('Email', e.target.value)}
-
+                        value={data.email}
+                        onChange={(e) => setData('email', e.target.value)}
+                        autoFocus
                     />
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="Genero" value="Sexo" />
+                    <InputLabel htmlFor="genero" value="genero" />
 
                     <SelectInput
-                        id="Genero"
+                        id="genero"
                         className="mt-1 block w-full"
-                        options = {generoOptions}
-                        value={data.Genero}
-                        onChange={(e) => setData('Genero', e.target.value)} //sin esto, el cliente puede actualizar pero manteniendo lo que hay en "data"
-                        
+                        options={generoOptions}
+                        value={data.genero}
+                        onChange={(e) => setData('genero', e.target.value)}
+                        autoFocus
                     />
                 </div>
 
@@ -99,6 +103,7 @@ export default function UpdatePizzaOrderForm({ farmaceutico, className = '' }) {
                         className="mt-1 block w-full"
                         value={data.dni}
                         onChange={(e) => setData('dni', e.target.value)}
+                        autoFocus
                     />
                 </div>
 
@@ -110,7 +115,7 @@ export default function UpdatePizzaOrderForm({ farmaceutico, className = '' }) {
                         className="mt-1 block w-full"
                         value={data.fecha_contratacion}
                         onChange={(e) => setData('fecha_contratacion', e.target.value)}
-
+                        autoFocus
                     />
                 </div>
 
@@ -122,35 +127,36 @@ export default function UpdatePizzaOrderForm({ farmaceutico, className = '' }) {
                         className="mt-1 block w-full"
                         value={data.sueldo}
                         onChange={(e) => setData('sueldo', e.target.value)}
-
+                        autoFocus
                     />
-                    <InputError className="mt-2" message={errors.Genero} />
+                    
                 </div>
-
 
                 <div className="mt-4 text-right">
                     <Link
                         href={route("farmaceuticos.index")}
                         className="bg-gray-100 py-1 px-3 text-gray-800 rounded shadow transition-all hover:bg-gray-200 mr-2"
-                        >
+                    >
                         Cancelar
                     </Link>
-                    <button className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600">
+                    <button
+                        className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600"
+                    >
                         Guardar
                     </button>
-              
 
+                    {/* Moved Transition component out of button */}
                     <Transition
                         show={recentlySuccessful}
                         enter="transition ease-in-out"
                         enterFrom="opacity-0"
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
-                    > 
-                        <p className="text-sm text-gray-600">Guardado.</p> 
+                    >
+                        <p className="text-sm text-gray-600">Guardado.</p>
                     </Transition>
-                    
                 </div>
+                <InputError message={errors.message} className='mt-2'/>
             </form>
         </section>
     );

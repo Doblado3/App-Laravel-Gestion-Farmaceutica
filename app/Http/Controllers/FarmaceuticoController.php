@@ -20,7 +20,7 @@ class FarmaceuticoController extends Controller
     public function index(): Response
     {
        $this->authorize('viewAny', Farmaceutico::class);
-        $farmaceuticos = Farmaceutico::All();
+        $farmaceuticos = Farmaceutico::all();
         return Inertia::render('Farmaceutico/Index', [
             'farmaceuticos' => $farmaceuticos,
         ]);
@@ -41,7 +41,7 @@ class FarmaceuticoController extends Controller
         return $user;
     }
 
-    
+   
     public function store(StoreFarmaceuticoRequest $request)
     {
         
@@ -53,6 +53,7 @@ class FarmaceuticoController extends Controller
         session()->flash('success', 'Farmacéutico creado correctamente.');
         return redirect()->route('farmaceuticos.index');
     }
+    
 
     /**
      * Display the specified resource.
@@ -71,6 +72,7 @@ class FarmaceuticoController extends Controller
     {
         $this->authorize('update', $farmaceutico);
         $farmacias = Farmacia::all();
+        $user = $farmaceutico->user();
         return Inertia::render('Farmaceutico/Edit', [
             'farmaceutico' => $farmaceutico
         ]);
@@ -84,7 +86,7 @@ class FarmaceuticoController extends Controller
     {
         $data = $request->validated();
         $farmaceutico->update($data);
-        return to_route('farmaceuticos.index');
+        return redirect(route('farmaceuticos.index'));
     }
 
     /**

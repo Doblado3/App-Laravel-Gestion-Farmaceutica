@@ -2,17 +2,19 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import Table from '@/Components/Table.jsx';
 import { Head } from '@inertiajs/react';
 
+
+
 const columns = [
-    'Nombre',
-    'Apellidos',
-    'Email',
-    'Genero',
+    'name',
+    'apellidos',
+    'email',
+    'genero',
     'dni',
     'fecha_contratacion',
     'sueldo',
 ]
 
-export default function Index({ auth, farmaceuticos }) {
+export default function Index({ auth, farmaceuticos}) {
     return (
         <AuthenticatedLayout
             user={auth.user}

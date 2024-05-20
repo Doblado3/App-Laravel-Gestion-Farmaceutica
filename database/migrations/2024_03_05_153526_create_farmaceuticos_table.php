@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->string('id');
+            $table->string('dni');
             $table->date('fecha_contratacion');
             $table->double('sueldo');
             $table->foreignId('farmacia_id')->constrained()->onDelete('cascade');
