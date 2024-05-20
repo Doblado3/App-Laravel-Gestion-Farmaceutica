@@ -12,8 +12,6 @@ Pablo Doblado Mendoza y Rodrigo Naranjo Pozas
 
 Nuestro proyecto se va a centrar en el desarrollo de una aplicación web para la gestión de locales farmacéutica, tanto para locales únicos como para negocios integrados por varias sucursales. La idea principal es que la aplicación permita al cliente (profesionales farmacéuticos) controlar y automatizar la gestión del flujo compras/ventas de su farmacia. Para ello, necesitamos controlar tanto las ventas de la farmacia, los medicamentos que salen, como las compras que la misma haga a ciertos proveedores, los medicamentos que entran.
 
-Fuera del objetivo básico, anteriormente descrito, nos gustaría que la aplicación puediera aportar valor extra al cliente (farmaceútico). Entre otras cosas, nos planteamos añadir una especie de "tienda online" dentro de la aplicación que permita al cliente realizar sus pedidos desde casa. También, contemplamos ofrecer una serie de estadísticas, sobre la actividad de su local, al farmaceútico que le permitan optimizar su negocio.
-
 - **Objetivos:**
 Los objetivos de nuestra aplicación web son:
 
@@ -144,31 +142,11 @@ RF - 4: Como administrador,
         Quiero borrar una venta. El sistema deberá alertarme de la irrevocabilidad de esta acción y pedir confirmación. En caso de confirmación, el sistema deberá borrar la venta y navegar al listado actualizado de ventas con un mensaje de éxito.
 
             
-RF –5: Como farmacéutico, quiero poder diferenciar los medicamentos preescritos de los que no lo son.  
+RF –5: Como farmacéutico, quiero poder diferenciar los medicamentos que requieren preescripción de los que no.  
 
+RF – 6: Como farmacéutico, quiero acceder a la lista de medicamentos de distintos proveedores para comparar sus productos. 
 
-RF – 6: Como farmacéutico, quiero controlar el estado de inventario de medicamentos de las farmacias.  
-
-
-RF - 7: Como farmacéutico, quiero poder establecer niveles de stock mínimo para productos con mucha demanda.  
-
-
-RF - 8: Como farmacéutico, quiero que el sistema me lance avisos cuando haya poco stock de un medicamento.  
-
-
-RF – 9: Como farmacéutico, quiero acceder a la lista de medicamentos de distintos proveedores para comparar sus productos. 
-
-
-RF – 10: Como paciente, quiero poder acceder a la oferta de medicamentos de las farmacias, conocer una serie de características sobre cada producto y poder “reservar” pedidos.  
-
-
-RF – 11: Como administrador, quiero que el sistema genere información sobre las ventas para poder ofrecer distintas estadísticas, por ejemplo, productos más vendidos o tendencias mensuales y así otorgar mayor conocimiento al farmacéutico.  
-
-
-RF - 12: Como farmacéutico, quiero llevar un registro de las compras realizadas.  
-
-
-RF – 13: Como farmacéutico, quiero que el sistema actualice los niveles de cantidad de medicamentos conforme se vayan realizando ventas/compras.  
+RF - 7: Como farmacéutico, quiero llevar un registro de las compras realizadas.  
 
 
 - **Requisitos no funcionales:**  
