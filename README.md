@@ -190,7 +190,7 @@ RF – 13: Como farmacéutico, quiero que el sistema actualice los niveles de ca
 
 - **Trabajo extra:**
 
-  Tras realizar la estructura básica de la página web, objetivo primordial de la asignatura, y siguiendo las indicaciones del profesor Damián Fernandez Cerero, hemos realizado      dos "proyectos". En el primero de ellos, hemos desarrollado una pequeña parte de la aplicación web haciendo uso de Inertia con React. En el segundo, hemos trabajado con el        concepto de API REST para probar la aplicación principal simulando el papel de cliente. En este último, simplemente nos hemos autenticado, y hemos hecho tanto un GET como un      POST. 
+  Tras realizar la estructura básica de la página web, objetivo primordial de la asignatura, y siguiendo las indicaciones del profesor Damián Fernandez Cerero, hemos realizado      dos "proyectos". En el primero de ellos, hemos desarrollado una pequeña parte de la aplicación web haciendo uso de Inertia con React, en una rama aparte. En el segundo, hemos   trabajado con el        concepto de API REST para probar la aplicación principal simulando el papel de cliente. En este último, simplemente nos hemos autenticado, y hemos hecho   tanto un GET como un      POST. 
 
 
 - **Modelado conceptual en UML:**  
