@@ -226,9 +226,14 @@ Visualizador de ventas realizadas realizadas como farmacéuticos, con posibilida
 
 ![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/39f4df87-0dd6-4eda-8b42-e8a3734e05a6)
 
-Modelo de creación de venta:
+Modelo de creación de venta como farmacéutico:
 
 ![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/02d48173-afb8-4ca8-bd66-d51a366d4ad7)
+
+Visualizador de ventas vistas como paciente. en este caso, solo se podrán visualizar, no se podrán editar ni borrar:
+
+![image](https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/147496659/73aa4281-0bc7-45a5-b64e-65dddefbc3f7)
+
 
 API REST usando Potsman:
 <img width="1440" alt="Captura de pantalla 2024-05-20 a las 16 45 31" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/622a013e-d0ce-41f1-b0c7-b32fa858cc1d">
