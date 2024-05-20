@@ -236,11 +236,11 @@ Visualizador de ventas vistas como paciente. en este caso, solo se podrán visua
 
 Editado de un Farmaceutico con Inertia y React:
 
-<img width="1440" alt="Captura de pantalla 2024-05-20 a las 17 17 10" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/73b0e63f-270f-4823-8ac1-912ad23619dc">
+<img width="1440" alt="Captura de pantalla 2024-05-20 a las 17 22 03" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/193c2131-10a1-46de-a806-a5e8310561bf">
 
-<img width="1440" alt="Captura de pantalla 2024-05-20 a las 17 17 26" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/2d238229-c39f-4685-b9db-26cbcac3d624">
+<img width="1440" alt="Captura de pantalla 2024-05-20 a las 17 22 13" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/4ec12c0d-de8e-4958-9df7-4dc7a6c1366d">
 
-<img width="1440" alt="Captura de pantalla 2024-05-20 a las 17 17 36" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/2be014f3-6e81-4b44-954d-16c08d9925b0">
+<img width="1440" alt="Captura de pantalla 2024-05-20 a las 17 22 21" src="https://github.com/CGIS-2024/proyecto-evaluacion-continua-gruporp/assets/137097471/fda22b8b-dc83-48f9-9cf6-086c5690eb65">
 
 
 
