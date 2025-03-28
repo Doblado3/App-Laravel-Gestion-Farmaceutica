@@ -12,6 +12,13 @@ Este es un sistema de gestión farmacéutica desarrollado con Laravel, React e I
 - **MariaDB** (Base de datos)
 - **Postman** (Pruebas de API)
 
+## Arquitectura MVC
+
+El proyecto sigue el patrón Modelo-Vista-Controlador (MVC):
+- **Modelo**: Representa los datos y la lógica de negocio.
+- **Vista**: Se encarga de la interfaz de usuario, utilizando React con Inertia.js.
+- **Controlador**: Gestiona las solicitudes y respuestas entre el modelo y la vista.
+
 ## 📌 Requisitos Previos
 
 Asegúrate de tener instalados los siguientes programas en tu sistema:
